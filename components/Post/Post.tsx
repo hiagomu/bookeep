@@ -8,7 +8,7 @@ export const Post = () => {
         <div className="bg-white w-post h-post rounded-3xl flex justify-center items-center relative">
             <div className="w-11/12">
                 <span className="block text-primaryColor font-bold w-full text-right text-sm serif">32min</span>
-                <div className="flex justify-between">
+                <div className="flex justify-between relative">
                     <img src="https://m.media-amazon.com/images/I/619aw8BhHCL.jpg" alt="product"  className="w-40 h-48 mr-2"/>
                     <div className="mt-2 h-fit">
                         <Link href='/' className="text-black text-xl font-bold">O Ladrão de Raios - Capa Nova: (Série Percy Jackson e os Olimpianos): 1</Link>
@@ -24,14 +24,12 @@ export const Post = () => {
                             <Link href='/' className="text-primaryColor font-bold">Hiago Murilo</Link>
                         </div>
                     </div>
+                    <Interactions />
                 </div>
             </div>
             <div className="absolute bottom-0">
-                <Link href='/' className="bg-primaryColor px-12 py-1 rounded-t-lg font-bold">Ver mais</Link>
+                <Link href='/' className="bg-primaryColor px-12 py-1 rounded-t-lg font-bold hover:bg-primaryHoverColor">Ver mais</Link>
             </div>
-            {
-             //<Interactions />   
-            }
         </div>
     )
 }
