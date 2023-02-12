@@ -5,7 +5,7 @@ import { BsPersonCircle as ProfilePictureIcon} from 'react-icons/bs'
 
 export const Post = () => {
     return (
-        <div className="bg-white w-post h-post rounded-3xl flex justify-center items-center relative">
+        <div className="bg-white w-post h-post rounded-3xl flex justify-center items-center shadow-primary mb-10 relative overflow-hidden">
             <div className="w-11/12">
                 <span className="block text-primaryColor font-bold w-full text-right text-sm serif">32min</span>
                 <div className="flex justify-between relative">

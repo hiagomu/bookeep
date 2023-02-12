@@ -18,6 +18,9 @@ module.exports = {
       height: {
         'post': '16rem',
       },
+      boxShadow: {
+        'primary': '0px 5px 15px rgba(0, 0, 0, 0.2)',
+      }
     }
   },
   plugins: [],

@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export const Interactions = () => {
     return (
-        <Link href='/' className='flex items-center justify-evenly absolute bg-primaryColor w-32 h-7 rounded-lg bottom-0 right-0'>
+        <Link href='/' className='flex items-center justify-evenly absolute bg-primaryColor w-32 h-7 rounded-lg bottom-0 right-0 shadow-primary'>
             <div className='flex items-center'>
                 <BooIcon className='mr-2 hover:text-primaryHoverColor'/>
                 <span className='font-bold'>15</span>
