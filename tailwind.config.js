@@ -15,12 +15,14 @@ module.exports = {
       width: {
         'post': '42rem',
         'post-xl': '38rem',
-        'post-lg': '32rem' 
+        'post-lg': '32rem',
+        'post-sm': '18rem' 
       },
       height: {
         'post': '16rem',
         'post-xl': '14rem',
-        'post-lg': '12rem' 
+        'post-lg': '12rem',
+        'post-sm': '11rem'
       },
       boxShadow: {
         'primary': '0px 5px 15px rgba(0, 0, 0, 0.2)',
