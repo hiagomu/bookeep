@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 export const Header = () => {
 
-    const [isActive, setIsActive] = useState(true)
+    const [isActive, setIsActive] = useState(false)
 
     return (
         <header
