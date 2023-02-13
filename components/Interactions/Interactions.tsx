@@ -6,7 +6,15 @@ import {
     FaCommentAlt as CommentIcon
 } from 'react-icons/fa'
 
-export const Interactions = () => {
+interface IInteractions {
+    boos: number
+    comments: number
+}
+
+export const Interactions = ({
+    boos,
+    comments
+}: IInteractions) => {
     return (
         <Link
             href='/'
@@ -14,11 +22,11 @@ export const Interactions = () => {
         >
             <div className='flex items-center'>
                 <BooIcon className='mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1' />
-                <span className='font-bold max-xl:text-sm max-sm:text-xs'>15</span>
+                <span className='font-bold max-xl:text-sm max-sm:text-xs'>{boos}</span>
             </div>
             <div className='flex items-center'>
                 <CommentIcon className='mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1' />
-                <span className='font-bold max-xl:text-sm max-sm:text-xs'>6</span>
+                <span className='font-bold max-xl:text-sm max-sm:text-xs'>{comments}</span>
             </div>
         </Link>
     )

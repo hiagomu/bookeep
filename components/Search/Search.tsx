@@ -5,7 +5,7 @@ import { BsSearch as SearchIcon } from 'react-icons/bs'
 export const Search = () => {
     return (
         <div
-            className="h-fit flex items-center my-5 justify-between"
+            className="h-12 flex items-center justify-between fixed top-0 mt-24"
         >
             <div
                 className='bg-search flex rounded-xl w-search max-lg:w-search-lg max-sm:w-search-sm max-md:w-search-md'
