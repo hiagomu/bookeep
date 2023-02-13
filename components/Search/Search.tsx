@@ -1,3 +1,5 @@
+"use client"
+
 import { BsSearch as SearchIcon } from 'react-icons/bs'
 
 export const Search = () => {

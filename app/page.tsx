@@ -1,3 +1,5 @@
+"use client"
+
 import { Post } from "@/components/Post"
 import { Search } from "@/components/Search"
 import { Header } from "@/components/Header"

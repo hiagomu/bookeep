@@ -1,3 +1,5 @@
+"use client"
+
 import { Interactions } from "../Interactions"
 import Link from "next/link"
 import { MdVerified as VerifiedSellerIcon } from 'react-icons/md'
@@ -6,11 +8,11 @@ import { BsPersonCircle as ProfilePictureIcon} from 'react-icons/bs'
 export const Post = () => {
     return (
         <div
-            className="bg-white w-post h-post rounded-3xl flex justify-center items-center shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-xl:h-post-xl max-lg:w-post-lg max-lg:h-post-lg max-sm:w-post-sm max-sm:h-post-sm"
+            className="bg-white w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm"
         >
             <div className="w-11/12">
                 <span
-                    className="block text-primaryColor font-bold w-full text-right text-sm serif max-sm:text-xs"
+                    className="block text-primaryColor font-bold w-full text-right text-sm serif mt-2 max-sm:text-xs"
                 >
                     32min
                 </span>
@@ -55,14 +57,12 @@ export const Post = () => {
                     <Interactions />
                 </div>
             </div>
-            <div className="absolute bottom-0">
-                <Link
-                    href='/'
-                    className="bg-primaryColor px-12 py-1 rounded-t-lg font-bold hover:bg-primaryHoverColor max-xl:px-8 max-xl:py-0.5 max-xl:text-sm max-sm:text-xs max-sm:px-8"
-                >
-                    Ver mais
-                </Link>
-            </div>
+            <Link
+                href='/'
+                className="bg-primaryColor px-12 py-1 rounded-t-lg font-bold hover:bg-primaryHoverColor max-xl:px-8 max-xl:text-sm max-sm:py-0.5 max-sm:text-xs max-sm:mt-2 max-sm:px-5"
+            >
+                Ver mais
+            </Link>
         </div>
     )
 }
