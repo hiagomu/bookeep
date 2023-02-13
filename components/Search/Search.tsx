@@ -6,10 +6,10 @@ export const Search = () => {
             className="h-fit flex items-center my-5 justify-between"
         >
             <div
-                className='bg-search flex rounded-xl w-search max-lg:w-search-lg max-sm:w-search-sm'
+                className='bg-search flex rounded-xl w-search max-lg:w-search-lg max-sm:w-search-sm max-md:w-search-md'
             >
                 <input
-                    className="bg-transparent w-full py-1 px-4 text-black rounded-xl outline-none max-sm:text-sm"
+                    className="bg-transparent w-full py-1.5 px-4 text-black rounded-xl outline-none max-sm:text-sm"
                     placeholder="Pesquise por livros ou lojas"
                     type="text"
                 />
@@ -22,7 +22,7 @@ export const Search = () => {
                 </button>
             </div>
             <button
-                className="bg-primaryColor h-8 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-sm font-semibold max-sm:text-xs max-sm:h-7"
+                className="bg-primaryColor h-9 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-base font-semibold max-sm:text-xs max-sm:h-7"
             >
                 Novo
             </button>

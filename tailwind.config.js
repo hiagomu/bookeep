@@ -20,6 +20,7 @@ module.exports = {
         'post-sm': '18rem',
         'search': '45rem',
         'search-lg': '36rem',
+        'search-md': '30rem',
         'search-sm': '15rem'
       },
       height: {
