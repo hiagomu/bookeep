@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: bookeep.io
-Token: eea3b4db7d32de63f07e686fbc01ef09da62cc43f6519b71051c7527e98c9a3e
