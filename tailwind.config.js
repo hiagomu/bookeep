@@ -11,12 +11,16 @@ module.exports = {
         primaryColor: '#7856FF',
         secondaryColor: '#59507D',
         primaryHoverColor: '#B4A2FD',
+        search: '#E9E9E9'
       },
       width: {
         'post': '42rem',
         'post-xl': '38rem',
         'post-lg': '32rem',
-        'post-sm': '18rem' 
+        'post-sm': '18rem',
+        'search': '45rem',
+        'search-lg': '36rem',
+        'search-sm': '15rem'
       },
       height: {
         'post': '16rem',
@@ -26,6 +30,7 @@ module.exports = {
       },
       boxShadow: {
         'primary': '0px 5px 15px rgba(0, 0, 0, 0.2)',
+        'secondary': '0px 5px 5px rgba(0, 0, 0, 0.2)',
       }
     }
   },
