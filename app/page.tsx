@@ -7,11 +7,11 @@ import { Header } from "@/components/Header"
 export default function Home() {
   return (
     <main className="flex justify-center items-center h-fit flex-col relative">
-      <div className="fixed top-0 w-full h-36 flex justify-center bg-white z-10">
+      <div className="fixed top-0 w-full h-36 flex justify-center bg-white z-10 max-sm:h-24">
         <Header />
         <Search />
       </div>
-      <div  className="mt-40 z-0">
+      <div  className="mt-40 z-0 max-sm:mt-28">
         <Post
           isMarketplaceVerified={true}
           isUserVerified={true}
@@ -39,90 +39,6 @@ export default function Home() {
           title={"Alice no País das Maravilhas (Classic Edition)"}
           time={10}
           boos={5}
-        />
-        <Post
-          isMarketplaceVerified={false}
-          isUserVerified={false}
-          userProfileURL={"/"}
-          bookImageURL={"https://m.media-amazon.com/images/I/81rqjb5EIdL.jpg"}
-          marketplace={"Amazon"}
-          saleLink={"https://www.amazon.com.br/Os-crimes-ABC-Agatha-Christie/dp/8595085927"}
-          comments={27}
-          seller={"Rafaela Bicalho"}
-          price={31.90}
-          title={"Os crimes ABC"}
-          time={30}
-          boos={45}
-        />
-        <Post
-          isMarketplaceVerified={false}
-          isUserVerified={false}
-          userProfileURL={"/"}
-          bookImageURL={"https://m.media-amazon.com/images/I/81rqjb5EIdL.jpg"}
-          marketplace={"Amazon"}
-          saleLink={"https://www.amazon.com.br/Os-crimes-ABC-Agatha-Christie/dp/8595085927"}
-          comments={27}
-          seller={"Rafaela Bicalho"}
-          price={31.90}
-          title={"Os crimes ABC"}
-          time={30}
-          boos={45}
-        />
-        <Post
-          isMarketplaceVerified={false}
-          isUserVerified={false}
-          userProfileURL={"/"}
-          bookImageURL={"https://m.media-amazon.com/images/I/81rqjb5EIdL.jpg"}
-          marketplace={"Amazon"}
-          saleLink={"https://www.amazon.com.br/Os-crimes-ABC-Agatha-Christie/dp/8595085927"}
-          comments={27}
-          seller={"Rafaela Bicalho"}
-          price={31.90}
-          title={"Os crimes ABC"}
-          time={30}
-          boos={45}
-        />
-        <Post
-          isMarketplaceVerified={false}
-          isUserVerified={false}
-          userProfileURL={"/"}
-          bookImageURL={"https://m.media-amazon.com/images/I/81rqjb5EIdL.jpg"}
-          marketplace={"Amazon"}
-          saleLink={"https://www.amazon.com.br/Os-crimes-ABC-Agatha-Christie/dp/8595085927"}
-          comments={27}
-          seller={"Rafaela Bicalho"}
-          price={31.90}
-          title={"Os crimes ABC"}
-          time={30}
-          boos={45}
-        />
-        <Post
-          isMarketplaceVerified={false}
-          isUserVerified={false}
-          userProfileURL={"/"}
-          bookImageURL={"https://m.media-amazon.com/images/I/81rqjb5EIdL.jpg"}
-          marketplace={"Amazon"}
-          saleLink={"https://www.amazon.com.br/Os-crimes-ABC-Agatha-Christie/dp/8595085927"}
-          comments={27}
-          seller={"Rafaela Bicalho"}
-          price={31.90}
-          title={"Os crimes ABC"}
-          time={30}
-          boos={45}
-        />
-        <Post
-          isMarketplaceVerified={false}
-          isUserVerified={false}
-          userProfileURL={"/"}
-          bookImageURL={"https://m.media-amazon.com/images/I/81rqjb5EIdL.jpg"}
-          marketplace={"Amazon"}
-          saleLink={"https://www.amazon.com.br/Os-crimes-ABC-Agatha-Christie/dp/8595085927"}
-          comments={27}
-          seller={"Rafaela Bicalho"}
-          price={31.90}
-          title={"Os crimes ABC"}
-          time={30}
-          boos={45}
         />
         <Post
           isMarketplaceVerified={false}
