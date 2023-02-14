@@ -36,7 +36,7 @@ export const Post = ({
 }: IPost) => {
     return (
         <div
-            className="bg-white w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm"
+            className="bg-white w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5"
         >
             <div className="w-11/12">
                 <span
@@ -61,7 +61,10 @@ export const Post = ({
                             <span
                                 className="block text-primaryColor font-bold text-2xl mt-2 max-xl:text-xl max-lg:text-lg max-lg:mt-1 max-sm:text-base"
                             >
-                                R${price}
+                                R${new Intl.NumberFormat('pt-BR', {
+                                    style: 'currency',
+                                    currency: 'BRL',
+                                }).format(price).slice(3)}
                             </span>
                             <div className="flex mb-1 ml-4 items-center max-sm:ml-2">
                                 <span
