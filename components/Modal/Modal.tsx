@@ -1,28 +1,30 @@
+"use client"
+
+import { Dialog } from "@headlessui/react"
+
 interface IModal {
-    setIsOpen: (isOpen: boolean) => void
     children: React.ReactNode
+    isOpen: boolean
+    setIsOpen: (isOpen: boolean) => void
 }
 
 export const Modal = ({
-    setIsOpen,
-    children
+    children,
+    isOpen,
+    setIsOpen
 }: IModal) => {
 
-    const handleClose = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (event.target.id === "wrapper") setIsOpen(false) 
-    }
-
     return (
-        <div
-            className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center overflow-hidden"
-            id="wrapper"
-            onClick={(event) => handleClose(event)}
+        <Dialog
+            open={isOpen}
+            onClose={() => setIsOpen(false)}
+            className="relative z-50"
         >
-            <div className="w-[600px] flex flex-col">
-                <div className="bg-white p-2 rounded">
-                    {children}
-                </div>
+            <div className="fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-25 backdrop-blur-sm">
+            <Dialog.Panel className="w-full max-w-sm rounded bg-white">
+                {children}
+            </Dialog.Panel>
             </div>
-        </div>
+        </Dialog>
     )
 }
