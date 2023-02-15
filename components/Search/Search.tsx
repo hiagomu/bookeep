@@ -2,7 +2,13 @@
 
 import { BsSearch as SearchIcon } from 'react-icons/bs'
 
-export const Search = () => {
+interface ISearch {
+    setIsOpen: (isOpen: boolean) => void 
+}
+
+export const Search = ({
+    setIsOpen
+}: ISearch) => {
     return (
         <div
             className="h-12 flex items-center justify-between fixed mt-20 max-sm:mt-14"
@@ -25,6 +31,7 @@ export const Search = () => {
             </div>
             <button
                 className="bg-primaryColor h-9 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-base font-semibold max-sm:text-xs max-sm:h-7"
+                onClick={() => setIsOpen(true)}
             >
                 Novo
             </button>
