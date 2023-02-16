@@ -21,13 +21,19 @@ module.exports = {
         'search': '45rem',
         'search-lg': '36rem',
         'search-md': '30rem',
-        'search-sm': '15rem'
+        'search-sm': '15rem',
+        'post-modal': '33.75rem',
+        'input-lg': '28rem',
+        'input-sm': '13.5rem',
       },
       height: {
         'post': '16rem',
         'post-xl': '14rem',
         'post-lg': '12rem',
-        'post-sm': '11rem'
+        'post-sm': '11rem',
+        'input': '2.25rem',
+        'post-modal': '42rem',
+        'textarea': '5rem'
       },
       boxShadow: {
         'primary': '0px 5px 15px rgba(0, 0, 0, 0.2)',

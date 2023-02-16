@@ -1,0 +1,1 @@
+export { NewPost } from  './NewPost'

@@ -3,8 +3,8 @@
 import { Post } from "@/components/Post"
 import { Search } from "@/components/Search"
 import { Header } from "@/components/Header"
-import { Modal } from "@/components/Modal"
 import { useState } from "react"
+import { NewPost } from "@/components/NewPost"
 
 export default function Home() {
   
@@ -15,12 +15,10 @@ export default function Home() {
         <div className="fixed top-0 w-full h-36 flex justify-center bg-white z-10 max-sm:h-28">
           <Header />
           <Search setIsOpen={setIsOpen}/>
-          <Modal
+          <NewPost
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-          >
-            <h1 className="text-black">Ola</h1>
-          </Modal>
+          />
         </div>
         <div  className="mt-40 z-0 max-sm:mt-32">
           <Post
