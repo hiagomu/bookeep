@@ -24,7 +24,11 @@ module.exports = {
         'search-sm': '15rem',
         'post-modal': '33.75rem',
         'input-lg': '28rem',
+        'input-md': '20rem',
+        'input-2sm': '16rem',
         'input-sm': '13.5rem',
+        'input-xs': '9.5rem',
+        'input-xxs': '7.5rem'
       },
       height: {
         'post': '16rem',
