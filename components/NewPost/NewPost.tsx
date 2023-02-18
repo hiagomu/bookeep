@@ -5,7 +5,6 @@ import PostInput from "./components/PostInput"
 import {
   FaGhost as BooIcon
 } from 'react-icons/fa'
-
 import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
 
@@ -20,8 +19,13 @@ export const NewPost = ({
 }: INewPost) => {
 
   const { register, handleSubmit, reset } = useForm();
+
   const onSubmit = (data: FieldValues) => {
     console.log(data)
+    setIsOpen(false)
+  }
+
+  const onClose = () => {
     reset()
     setIsOpen(false)
   }
@@ -36,73 +40,85 @@ export const NewPost = ({
             <form
               onSubmit={handleSubmit(onSubmit)}>
               <PostInput
-                id="title"
-                element="input"
                 placeholder="Insira o nome do produto..."
+                register={register}
+                required={true}
+                element="input"
                 isSmall={false}
                 title="Título"
                 type="text"
-                register={register}
                 name="title"
+                id="title"
               />
               <PostInput
-                id="link"
-                element="input"
                 placeholder="Insira o link da promoção..."
+                register={register}
+                required={true}
+                element="input"
                 isSmall={false}
                 title="Link"
                 type="text"
-                register={register}
                 name="link"
+                id="link"
               />
               <PostInput
-                id="category"
-                element="input"
                 placeholder="Escolha a categoria..."
+                register={register}
+                required={true}
+                element="input"
                 isSmall={false}
                 title="Categoria"
                 type="text"
-                register={register}
                 name="category"
+                id="category"
               />
               <div className="flex justify-between">
                 <PostInput
-                  id="price"
-                  element="input"
                   placeholder="Insira o valor do produto..."
+                  register={register}
+                  required={true}
+                  element="input"
                   isSmall={true}
                   title="Preço"
                   type="text"
-                  register={register}
                   name="price"
+                  id="price"
                 />
                 <PostInput
-                  id="coupon"
-                  element="input"
                   placeholder="Insira o cupom..."
+                  register={register}
+                  required={false}
+                  element="input"
                   isSmall={true}
                   title="Cupom"
                   type="text"
-                  register={register}
                   name="coupon"
+                  id="coupon"
                 />
               </div>
-              <PostImageInput />
+              <PostImageInput
+                innerText="Adicione"
+                register={register}
+                required={true}
+                title="Imagem"
+                name="productImage"
+                alt="Imagem do produto"
+                id="productImage"
+              />
               <PostInput
-                id="description"
-                element="textarea"
                 placeholder="Insira a descrição do produto..."
+                register={register}
+                required={false}
+                element="textarea"
                 isSmall={true}
                 title="Descrição"
-                register={register}
                 name="description"
+                id="description"
               />
               <div className="flex w-full justify-end mt-4">
                 <button
                   className="bg-zinc-500 rounded text-sm py-2 px-3 font-semibold mr-4 outline-none hover:bg-zinc-400 max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
-                  onClick={() => {
-                    setIsOpen(false)
-                  }}
+                  onClick={onClose}
                 >
                   Cancel
                 </button>

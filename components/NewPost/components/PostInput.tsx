@@ -4,13 +4,14 @@ import { FieldValues, UseFormRegister } from "react-hook-form"
 
 interface IPostInput {
     id: string
-    type?: "text" | "url" | "file"
+    type?: "text" | "url"
     name: string
     title: string
     element: "input" | "select" | "textarea"
     isSmall?: boolean
-    placeholder: string
     register: UseFormRegister<FieldValues>
+    required: boolean
+    placeholder: string
 }
 
 const PostInput = ({
@@ -20,8 +21,9 @@ const PostInput = ({
     title,
     element,
     isSmall,
+    register,
+    required,
     placeholder,
-    register
 }: IPostInput) => {
 
 
@@ -35,28 +37,20 @@ const PostInput = ({
             </label>
             {
                 element === "input" ?
-                    isSmall ?
-                        <input
-                            className="border-primaryColor border-2 rounded bg-white w-input-sm py-1.5 px-1.5 mb-4 text-sm text-black outline-none max-lg:w-input-xs max-lg:py-1 max-lg:px-1 max-lg:mb-2 max-lg:text-xs max-sm:w-input-xxs"
-                            placeholder={placeholder}
-                            title={title}
-                            type={type}
-                            id={id}
-                            {...register(name)}
-                        />
-                        :
-                        <input
-                            className="border-primaryColor border-2 rounded bg-white w-input-lg py-1.5 px-1.5 mb-4 text-sm text-black outline-none max-lg:w-input-md max-lg:py-1 max-lg:px-1 max-lg:mb-2 max-lg:text-xs max-sm:w-input-2sm"
-                            placeholder={placeholder}
-                            title={title}
-                            type={type}
-                            id={id}
-                            {...register(name)}
-                        />
+                    <input
+                        className={`border-primaryColor border-2 rounded bg-white py-1.5 px-1.5 mb-4 text-sm text-black outline-none ${isSmall ? "w-input-sm max-lg:w-input-xs max-lg:py-1 max-lg:px-1 max-lg:mb-2 max-lg:text-xs max-sm:w-input-xxs" : "w-input-lg max-lg:w-input-md max-lg:py-1 max-lg:px-1 max-lg:mb-2 max-lg:text-xs max-sm:w-input-2sm"}`}
+                        placeholder={placeholder}
+                        required={required}
+                        title={title}
+                        type={type}
+                        id={id}
+                        {...register(name)}
+                    />
                     : element === "textarea" &&
                         <textarea
                             className="border-primaryColor border-2 rounded bg-white w-input-lg h-textarea py-1.5 px-1.5 text-sm text-black outline-none overflow-hidden max-lg:w-input-md max-lg:py-1 max-lg:px-1 max-lg:text-xs max-sm:w-input-2sm"
                             placeholder={placeholder}
+                            required={required}
                             title={title}
                             id={id}
                             {...register(name)}
