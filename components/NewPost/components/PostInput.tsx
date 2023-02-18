@@ -1,31 +1,37 @@
+"use client"
+
+import { FieldValues, UseFormRegister } from "react-hook-form"
+
 interface IPostInput {
     id: string
-    type?: "text" |  "url"
+    type?: "text" | "url" | "file"
     name: string
+    title: string
     element: "input" | "select" | "textarea"
     isSmall?: boolean
-    value: string | number
-    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
     placeholder: string
+    register: UseFormRegister<FieldValues>
 }
 
 const PostInput = ({
     id,
     type,
     name,
-    value,
+    title,
     element,
     isSmall,
-    onChange,
-    placeholder
+    placeholder,
+    register
 }: IPostInput) => {
+
+
     return (
         <div className="flex flex-col">
             <label
                 className="text-primaryColor font-bold max-lg:text-sm"
                 htmlFor={id}
             >
-                {name}
+                {title}
             </label>
             {
                 element === "input" ?
@@ -33,30 +39,27 @@ const PostInput = ({
                         <input
                             className="border-primaryColor border-2 rounded bg-white w-input-sm py-1.5 px-1.5 mb-4 text-sm text-black outline-none max-lg:w-input-xs max-lg:py-1 max-lg:px-1 max-lg:mb-2 max-lg:text-xs max-sm:w-input-xxs"
                             placeholder={placeholder}
-                            onChange={(e) => onChange(e)}
-                            value={value}
-                            name={id}
+                            title={title}
                             type={type}
                             id={id}
+                            {...register(name)}
                         />
                         :
                         <input
                             className="border-primaryColor border-2 rounded bg-white w-input-lg py-1.5 px-1.5 mb-4 text-sm text-black outline-none max-lg:w-input-md max-lg:py-1 max-lg:px-1 max-lg:mb-2 max-lg:text-xs max-sm:w-input-2sm"
                             placeholder={placeholder}
-                            onChange={(e) => onChange(e)}
-                            value={value}
+                            title={title}
                             type={type}
-                            name={id}
                             id={id}
+                            {...register(name)}
                         />
                     : element === "textarea" &&
                         <textarea
                             className="border-primaryColor border-2 rounded bg-white w-input-lg h-textarea py-1.5 px-1.5 text-sm text-black outline-none overflow-hidden max-lg:w-input-md max-lg:py-1 max-lg:px-1 max-lg:text-xs max-sm:w-input-2sm"
                             placeholder={placeholder}
-                            onChange={(e) => onChange(e)}
-                            value={value}
-                            name={id}
+                            title={title}
                             id={id}
+                            {...register(name)}
                         />
             }
         </div>
