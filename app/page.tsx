@@ -7,7 +7,6 @@ import { useState } from "react"
 import { NewPost } from "@/components/NewPost"
 
 export default function Home() {
-  
   const [isOpen, setIsOpen] = useState(false)
 
   return (
