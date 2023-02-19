@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import Logged from '@/app/auth/Logged'
-import Login from '@/app/auth/Login'
+import LoggedButton from '@/app/auth/LoggedButton'
+import LoginButton from '@/app/auth/LoginButton'
 import NavbarLink from "./NavbarLink"
 import links from "../utils/links.json"
 
@@ -22,8 +22,8 @@ export default async function Navbar() {
                     )
                 }
             </ul>
-            {!session?.user && <Login />}
-            {session?.user && <Logged image={session.user.image || ""}/>}
+            {!session?.user && <LoginButton isDropdown={false}/>}
+            {session?.user && <LoggedButton isDropdown={false} image={session.user.image || ""}/>}
         </nav>
     )
 }
