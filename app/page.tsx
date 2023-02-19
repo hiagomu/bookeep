@@ -17,7 +17,7 @@ export default function Home() {
             setIsOpen={setIsOpen}
           />
         </div>
-        <div  className="mt-24 z-0 max-sm:mt-16">
+        <div  className="mt-40 z-0 max-sm:mt-28">
           <Post
             isMarketplaceVerified={true}
             isUserVerified={false}

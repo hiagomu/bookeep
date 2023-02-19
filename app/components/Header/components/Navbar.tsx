@@ -23,8 +23,7 @@ export default async function Navbar() {
                 }
             </ul>
             {!session?.user && <Login />}
-            {session?.user && <Logged />}
-            
+            {session?.user && <Logged image={session.user.image || ""}/>}
         </nav>
     )
 }

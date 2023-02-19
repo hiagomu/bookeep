@@ -1,12 +1,20 @@
 "use client"
 
-import { BsPersonCircle as ProfileDefaultIcon } from 'react-icons/bs'
 import { signOut } from 'next-auth/react'
+import Image from 'next/image'
 
-const Logged = () => {
+interface ILogged {
+    image: string
+}
+
+const Logged = ({image}: ILogged) => {
     return (
-        <ProfileDefaultIcon
-            className='text-primaryColor w-7 h-7 cursor-pointer z-40'
+        <Image
+            width={36}
+            height={36}
+            alt="Profile picture"
+            src={image}
+            className="rounded-full cursor-pointer"
             onClick={() => signOut()}
         />
     )
