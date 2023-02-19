@@ -11,7 +11,7 @@ interface IHeader {
 export const Header = ({children}: IHeader) => {
     return (
         <header
-            className='fixed top-0 z-50 flex items-center justify-between h-16 w-11/12 border-b-2 border-slate-100 max-sm:h-12'
+            className='fixed top-0 z-40 flex items-center justify-between h-16 w-11/12 border-b-2 border-slate-100 max-sm:h-12'
         >
             <Link
                 href="/"

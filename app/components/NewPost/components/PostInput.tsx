@@ -61,7 +61,15 @@ const PostInput = ({
                             id={id}
                             {...register(name)}
                         >
-                            {options?.map(option => <option value={option.value}>{option.name}</option>)}
+                            {
+                                options?.map((option, index) =>
+                                    <option
+                                        key={index}
+                                        value={option.value}
+                                    >
+                                        {option.name}
+                                    </option>)
+                            }
                         </select>
             }
             {errorMessage && <span className={`block text-red-500 text-xs font-bold ${isSmall ? "w-input-sm max-lg:w-input-xs max-sm:w-input-xxs" : "w-input-lg max-lg:w-input-md max-sm:w-input-2sm"}`}>{errorMessage}</span>}

@@ -9,6 +9,9 @@ import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
 import { mixed, number, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import axios, { AxiosError } from "axios"
+import { toast } from "react-hot-toast"
 
 interface INewPost {
     isOpen: boolean
@@ -46,6 +49,7 @@ export const NewPost = ({
   setIsOpen
 }: INewPost) => {
 
+  let toastPostID: string
 
   const { register, handleSubmit, reset, formState:{ errors } } = useForm({
     resolver: yupResolver(newPostSchema)
@@ -53,14 +57,29 @@ export const NewPost = ({
 
 
   const onSubmit = (data: FieldValues) => {
-    // console.log(data)
-    setIsOpen(false)
+    toastPostID = toast.loading("Criando anúncio...", {id: toastPostID})
+    mutate(data)
   }
 
   const onClose = () => {
-    reset()
     setIsOpen(false)
+    reset()
   }
+
+  const { mutate } = useMutation(
+    async (data: FieldValues) => axios.post("/api/posts/newPost", { data }),
+    {
+      onError: (error) => {
+        if (error instanceof AxiosError) {
+          toast.error(error?.response?.data.message, {id: toastPostID})
+        }
+      },
+      onSuccess: () => {
+        toast.success("Anúncio criado com sucesso!", {id: toastPostID})
+        onClose()
+      }
+    }
+  )
 
   return (
       <Modal
