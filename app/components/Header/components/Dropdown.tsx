@@ -12,7 +12,7 @@ const Dropdown = () => {
 
     return (
         <div
-            className='hidden max-sm:block max-sm:relative cursor-pointer'
+            className='hidden max-sm:block max-sm:relative cursor-pointer z-40'
             onClick={() => setIsActive(!isActive)}
         >
             <span className='block hover:bg-zinc-400 rounded-full p-1'>

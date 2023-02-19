@@ -5,8 +5,8 @@ import Link from "next/link"
 interface INavbarLink {
     name: string
     href: string
-    selected: boolean
-    onClick: React.MouseEventHandler<HTMLAnchorElement>
+    selected?: boolean
+    onClick?: React.MouseEventHandler<HTMLAnchorElement>
 }
 
 const NavbarLink = ({

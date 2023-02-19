@@ -1,10 +1,9 @@
 "use client"
 
-import { Post } from "@/components/Post"
-import { Search } from "@/components/Search"
-import { Header } from "@/components/Header"
+import { Post } from "./components/Post"
+import { Search } from "./components/Search"
 import { useState } from "react"
-import { NewPost } from "@/components/NewPost"
+import { NewPost } from "./components/NewPost"
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,14 +11,13 @@ export default function Home() {
   return (
       <main className="flex justify-center items-center h-fit flex-col relative">
         <div className="fixed top-0 w-full h-36 flex justify-center bg-white z-10 max-sm:h-28">
-          <Header />
           <Search setIsOpen={setIsOpen}/>
           <NewPost
             isOpen={isOpen}
             setIsOpen={setIsOpen}
           />
         </div>
-        <div  className="mt-40 z-0 max-sm:mt-32">
+        <div  className="mt-24 z-0 max-sm:mt-16">
           <Post
             isMarketplaceVerified={true}
             isUserVerified={false}

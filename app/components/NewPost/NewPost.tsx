@@ -53,7 +53,7 @@ export const NewPost = ({
 
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data)
+    // console.log(data)
     setIsOpen(false)
   }
 
@@ -61,8 +61,6 @@ export const NewPost = ({
     reset()
     setIsOpen(false)
   }
-
-  console.log(errors)
 
   return (
       <Modal

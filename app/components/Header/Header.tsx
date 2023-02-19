@@ -1,19 +1,22 @@
 "use client"
 
 import Dropdown from './components/Dropdown'
-import Navbar from './components/Navbar'
 import Image from 'next/image'
 import Link from 'next/link'
-import logo from '../../public/assets/logo.png'
+import logo from '../../../public/assets/logo.png'
 
-export const Header = () => {
+interface IHeader {
+    children: React.ReactNode
+}
+
+export const Header = ({children}: IHeader) => {
     return (
         <header
             className='flex items-center justify-between h-16 w-11/12 border-b-2 border-slate-100 max-sm:h-12'
         >
             <Link
                 href="/"
-                className='flex w-fit items-center'
+                className='flex w-fit items-center z-40'
             >
                 <div className='flex items-center justify-center bg-primaryColor rounded-xl h-9 w-9 max-sm:h-7 max-sm:w-7 max-sm:rounded-lg'>
                     <Image
@@ -30,7 +33,7 @@ export const Header = () => {
                     BooKeep
                 </p>
             </Link>
-            <Navbar />
+            {children}
             <Dropdown />
         </header>
     )
