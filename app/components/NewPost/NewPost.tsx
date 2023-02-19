@@ -9,7 +9,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
 import { mixed, number, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation } from "@tanstack/react-query"
 import axios, { AxiosError } from "axios"
 import { toast } from "react-hot-toast"
 

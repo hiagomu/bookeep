@@ -3,11 +3,13 @@
 import { Interactions } from "../Interactions"
 import Link from "next/link"
 import { MdVerified as VerifiedIcon } from 'react-icons/md'
-import { BsPersonCircle as ProfilePictureIcon} from 'react-icons/bs'
+import formatDistance from "date-fns/formatDistance"
+import ptBR from "date-fns/locale/pt-BR"
+import Image from "next/image"
 
 interface IPost {
     boos: number
-    time: number
+    createdAt: Date
     title: string
     price: number
     seller: string
@@ -17,23 +19,28 @@ interface IPost {
     bookImageURL: string
     userProfileURL: string
     isUserVerified: boolean
+    userProfilePicture: string
     isMarketplaceVerified: boolean
 }
 
 export const Post = ({
     boos,
-    time,
     title,
     price,
     seller,
     comments,
     saleLink,
+    createdAt,
     marketplace,
     bookImageURL,
     userProfileURL,
     isUserVerified,
+    userProfilePicture,
     isMarketplaceVerified
 }: IPost) => {
+
+    const today = Date.now()
+
     return (
         <div
             className="bg-white w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5"
@@ -42,7 +49,9 @@ export const Post = ({
                 <span
                     className="block text-primaryColor font-bold w-full text-right text-sm serif mt-2 max-sm:text-xs"
                 >
-                    {time}min
+                    {formatDistance(new Date(createdAt), today, {
+                        locale: ptBR,
+                    })}
                 </span>
                 <div className="flex relative">
                     <img
@@ -76,7 +85,13 @@ export const Post = ({
                             </div>
                         </div>
                         <div className="flex items-center mt-3 max-xl:mt-2 max-lg:mt-1 max-sm:mb-5">
-                            <ProfilePictureIcon className="mr-2 text-primaryColor"/>
+                            <Image
+                                alt="Imagem de perfil do usuário"
+                                src={userProfilePicture}
+                                className="mr-2 rounded-full"
+                                width={16}
+                                height={16}
+                            />
                             <Link
                                 href={userProfileURL}
                                 className="text-primaryColor mr-2 font-bold max-xl:text-sm max-sm:text-xs max-sm:mr-1"
