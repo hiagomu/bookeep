@@ -1,4 +1,4 @@
-import { getServerSession } from "next-auth/next"
+import { unstable_getServerSession } from "next-auth/next"
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import LoggedButton from '@/app/auth/LoggedButton'
 import LoginButton from '@/app/auth/LoginButton'
@@ -7,7 +7,7 @@ import links from "../utils/links.json"
 
 export default async function Navbar() {
 
-    const session = await getServerSession(authOptions)
+    const session = await unstable_getServerSession(authOptions)
 
     return (
         <nav className='flex items-center max-sm:hidden'>

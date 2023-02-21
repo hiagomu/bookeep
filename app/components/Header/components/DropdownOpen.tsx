@@ -1,14 +1,12 @@
 import DropdownLink from "./DropdownLink"
-import Link from "next/link"
-import { BsPersonCircle as ProfileDefaultIcon } from 'react-icons/bs'
-import { getServerSession } from "next-auth/next"
+import { unstable_getServerSession } from "next-auth/next"
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import LoginButton from "@/app/auth/LoginButton"
 import LoggedButton from "@/app/auth/LoggedButton"
 
 const DropdownOpen  = async () => {
 
-    const session = await getServerSession(authOptions)
+    const session = await unstable_getServerSession(authOptions)
 
     return (
         <nav className='flex absolute flex-col items-center w-28 py-5 bg-white shadow-secondary rounded-lg right-0 top-0 mt-10 z-10'>

@@ -38,11 +38,11 @@ export default function Home() {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const { data, error, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<IPost[]>({
     queryFn: getPosts,
-    queryKey: ["posts"]
+    queryKey: ["posts"],
+    onError: err => err
   })
-  if (error) return error
   if (isLoading) return "Loading..."
 
   return (
@@ -56,7 +56,7 @@ export default function Home() {
         </div>
         <div  className="mt-40 z-0 max-sm:mt-28">
           {
-            data.map((post: IPost) => 
+            data?.map((post: IPost) => 
               <Post
                 isMarketplaceVerified={true}
                 userProfilePicture={post.user.image}

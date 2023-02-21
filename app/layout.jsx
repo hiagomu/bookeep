@@ -16,15 +16,17 @@ export default function RootLayout({
     <html lang="en" className={nunito.className}>
       <head />
       <body className='flex flex-col items-center'>
-        <QueryWrapper>
-          <Header>
-            <Navbar />
-            <Dropdown>
-              <DropdownOpen />
-            </Dropdown>
-          </Header>
-          {children}
-        </QueryWrapper>
+        <AuthContext>
+          <QueryWrapper>
+            <Header>
+              <Navbar />
+              <Dropdown>
+                <DropdownOpen />
+              </Dropdown>
+            </Header>
+            {children}
+          </QueryWrapper>
+        </AuthContext> 
       </body>      
     </html>
   )
