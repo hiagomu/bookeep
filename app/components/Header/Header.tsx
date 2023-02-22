@@ -11,7 +11,7 @@ interface IHeader {
 export const Header = ({children}: IHeader) => {
     return (
         <header
-            className='fixed top-0 z-40 flex items-center justify-between h-16 w-11/12 border-b-2 border-slate-100 max-sm:h-12'
+            className='fixed top-0 z-40 flex items-center justify-between h-16 w-11/12 border-b-2 border-slate-100 dark:border-secondaryDarkColor max-sm:h-12'
         >
             <Link
                 href="/"
@@ -27,7 +27,7 @@ export const Header = ({children}: IHeader) => {
                     />
                 </div>
                 <p
-                    className='text-black ml-1 font-bold max-sm:text-sm'
+                    className='text-black ml-1 font-bold max-sm:text-sm dark:text-white'
                 >
                     BooKeep
                 </p>

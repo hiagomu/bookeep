@@ -43,11 +43,11 @@ export const Post = ({
 
     return (
         <div
-            className="bg-white w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5"
+            className="bg-white dark:bg-secondaryDarkColor w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5"
         >
             <div className="w-11/12">
                 <span
-                    className="block text-primaryColor font-bold w-full text-right text-sm serif mt-2 max-sm:text-xs"
+                    className="block text-primaryColor dark:text-slate-400 font-bold w-full text-right text-sm serif mt-2 max-sm:text-xs"
                 >
                     {formatDistance(new Date(createdAt), today, {
                         locale: ptBR,
@@ -62,7 +62,7 @@ export const Post = ({
                     <div className="mt-2 h-fit max-lg:mt-1 max-sm:w-44">
                         <Link
                             href={saleLink}
-                            className="block text-black text-xl font-bold max-xl:text-lg max-lg:text-base max-sm:text-sm max-sm:truncate"
+                            className="block text-black dark:text-white text-xl font-bold max-xl:text-lg max-lg:text-base max-sm:text-sm max-sm:truncate"
                         >
                             {title}
                         </Link>
@@ -77,7 +77,7 @@ export const Post = ({
                             </span>
                             <div className="flex mb-1 ml-4 items-center max-sm:ml-2">
                                 <span
-                                    className="mr-2 font-bold text-slate-500 max-xl:text-sm max-sm:text-xs max-sm:mr-1"
+                                    className="mr-2 font-bold text-slate-500 dark:text-white max-xl:text-sm max-sm:text-xs max-sm:mr-1"
                                 >
                                     {marketplace}
                                 </span>
@@ -88,13 +88,13 @@ export const Post = ({
                             <Image
                                 alt="Imagem de perfil do usuário"
                                 src={userProfilePicture}
-                                className="mr-2 rounded-full"
-                                width={16}
-                                height={16}
+                                className="mr-2 rounded-full max-lg:w-5 max-sm:w-4"
+                                width={24}
+                                height={24}
                             />
                             <Link
                                 href={userProfileURL}
-                                className="text-primaryColor mr-2 font-bold max-xl:text-sm max-sm:text-xs max-sm:mr-1"
+                                className="text-primaryColor dark:text-white mr-2 font-bold max-xl:text-sm max-sm:text-xs max-sm:mr-1"
                             >
                                 {seller}
                             </Link>

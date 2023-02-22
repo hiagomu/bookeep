@@ -6,6 +6,7 @@ import AuthContext from './auth/AuthContext'
 import Dropdown from './components/Header/components/Dropdown'
 import DropdownOpen from './components/Header/components/DropdownOpen'
 import QueryWrapper from './auth/QueryWrapper'
+import ThemeContext from './theme/ThemeContext'
 
 const nunito = Nunito({ subsets: ['latin']})
 
@@ -15,16 +16,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={nunito.className}>
       <head />
-      <body className='flex flex-col items-center'>
+      <body className='flex flex-col items-center dark:bg-primaryDarkColor'>
         <AuthContext>
           <QueryWrapper>
-            <Header>
-              <Navbar />
-              <Dropdown>
-                <DropdownOpen />
-              </Dropdown>
-            </Header>
-            {children}
+            <ThemeContext>
+              <Header>
+                <Navbar />
+                <Dropdown>
+                  <DropdownOpen />
+                </Dropdown>
+              </Header>
+              {children}
+            </ThemeContext>
           </QueryWrapper>
         </AuthContext> 
       </body>      

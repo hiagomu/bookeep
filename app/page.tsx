@@ -46,8 +46,8 @@ export default function Home() {
   if (isLoading) return "Loading..."
 
   return (
-      <main className="flex justify-center items-center h-fit flex-col relative">
-        <div className="fixed top-0 w-full h-36 flex justify-center bg-white z-10 max-sm:h-28">
+      <main className="flex justify-center items-center h-fit flex-col relative" >
+        <div className="fixed top-0 w-full h-36 flex justify-center bg-white z-10 max-sm:h-28 dark:bg-primaryDarkColor">
           <Search setIsOpen={setIsOpen}/>
           <NewPost
             isOpen={isOpen}

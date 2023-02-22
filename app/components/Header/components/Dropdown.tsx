@@ -15,15 +15,15 @@ const Dropdown = ({children}: IDropdown) => {
         <div
             className='hidden max-sm:block max-sm:relative cursor-pointer z-40'
         >
-            <span className='block hover:bg-zinc-400 rounded-full p-1'
+            <span className='block hover:bg-zinc-400 dark:hover:bg-primaryDarkHoverColor rounded-full p-1'
                 onClick={() => setIsActive(!isActive)}
             >
-                <MenuIcon  className='text-black'/>
+                <MenuIcon  className='text-black dark:text-white'/>
             </span>
             {
                 isActive &&
                 children
-            }       
+            }
         </div>
     )
 }

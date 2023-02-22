@@ -2,10 +2,10 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { SignOut } from '../components/SignOut'
+import { ProfileMenu } from '../components/ProfileMenu'
 
 interface ILoggedButton {
-    name?: string
+    name: string
     image: string
     isDropdown: boolean
 }
@@ -20,30 +20,33 @@ const LoggedButton = ({
 
     return (
         <>
-            <SignOut isOpen={isOpen} setIsOpen={setIsOpen}/>
+            {
+                isOpen &&
+                <ProfileMenu profilePic={image} name={name} />
+            }
             {
                 isDropdown ?
                 <div
-                    className='flex justify-between items-center mt-2 cursor-pointer'
-                    onClick={() => setIsOpen(true)}
+                    className='flex justify-between items-center my-2 cursor-pointer'
+                    onClick={() => setIsOpen(!isOpen)}
                 >
                     <Image
                         width={24}
                         height={24}
-                        alt="Profile picture"
+                        alt="Imagem de perfil do usuário"
                         src={image}
                         className="rounded-full"
                     />
-                    <span className='font-medium text-xs truncate w-16 text-primaryColor hover:underline decoration-2'>{name}</span>
+                    <span className='font-medium text-xs truncate w-16 text-primaryColor dark:text-white hover:underline decoration-2'>{name}</span>
                 </div>
                 :
                 <Image
                     width={32}
                     height={32}
-                    alt="Profile picture"
+                    alt="Imagem de perfil do usuário"
                     src={image}
                     className="rounded-full cursor-pointer"
-                    onClick={() => setIsOpen(true)}
+                    onClick={() => setIsOpen(!isOpen)}
                 />
             }
         </>

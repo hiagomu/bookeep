@@ -11,7 +11,7 @@ const DropdownLink = ({name, href} :IDropdownLink) => {
     return (
         <Link
             href={href}
-            className='text-black text-sm hover:text-primaryColor'
+            className='text-black dark:text-white text-sm hover:text-primaryColor'
         >
             {name}
         </Link>

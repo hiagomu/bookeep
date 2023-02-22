@@ -18,7 +18,7 @@ const NavbarLink = ({
     return (
         <Link
             href={href}
-            className={`text-black mr-5 font-medium hover:text-primaryColor ${selected ? 'text-primaryColor' : 'text-black'}`}
+            className={`text-black mr-5 font-medium hover:text-primaryColor hover:dark:text-primaryColor dark:text-white ${selected ? 'text-primaryColor' : 'text-black'}`}
             onClick={onClick}
         >
             { name }
