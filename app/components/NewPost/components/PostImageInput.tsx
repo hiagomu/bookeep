@@ -35,9 +35,9 @@ const PostImageInput = ({
       >
         {title}
         <div className="flex w-fit">
-          <div className="flex justify-center items-center flex-col h-16 w-14 mb-1 mr-2 border-2 border-primaryColor rounded cursor-pointer">
-            <span className="block text-xs text-center text-slate-400">{innerText}</span>
-            <ImageIcon className="text-slate-400"/>
+          <div className="flex justify-center items-center flex-col h-16 w-14 mb-1 mr-2 border-2 bg-slate-200 dark:bg-neutral-700 border-primaryColor rounded cursor-pointer">
+            <span className="block text-xs text-center text-primaryColor dark:text-zinc-400">{innerText}</span>
+            <ImageIcon className="text-primaryColor dark:text-zinc-400"/>
           </div>
           {
             previewImage &&

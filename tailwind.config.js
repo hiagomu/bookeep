@@ -15,6 +15,7 @@ module.exports = {
         secondaryDarkColor: '#1B1E1F',
         primaryHoverColor: '#B4A2FD',
         primaryDarkHoverColor: '#3F4448',
+        modalDarkColor: '#2A2634',
         search: '#E9E9E9'
       },
       width: {

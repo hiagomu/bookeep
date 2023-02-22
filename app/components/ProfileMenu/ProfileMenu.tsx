@@ -1,9 +1,7 @@
 import Link from "next/link"
 import { SignOut } from "../SignOut"
 import { useState } from "react"
-import {
-    BsFilePerson as ProfileCardIcon
-} from 'react-icons/bs'
+import { BsFilePerson as ProfileCardIcon } from 'react-icons/bs'
 import { MdLogout as SingOutIcon } from 'react-icons/md'
 import Image from "next/image"
 import { Darkmode } from "../Darkmode"
@@ -44,7 +42,7 @@ export const ProfileMenu = ({
                     </div>
                 </div>
                 <div className="flex w-full mt-1 px-2">
-                    <Darkmode />
+                    <Darkmode isDropdown={false}/>
                 </div>
             </div>
         </>

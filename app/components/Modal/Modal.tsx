@@ -21,7 +21,7 @@ export const Modal = ({
             className="relative z-50"
         >
             <div className="fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-25 backdrop-blur-sm">
-                <Dialog.Panel className="rounded bg-white w-fit">
+                <Dialog.Panel className="rounded bg-white dark:bg-modalDarkColor w-fit">
                     {children}
                 </Dialog.Panel>
             </div>
