@@ -26,8 +26,8 @@ export const PostSkeleton = ({count}: IPostSkeleton) => {
     return (
         <>
             {
-                Array(count).fill(0).map(item =>{
-                    return <div className="bg-white dark:bg-secondaryDarkColor w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5">
+                Array(count).fill(0).map((item, index) =>{
+                    return <div className="bg-white dark:bg-secondaryDarkColor w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5" key={index}>
                         <div className="w-11/12">
                             <div className="flex justify-end w-full mt-2">
                                 <PostTimeDistanceSkeleton skeletonColorsDark={skeletonColorsDark} skeletonColorsLight={skeletonColorsLight} />
