@@ -57,13 +57,7 @@ export default function Home() {
         <div  className="mt-40 z-0 max-sm:mt-28">
           {
             isLoading ?
-              <>
-                <PostSkeleton />
-                <PostSkeleton />
-                <PostSkeleton />
-                <PostSkeleton />
-                <PostSkeleton />
-              </>
+              <PostSkeleton count={5}/>
               : 
               data?.map((post: IPost) => 
                 <Post
