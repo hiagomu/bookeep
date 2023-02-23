@@ -1,6 +1,7 @@
 {
-    "name": "BooKeep",
-    "short_name": "BooKeep",
+  "name": "BooKeep",
+  "short_name": "BooKeep",
+  "start_url": "/",
     "icons": [
       {
         "src": "/icons/android-chrome-192x192.png",
@@ -26,7 +27,6 @@
     ],
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
-    "start_url": "/",
     "display": "standalone",
     "orientation": "portrait"
   }

@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 
-const withPWA = require('next-pwa')({
+const isDev = process.env.NODE_ENV !== "production";
+
+const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
   register: true,
-  disable: process.env.NODE_ENV !== "production",
+  disable: isDev,
   register: true
 })
 
