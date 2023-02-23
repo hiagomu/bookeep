@@ -6,6 +6,7 @@ import { useState } from "react"
 import { NewPost } from "./components/NewPost"
 import axios from "axios"
 import { useQuery } from "@tanstack/react-query"
+import { PostSkeleton } from "./components/PostSkeleton"
 
 interface IPost {
   bookImageURL: string
@@ -43,7 +44,6 @@ export default function Home() {
     queryKey: ["posts"],
     onError: err => err
   })
-  if (isLoading) return "Loading..."
 
   return (
       <main className="flex justify-center items-center h-fit flex-col relative" >
@@ -56,24 +56,33 @@ export default function Home() {
         </div>
         <div  className="mt-40 z-0 max-sm:mt-28">
           {
-            data?.map((post: IPost) => 
-              <Post
-                isMarketplaceVerified={true}
-                userProfilePicture={post.user.image}
-                isUserVerified={true}
-                userProfileURL={"/"}
-                bookImageURL={"https://m.media-amazon.com/images/I/81+UYddlEeL.jpg"}
-                marketplace={"Amazon"}
-                saleLink={post.saleLink}
-                comments={2}
-                seller={post.user.name}
-                price={post.price}
-                title={post.title}
-                createdAt={post.createdAt}
-                boos={5}
-                key={post.id}
-              />
-            )
+            isLoading ?
+              <>
+                <PostSkeleton />
+                <PostSkeleton />
+                <PostSkeleton />
+                <PostSkeleton />
+                <PostSkeleton />
+              </>
+              : 
+              data?.map((post: IPost) => 
+                <Post
+                  isMarketplaceVerified={true}
+                  userProfilePicture={post.user.image}
+                  isUserVerified={true}
+                  userProfileURL={"/"}
+                  bookImageURL={"https://m.media-amazon.com/images/I/81+UYddlEeL.jpg"}
+                  marketplace={"Amazon"}
+                  saleLink={post.saleLink}
+                  comments={2}
+                  seller={post.user.name}
+                  price={post.price}
+                  title={post.title}
+                  createdAt={post.createdAt}
+                  boos={5}
+                  key={post.id}
+                />
+              )
           }
         </div>
       </main>
