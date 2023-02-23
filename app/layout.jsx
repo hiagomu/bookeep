@@ -7,7 +7,6 @@ import Dropdown from './components/Header/components/Dropdown'
 import DropdownOpen from './components/Header/components/DropdownOpen'
 import QueryWrapper from './auth/QueryWrapper'
 import ThemeContext from './theme/ThemeContext'
-import { SkeletonTheme } from 'react-loading-skeleton'
 
 const nunito = Nunito({ subsets: ['latin']})
 
@@ -20,7 +19,6 @@ export default function RootLayout({
       <body className='flex flex-col items-center dark:bg-primaryDarkColor'>
         <AuthContext>
           <QueryWrapper>
-            <SkeletonTheme baseColor="#313131" highlightColor="#525252">
               <ThemeContext>
                 <Header>
                   <Navbar />
@@ -30,7 +28,6 @@ export default function RootLayout({
                 </Header>
                 {children}
               </ThemeContext>
-            </SkeletonTheme>
           </QueryWrapper>
         </AuthContext> 
       </body>      
