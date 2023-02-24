@@ -14,7 +14,7 @@ export default function RootLayout({
   children
 }) {
   return (
-    <html lang="en" className={nunito.className}>
+    <html lang="pt-BR" className={nunito.className}>
       <head />
       <body className='flex flex-col items-center dark:bg-primaryDarkColor'>
         <AuthContext>
