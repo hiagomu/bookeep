@@ -9,13 +9,11 @@ import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
 import { mixed, number, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
-import { useMutation } from "@tanstack/react-query"
-import axios, { AxiosError } from "axios"
-import { toast } from "react-hot-toast"
 
 interface INewPost {
     isOpen: boolean
     setIsOpen: (isOpen: boolean) => void
+    createPost: (data: FieldValues) => void
 }
 
 const newPostSchema = object({
@@ -46,40 +44,24 @@ const newPostSchema = object({
 
 export const NewPost = ({
   isOpen,
-  setIsOpen
+  setIsOpen,
+  createPost
 }: INewPost) => {
-
-  let toastPostID: string
 
   const { register, handleSubmit, reset, formState:{ errors } } = useForm({
     resolver: yupResolver(newPostSchema)
   });
 
-
   const onSubmit = (data: FieldValues) => {
-    toastPostID = toast.loading("Criando anúncio...", {id: toastPostID})
-    mutate(data)
+    createPost(data)
+    setIsOpen(false)
+    reset()
   }
 
   const onClose = () => {
     setIsOpen(false)
     reset()
   }
-
-  const { mutate } = useMutation(
-    async (data: FieldValues) => axios.post("/api/posts/newPost", { data }),
-    {
-      onError: (error) => {
-        if (error instanceof AxiosError) {
-          toast.error(error?.response?.data.message, {id: toastPostID})
-        }
-      },
-      onSuccess: () => {
-        toast.success("Anúncio criado com sucesso!", {id: toastPostID})
-        onClose()
-      }
-    }
-  )
 
   return (
       <Modal

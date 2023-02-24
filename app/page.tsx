@@ -4,10 +4,12 @@ import { Post } from "./components/Post"
 import { Search } from "./components/Search"
 import { useState } from "react"
 import { NewPost } from "./components/NewPost"
-import axios from "axios"
-import { useQuery } from "@tanstack/react-query"
+import axios, { AxiosError } from "axios"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { PostSkeleton } from "./components/PostSkeleton"
-
+import { toast } from "react-hot-toast"
+import { useMutation } from "@tanstack/react-query"
+import { FieldValues } from "react-hook-form"
 interface IPost {
   bookImageURL: string
   description: string
@@ -30,20 +32,43 @@ interface IPost {
   id: string
 }
 
-const getPosts = async() => {
+
+const getPosts = async () => {
   const response = await axios.get('/api/posts/getPosts')
   return response.data
 }
 
 export default function Home() {
 
+  const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
-
   const { data, isLoading } = useQuery<IPost[]>({
     queryFn: getPosts,
     queryKey: ["posts"],
-    onError: err => err
+    onError: err => err,
   })
+  let toastPostID: string
+
+  const { mutate } = useMutation(
+    async (data: FieldValues) => axios.post("/api/posts/newPost", { data }),
+    {
+      onError: (error) => {
+        if (error instanceof AxiosError) {
+          toast.error(error?.response?.data.message, {id: toastPostID})
+        }
+      },
+      onSuccess: () => {
+        toast.success("Anúncio criado com sucesso!", {id: toastPostID})
+        queryClient.invalidateQueries(["posts"])
+        setIsOpen(false)
+      }
+    }
+  )
+
+  const createPost = (data: FieldValues) => {
+    toastPostID = toast.loading("Criando anúncio...", {id: toastPostID})
+    mutate(data)
+  }
 
   return (
       <main className="flex justify-center items-center h-fit flex-col relative" >
@@ -52,6 +77,7 @@ export default function Home() {
           <NewPost
             isOpen={isOpen}
             setIsOpen={setIsOpen}
+            createPost={createPost}
           />
         </div>
         <div  className="mt-40 z-0 max-sm:mt-28">
