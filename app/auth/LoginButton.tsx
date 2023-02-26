@@ -19,7 +19,7 @@ const LoginButton = ({
             <Login isOpen={isOpen} setIsOpen={setIsOpen}/>
             {isDropdown ?                            
                 <div
-                    className='flex justify-center items-center mt-1'
+                    className='flex justify-center items-center mt-1 px-3'
                     onClick={() => setIsOpen(true)}
                 >
                     <span className='text-primaryColor text-sm mr-2'>Login</span>
