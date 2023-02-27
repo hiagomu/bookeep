@@ -9,6 +9,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
 import { mixed, number, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
+import { useState } from "react"
 
 interface INewPost {
     isOpen: boolean
@@ -19,24 +20,24 @@ interface INewPost {
 const newPostSchema = object({
   title:
     string()
-    .min(2, "Título deve ter o mínimo de 2 caracteres")
-    .max(50, "Título deve ter o máximo de 50 caracteres")
+    .min(3, "O título deve ter o mínimo de 3 caracteres")
+    .max(50, "O título deve ter o máximo de 50 caracteres")
     .required(),
   link:
     string()
     .url("Insira uma URL válida")
-    .required("Link é obrigatório"),
+    .required("O link é obrigatório"),
   category:
     string()
-    .required("Categoria é obrigatório"),
+    .required("A categoria é obrigatório"),
   price:
     number()
-    .typeError("Preço precisa ser um número")
-    .positive("Preço deve ser positivo")
-    .required("Preço é obrigatório"),
-  coupon: string().max(30, "Cupom deve ter o máximo de 30 caracteres"),
-  description: string().max(250, "Descrição dever ter no máximo 250 caracteres"),
-  productImage: mixed().test("required", "Imagem é obrigatória", (file: any) => {
+    .typeError("O preço precisa ser um número")
+    .positive("O preço deve ser positivo")
+    .required("O preço é obrigatório"),
+  coupon: string().max(30, "O cupom deve ter o máximo de 30 caracteres"),
+  description: string().max(250, "A descrição dever ter no máximo 250 caracteres"),
+  productImage: mixed().test("required", "A imagem do produto é obrigatória", (file: any) => {
     if (file.length !== 0) return true
     return false
   }),
@@ -48,13 +49,22 @@ export const NewPost = ({
   createPost
 }: INewPost) => {
 
-  const { register, handleSubmit, reset, formState:{ errors } } = useForm({
+  const [productImage, setProductImage]= useState<string>()
+
+  const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm({
     resolver: yupResolver(newPostSchema)
   });
 
-  const onSubmit = (data: FieldValues) => {
-    createPost(data)
-    setIsOpen(false)
+  const onSubmit = async (data: FieldValues) => {
+    await createPost({
+      category: data.category,
+      coupon: data.coupon,
+      description: data.description,
+      link: data.link,
+      price: data.price,
+      title: data.title,
+      productImage: productImage
+    })
     reset()
   }
 
@@ -121,6 +131,7 @@ export const NewPost = ({
               <div className="flex justify-between">
                 <PostImageInput
                   errorMessage={errors.productImage ? String(errors.productImage.message) : ""}
+                  setProductImage={setProductImage}
                   innerText="Adicione"
                   register={register}
                   title="Imagem"
@@ -167,6 +178,7 @@ export const NewPost = ({
                 <button
                   className="flex justify-center items-center bg-primaryColor py-2 px-3 rounded text-sm font-semibold outline-none hover:bg-primaryHoverColor max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
                   type="submit"
+                  disabled={isSubmitting}
                 >
                   <BooIcon className="mr-2"/>
                   Post

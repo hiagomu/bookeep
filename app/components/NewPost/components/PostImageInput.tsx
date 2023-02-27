@@ -4,7 +4,9 @@ import {
   BsCamera as ImageIcon
 } from 'react-icons/bs'
 import { FieldValues, UseFormRegister } from "react-hook-form"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useMutation } from '@tanstack/react-query'
 interface IPostImageInput {
   id: string
   alt: string
@@ -13,6 +15,7 @@ interface IPostImageInput {
   register: UseFormRegister<FieldValues>
   innerText: string
   errorMessage: string
+  setProductImage: (productImage: string) => void
 }
 
 const PostImageInput = ({
@@ -22,10 +25,31 @@ const PostImageInput = ({
   title,
   register,
   innerText,
-  errorMessage
+  errorMessage,
+  setProductImage
 }: IPostImageInput) => {
 
   const [previewImage, setPreviewImage] = useState<string>()
+  const [file, setFile] = useState<any>()
+
+  const { mutate } = useMutation(
+    (async () => {
+      const response = await axios.get("/api/images/uploadImage", {
+        params: {
+          name: `${file?.name}`,
+          type: file?.type
+        }
+      })
+      await axios.put(response.data.url, file)
+      setProductImage(response.data.url.split("?")[0])
+    })
+  )
+
+  useEffect(() => {
+    if (file) {
+      mutate(file)
+    }
+  }, [file])
 
   return (
     <div className="w-input-sm max-lg:w-input-xs max-sm:w-input-xxs">
@@ -54,6 +78,7 @@ const PostImageInput = ({
         className='hidden'
         {...register(name, {
           onChange: (e) => {
+            setFile(e.target.files[0])
             if (e?.target?.files?.[0]) {
               const file = e.target.files[0]
               const reader = new FileReader()
