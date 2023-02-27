@@ -9,6 +9,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
 import { mixed, number, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
+import { useState } from "react"
 
 interface INewPost {
     isOpen: boolean
@@ -48,12 +49,22 @@ export const NewPost = ({
   createPost
 }: INewPost) => {
 
+  const [productImage, setProductImage]= useState<string>()
+
   const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm({
     resolver: yupResolver(newPostSchema)
   });
 
   const onSubmit = async (data: FieldValues) => {
-    await createPost(data)
+    await createPost({
+      category: data.category,
+      coupon: data.coupon,
+      description: data.description,
+      link: data.link,
+      price: data.price,
+      title: data.title,
+      productImage: productImage
+    })
     reset()
   }
 
@@ -120,6 +131,7 @@ export const NewPost = ({
               <div className="flex justify-between">
                 <PostImageInput
                   errorMessage={errors.productImage ? String(errors.productImage.message) : ""}
+                  setProductImage={setProductImage}
                   innerText="Adicione"
                   register={register}
                   title="Imagem"

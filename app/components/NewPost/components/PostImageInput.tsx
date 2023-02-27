@@ -15,6 +15,7 @@ interface IPostImageInput {
   register: UseFormRegister<FieldValues>
   innerText: string
   errorMessage: string
+  setProductImage: (productImage: string) => void
 }
 
 const PostImageInput = ({
@@ -24,7 +25,8 @@ const PostImageInput = ({
   title,
   register,
   innerText,
-  errorMessage
+  errorMessage,
+  setProductImage
 }: IPostImageInput) => {
 
   const [previewImage, setPreviewImage] = useState<string>()
@@ -38,8 +40,8 @@ const PostImageInput = ({
           type: file?.type
         }
       })
-
       await axios.put(response.data.url, file)
+      setProductImage(response.data.url.split("?")[0])
     })
   )
 

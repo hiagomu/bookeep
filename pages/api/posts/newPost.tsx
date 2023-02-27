@@ -35,7 +35,7 @@ export default async function handler(
     try {
         const result = await prisma.post.create({
             data: {
-                bookImageURL: "Não tem ainda",
+                bookImageURL: productImage,
                 description: description,
                 category: category,
                 coupon: coupon,

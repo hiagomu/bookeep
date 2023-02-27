@@ -91,7 +91,7 @@ export default function Home() {
                   userProfilePicture={post.user.image}
                   isUserVerified={true}
                   userProfileURL={"/"}
-                  bookImageURL={"https://m.media-amazon.com/images/I/81+UYddlEeL.jpg"}
+                  bookImageURL={post.bookImageURL}
                   marketplace={"Amazon"}
                   saleLink={post.saleLink}
                   comments={2}
