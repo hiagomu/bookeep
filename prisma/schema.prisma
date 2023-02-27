@@ -62,6 +62,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Post          Post[]
+
+  @@map("users")
 }
 
 model VerificationToken {
