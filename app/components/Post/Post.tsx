@@ -11,7 +11,7 @@ interface IPost {
     boos: number
     createdAt: Date
     title: string
-    price: number
+    price: string
     seller: string
     comments: number
     saleLink: string
@@ -75,7 +75,7 @@ export const Post = ({
                                 R${new Intl.NumberFormat('pt-BR', {
                                     style: 'currency',
                                     currency: 'BRL',
-                                }).format(price).slice(3)}
+                                }).format(Number(price.replace(",", "."))).slice(3)}
                             </span>
                             <div className="flex mb-1 ml-4 items-center max-sm:ml-2">
                                 <span

@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa'
 import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
-import { mixed, number, object, string } from "yup";
+import { mixed, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useState } from "react"
 
@@ -21,7 +21,7 @@ const newPostSchema = object({
   title:
     string()
     .min(3, "O título deve ter o mínimo de 3 caracteres")
-    .max(50, "O título deve ter o máximo de 50 caracteres")
+    .max(60, "O título deve ter o máximo de 60 caracteres")
     .required(),
   link:
     string()
@@ -31,9 +31,8 @@ const newPostSchema = object({
     string()
     .required("A categoria é obrigatório"),
   price:
-    number()
-    .typeError("O preço precisa ser um número")
-    .positive("O preço deve ser positivo")
+    string()
+    .matches(/^[0-9]+([,.][0-9]+)?$/, "O preço precisa ser um número válido")
     .required("O preço é obrigatório"),
   coupon: string().max(30, "O cupom deve ter o máximo de 30 caracteres"),
   description: string().max(250, "A descrição dever ter no máximo 250 caracteres"),
@@ -112,7 +111,7 @@ export const NewPost = ({
                   element="input"
                   isSmall={true}
                   title="Preço"
-                  type="number"
+                  type="text"
                   name="price"
                   id="price"
                 />

@@ -19,7 +19,7 @@ model Post {
   category     String
   coupon       String?
   published    Boolean  @default(false)
-  price        Float
+  price        String
   saleLink     String
   bookImageURL String
   userId       String
@@ -62,8 +62,6 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Post          Post[]
-
-  @@map("users")
 }
 
 model VerificationToken {
