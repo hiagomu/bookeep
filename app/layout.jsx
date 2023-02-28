@@ -30,7 +30,7 @@ export default function RootLayout({
               </ThemeContext>
           </QueryWrapper>
         </AuthContext> 
-      </body>      
+      </body>
     </html>
   )
 }

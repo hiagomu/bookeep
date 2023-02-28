@@ -18,10 +18,12 @@ export default async function handler(
 
   try {
     let { name } = req.query;
+    const prefix = Math.random().toString(32).slice(2)
+    const key = `${prefix}-${name}`.replaceAll(".", "_")
 
     const uploadURL = s3.getSignedUrlPromise('putObject', {
       Bucket: process.env.BUCKET_NAME,
-      Key: name,
+      Key: key,
       Expires: 120,
       ContentType: 'application/octet-stream',
     })

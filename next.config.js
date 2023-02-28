@@ -14,7 +14,7 @@ const nextConfig = withPWA({
     appDir: true,
   },
   images: {
-    domains: ["lh3.googleusercontent.com", "avatars.githubusercontent.com"],
+    domains: ["lh3.googleusercontent.com", "avatars.githubusercontent.com", "bookeep-images.s3.amazonaws.com"],
   },
 })
 

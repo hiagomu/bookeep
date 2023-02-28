@@ -45,7 +45,7 @@ export const Post = ({
         <div
             className="bg-white dark:bg-secondaryDarkColor w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5"
         >
-            <div className="w-11/12">
+            <div className="w-11/12 mb-3 max-sm:mb-0">
                 <span
                     className="block text-primaryColor dark:text-slate-400 font-bold w-full text-right text-sm serif mt-2 max-sm:text-xs"
                 >
@@ -54,11 +54,13 @@ export const Post = ({
                     })}
                 </span>
                 <div className="flex relative">
-                    <img
-                        src={bookImageURL}
-                        alt="product"
-                        className="w-36 h-48 mr-5 object-fill max-xl:w-24 max-xl:h-36 max-lg:w-30 max-lg:h-32 max-sm:w-16 max-sm:h-24"
-                    />
+                        <Image
+                            src={bookImageURL}
+                            alt="product"
+                            width={136}
+                            height={192}
+                            className="mr-5 max-xl:w-24 max-xl:h-36 max-lg:w-30 max-lg:h-32 max-sm:w-16 max-sm:h-24 rounded"
+                        />
                     <div className="mt-2 h-fit max-lg:mt-1 max-sm:w-44">
                         <Link
                             href={saleLink}
