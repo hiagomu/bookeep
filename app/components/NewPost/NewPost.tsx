@@ -54,8 +54,9 @@ export const NewPost = ({
     resolver: yupResolver(newPostSchema)
   });
 
-  const onSubmit = async (data: FieldValues) => {
-    await createPost({
+  const onSubmit = (data: FieldValues) => {
+    setIsOpen(false)
+    createPost({
       category: data.category,
       coupon: data.coupon,
       description: data.description,

@@ -21,7 +21,7 @@ interface IPost {
   userId: string 
   coupon: string
   title:string
-  price: number
+  price: string
   user: {
     emailVerified: boolean | null
     email: string
@@ -60,7 +60,6 @@ export default function Home() {
       onSuccess: () => {
         toast.success("Anúncio criado com sucesso!", {id: toastPostID})
         queryClient.invalidateQueries(["posts"])
-        setIsOpen(false)
       }
     }
   )

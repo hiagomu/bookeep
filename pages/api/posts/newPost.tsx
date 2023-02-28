@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import prisma from '../../../prisma/client'
+import client from '../twitter/twitterConfig'
 
 interface IPost {
     productImage: string
@@ -45,6 +46,10 @@ export default async function handler(
                 userId: user.id
             }
         })
+
+        // client.post("statuses/update", {
+        //     status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${link}`
+        // })
         
         res.status(200).json(result)
     } catch(err) {
