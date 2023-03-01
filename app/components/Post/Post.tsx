@@ -67,15 +67,12 @@ export const Post = ({
                         })}
                     </span>
                     <button
-                        className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200"
+                        className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"
                         onClick={() => setIsActionsOpen(!isActionsOpen)}
                     >
                         <OptionsIcon className="text-primaryColor"/>
                     </button>
-                    {
-                        isActionsOpen &&
-                        <Actions user={user} postId={id}/>
-                    }
+                    <Actions user={user} postId={id} isActionsOpen={isActionsOpen} />
                 </div>
                 <div className="flex relative">
                         <Image

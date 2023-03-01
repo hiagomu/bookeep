@@ -47,6 +47,7 @@ module.exports = {
       boxShadow: {
         'primary': '0px 5px 15px rgba(0, 0, 0, 0.2)',
         'secondary': '0px 5px 5px rgba(0, 0, 0, 0.2)',
+        'dark-secondary': '0px 0px 15px rgba(255, 255, 255, 0.2)'
       }
     }
   },
