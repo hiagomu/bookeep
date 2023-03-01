@@ -47,9 +47,9 @@ export default async function handler(
             }
         })
 
-        // client.post("statuses/update", {
-        //     status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${link}`
-        // })
+        await client.post("statuses/update", {
+            status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${link}`
+        })
         
         res.status(200).json(result)
     } catch(err) {

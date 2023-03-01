@@ -3,11 +3,22 @@
 import { Interactions } from "../Interactions"
 import Link from "next/link"
 import { MdVerified as VerifiedIcon } from 'react-icons/md'
+import { FaEllipsisH as OptionsIcon } from 'react-icons/fa'
 import formatDistance from "date-fns/formatDistance"
 import ptBR from "date-fns/locale/pt-BR"
 import Image from "next/image"
+import { useState } from "react"
+import { Actions } from "../Actions"
 
 interface IPost {
+    id: string
+    user: {
+        emailVerified: boolean | null
+        email: string
+        image: string
+        name: string
+        id: string
+    }
     boos: number
     createdAt: Date
     title: string
@@ -19,11 +30,12 @@ interface IPost {
     bookImageURL: string
     userProfileURL: string
     isUserVerified: boolean
-    userProfilePicture: string
     isMarketplaceVerified: boolean
 }
 
 export const Post = ({
+    id,
+    user,
     boos,
     title,
     price,
@@ -35,24 +47,36 @@ export const Post = ({
     bookImageURL,
     userProfileURL,
     isUserVerified,
-    userProfilePicture,
     isMarketplaceVerified
 }: IPost) => {
 
     const today = Date.now()
+    const [isActionsOpen, setIsActionsOpen] = useState(false)
 
     return (
         <div
             className="bg-white dark:bg-secondaryDarkColor w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5"
         >
             <div className="w-11/12 mb-3 max-sm:mb-0">
-                <span
-                    className="block text-primaryColor dark:text-slate-400 font-bold w-full text-right text-sm serif mt-2 max-sm:text-xs"
-                >
-                    {formatDistance(new Date(createdAt), today, {
-                        locale: ptBR,
-                    })}
-                </span>
+                <div className="flex items-center mt-2 relative">
+                    <span
+                        className="block text-primaryColor dark:text-slate-400 font-bold w-full text-right text-sm serif max-sm:text-xs"
+                    >
+                        {formatDistance(new Date(createdAt), today, {
+                            locale: ptBR,
+                        })}
+                    </span>
+                    <button
+                        className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200"
+                        onClick={() => setIsActionsOpen(!isActionsOpen)}
+                    >
+                        <OptionsIcon className="text-primaryColor"/>
+                    </button>
+                    {
+                        isActionsOpen &&
+                        <Actions user={user} postId={id}/>
+                    }
+                </div>
                 <div className="flex relative">
                         <Image
                             src={bookImageURL}
@@ -89,7 +113,7 @@ export const Post = ({
                         <div className="flex items-center mt-3 max-xl:mt-2 max-lg:mt-1 max-sm:mb-5">
                             <Image
                                 alt="Imagem de perfil do usuário"
-                                src={userProfilePicture}
+                                src={user.image}
                                 className="mr-2 rounded-full max-lg:w-5 max-sm:w-4"
                                 width={24}
                                 height={24}

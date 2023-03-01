@@ -50,7 +50,7 @@ export default function Home() {
   let toastPostID: string
 
   const { mutate } = useMutation(
-    async (data: FieldValues) => axios.post("/api/posts/newPost", { data }),
+    async (data: FieldValues) => await axios.post("/api/posts/newPost", { data }),
     {
       onError: (error) => {
         if (error instanceof AxiosError) {
@@ -87,7 +87,6 @@ export default function Home() {
               data?.map((post: IPost) => 
                 <Post
                   isMarketplaceVerified={true}
-                  userProfilePicture={post.user.image}
                   isUserVerified={true}
                   userProfileURL={"/"}
                   bookImageURL={post.bookImageURL}
@@ -99,7 +98,9 @@ export default function Home() {
                   title={post.title}
                   createdAt={post.createdAt}
                   boos={5}
+                  user={post.user}
                   key={post.id}
+                  id={post.id}
                 />
               )
           }

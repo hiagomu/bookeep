@@ -3,7 +3,7 @@
 import { BsSearch as SearchIcon } from 'react-icons/bs'
 
 interface ISearch {
-    setIsOpen: (isOpen: boolean) => void 
+    setIsOpen: (isOpen: boolean) => void
 }
 
 export const Search = ({
