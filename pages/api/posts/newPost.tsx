@@ -10,7 +10,7 @@ interface IPost {
     category: string
     coupon: string
     title: string
-    price: number
+    price: string
     link: string
 }
 
