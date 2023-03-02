@@ -30,28 +30,30 @@ export default async function handler(
     const {title, category, link, price, coupon, description, productImage}: IPost = req.body.data
     
     const user = await prisma.user.findUnique({
-        where: {email: session?.user?.email}
+        where: {email: session?.user?.email || ""}
     })
 
     try {
-        const result = await prisma.post.create({
-            data: {
-                bookImageURL: productImage,
-                description: description,
-                category: category,
-                coupon: coupon,
-                title: title,
-                price: price,
-                saleLink: link,
-                userId: user.id
-            }
-        })
+        if (user) {
+            const result = await prisma.post.create({
+                data: {
+                    bookImageURL: productImage,
+                    description: description,
+                    category: category,
+                    coupon: coupon,
+                    title: title,
+                    price: price,
+                    saleLink: link,
+                    userId: user.id
+                }
+            })
+            await client.post("statuses/update", {
+                status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${link}`
+            })
+            
+            res.status(200).json(result)
+        }
 
-        await client.post("statuses/update", {
-            status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${link}`
-        })
-        
-        res.status(200).json(result)
     } catch(err) {
         res.status(403).json({err: "Erro ocorreu durante a criação do post"})
     }

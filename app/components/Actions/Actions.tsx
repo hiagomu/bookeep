@@ -8,6 +8,7 @@ import { useQueryClient, useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { Remove } from '../Remove'
 import { useState } from 'react'
+import { toast } from 'react-hot-toast'
 
 interface IActions {
     user: {
@@ -19,27 +20,27 @@ interface IActions {
     }
     postId: string
     isActionsOpen: boolean
+    setIsActionsOpen: (isActionsOpen: boolean) => void
 }
 
 interface IDeletePost {
     id: string
 }
 
-export const Actions = ({ user, postId, isActionsOpen }: IActions) => {
+export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen }: IActions) => {
     
+    let deleteToastID: string
     const { data: session } = useSession()
     const queryClient = useQueryClient()
     const [isRemoveOpen, setIsRemoveOpen] = useState(false)
     const deletePost = useMutation(
         async ({ id }: IDeletePost) => {
-            await axios.delete(`/api/posts/deletePost`, {
-                data: {
-                    id
-                }
-            })
+            deleteToastID = toast.loading("Removendo anúncio...", { id: deleteToastID})
+            await axios.delete(`/api/posts/deletePost`, {data: { id }})
         },
         {
             onSuccess: () => {
+                toast.success("Anúncio removido com sucesso", { id: deleteToastID })
                 queryClient.invalidateQueries(["posts"])
             }
         }
@@ -52,6 +53,7 @@ export const Actions = ({ user, postId, isActionsOpen }: IActions) => {
                 isActionsOpen &&
                     <div
                         className="flex flex-col dark:shadow-dark-secondary justify-evenly items-center absolute bg-white shadow-primary h-fit py-2 w-28 z-40 right-0 top-0 mt-7 rounded-lg dark:bg-secondaryDarkColor"
+                        onMouseLeave={() => setIsActionsOpen(false)}
                     >
                         <button className="flex items-center w-11/12 px-1 h-5 hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor text-black dark:text-white text-xs font-bold rounded-md">
                             <ShareIcon className='mr-1.5'/>

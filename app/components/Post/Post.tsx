@@ -19,12 +19,18 @@ interface IPost {
         name: string
         id: string
     }
+    comments?: {
+        id: string
+        userId: string
+        postId: string
+        message: string
+        createdAt: string
+    }[]
     boos: number
     createdAt: Date
     title: string
     price: string
     seller: string
-    comments: number
     saleLink: string
     marketplace: string
     bookImageURL: string
@@ -72,7 +78,7 @@ export const Post = ({
                     >
                         <OptionsIcon className="text-primaryColor"/>
                     </button>
-                    <Actions user={user} postId={id} isActionsOpen={isActionsOpen} />
+                    <Actions user={user} postId={id} isActionsOpen={isActionsOpen} setIsActionsOpen={setIsActionsOpen}/>
                 </div>
                 <div className="flex relative">
                         <Image
@@ -126,7 +132,7 @@ export const Post = ({
                     </div>
                     <Interactions
                         boos={boos}
-                        comments={comments}
+                        comments={comments?.length || 0}
                     />
                 </div>
             </div>

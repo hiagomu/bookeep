@@ -29,6 +29,13 @@ interface IPost {
     name: string
     id: string
   }
+  comments?: {
+    id: string
+    userId: string
+    postId: string
+    message: string
+    createdAt: string
+  }[]
   id: string
 }
 
@@ -92,7 +99,7 @@ export default function Home() {
                   bookImageURL={post.bookImageURL}
                   marketplace={"Amazon"}
                   saleLink={post.saleLink}
-                  comments={2}
+                  comments={post.comments}
                   seller={post.user.name}
                   price={post.price}
                   title={post.title}
