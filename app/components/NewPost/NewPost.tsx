@@ -35,7 +35,7 @@ const newPostSchema = object({
     .matches(/^[0-9]+([,.][0-9]+)?$/, "O preço precisa ser um número válido")
     .required("O preço é obrigatório"),
   coupon: string().max(30, "O cupom deve ter o máximo de 30 caracteres"),
-  description: string().max(250, "A descrição dever ter no máximo 250 caracteres"),
+  description: string().max(500, "A descrição dever ter no máximo 500 caracteres"),
   productImage: mixed().test("required", "A imagem do produto é obrigatória", (file: any) => {
     if (file.length !== 0) return true
     return false
@@ -152,8 +152,14 @@ export const NewPost = ({
                     {name: "Terror", value: "terror"},
                     {name: "Ficção", value: "ficction"},
                     {name: "Romance", value: "romance"},
+                    {name: "História", value: "history"},
+                    {name: "Fantasia", value: "fantasy"},
+                    {name: "Mistério", value: "mistery"},
+                    {name: "Suspense", value: "thriller"},
                     {name: "Aventura", value: "aventure"},
+                    {name: "Religioso", value: "religious"},
                     {name: "Educação", value: "educational"},
+                    {name: "Literatura Clássica", value: "classical-literature"},
                   ]}
                   errorMessage={errors.category ? String(errors.category.message) : ""}
                 />

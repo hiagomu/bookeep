@@ -31,7 +31,6 @@ interface IPost {
     title: string
     price: string
     seller: string
-    saleLink: string
     marketplace: string
     bookImageURL: string
     userProfileURL: string
@@ -47,7 +46,6 @@ export const Post = ({
     price,
     seller,
     comments,
-    saleLink,
     createdAt,
     marketplace,
     bookImageURL,
@@ -90,7 +88,7 @@ export const Post = ({
                         />
                     <div className="mt-2 h-fit max-lg:mt-1 max-sm:w-44">
                         <Link
-                            href={saleLink}
+                            href={`/post/${id}`}
                             className="block text-black dark:text-white text-xl font-bold max-xl:text-lg max-lg:text-base max-sm:text-sm max-sm:truncate"
                         >
                             {title}
@@ -137,7 +135,7 @@ export const Post = ({
                 </div>
             </div>
             <Link
-                href='/'
+                href={`/post/${id}`}
                 className="bg-primaryColor px-12 py-1 rounded-t-lg font-bold hover:bg-primaryHoverColor max-xl:px-8 max-xl:text-sm max-sm:py-0.5 max-sm:text-xs max-sm:mt-2 max-sm:px-5"
             >
                 Ver mais
