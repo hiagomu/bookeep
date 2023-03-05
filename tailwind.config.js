@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        nunito: ["var(--font-nunito)"],
+        poppins: ["var(--font-poppins)"],
+      },
       colors: {
         primaryColor: '#7856FF',
         primaryDarkColor: '#101112',

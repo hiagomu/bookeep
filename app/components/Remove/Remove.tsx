@@ -25,10 +25,10 @@ export const Remove = ({
             setIsOpen={setIsOpen}
         >
             <div className="py-4 px-6">
-                <h2 className="text-black dark:text-white font-semibold text-lg mb-4">Você tem certeza?</h2>
+                <h2 className="text-black dark:text-white font-poppins font-medium text-lg mb-4">Você tem certeza?</h2>
                 <div className="flex justify-between">
                     <button
-                        className="bg-primaryColor text-white py-1 px-4 outline-none rounded hover:bg-primaryHoverColor"
+                        className="font-poppins font-semibold bg-primaryColor text-white py-1 px-4 outline-none rounded hover:bg-primaryHoverColor"
                         onClick={() => {
                             setIsOpen(false)
                             deletePost.mutate({id})
@@ -36,7 +36,7 @@ export const Remove = ({
                     >
                         Sim
                     </button>
-                    <button className="bg-red-500 text-white py-1 px-4 outline-none rounded hover:bg-red-300" onClick={() => setIsOpen(false)}>Não</button>
+                    <button className="font-poppins font-semibold bg-red-500 text-white py-1 px-4 outline-none rounded hover:bg-red-300" onClick={() => setIsOpen(false)}>Não</button>
                 </div>
             </div>
         </Modal>

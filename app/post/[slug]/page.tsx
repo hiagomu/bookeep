@@ -110,7 +110,7 @@ export default function PostDetail(url: IURL) {
                     />
                 }
                 <div className='mt-16'>
-                    <h2 className='text-black font-bold text-2xl mb-4 dark:text-white'>Relacionados</h2>
+                    <h2 className='text-black font-bold font-poppins text-2xl mb-4 dark:text-white'>Relacionados</h2>
                     <RelatedProducts />
                     <RelatedProducts />
                 </div>

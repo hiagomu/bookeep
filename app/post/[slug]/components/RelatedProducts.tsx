@@ -15,9 +15,9 @@ const RelatedProducts = () => {
                     className="mr-5 max-xl:w-24 max-xl:h-36 max-lg:w-30 max-lg:h-32 max-sm:w-16 max-sm:h-24 rounded"
                 />
                 <div className='relative'>
-                    <span className='text-primaryColor font-bold text-xl'>R$53,90</span>
+                    <span className='text-primaryColor font-poppins font-semibold text-xl'>R$53,90</span>
                     <div className='flex items-center'>
-                        <span className='text-slate-400 mr-2 font-bold max-xl:text-sm max-sm:text-xs max-sm:mr-1'>Amazon</span>
+                        <span className='text-slate-400 mr-2 font-semibold font-poppins max-xl:text-sm max-sm:text-xs max-sm:mr-1'>Amazon</span>
                         { true && <VerifiedIcon className="text-primaryColor max-sm:text-xs"/> }
                     </div>
                     <div className="flex mt-2 max-xl:mt-2 max-lg:mt-1 max-sm:mb-5">
@@ -30,7 +30,7 @@ const RelatedProducts = () => {
                         />
                         <Link
                             href={"/"}
-                            className="text-primaryColor dark:text-white mr-2 font-bold text-sm max-sm:text-xs max-sm:mr-1"
+                            className="text-primaryColor dark:text-white mr-2 font-medium font-poppins text-sm max-sm:text-xs max-sm:mr-1"
                         >
                             Hiago Murilo
                         </Link>
@@ -38,7 +38,7 @@ const RelatedProducts = () => {
                     </div>
                 </div>
             </div>
-            <span className='text-black font-bold mt-1 block dark:text-white'>Contos de Horror da Mimi (Edição Completa)</span>
+            <span className='text-black font-semibold font-poppins mt-1 block dark:text-white'>Contos de Horror da Mimi (Edição Completa)</span>
         </div>
     )
 }

@@ -24,11 +24,11 @@ export const Interactions = ({
         >
             <div className='flex items-center'>
                 <BooIcon className='mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1' />
-                <span className='font-bold max-xl:text-sm max-sm:text-xs'>{boos}</span>
+                <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs'>{boos}</span>
             </div>
             <div className='flex items-center'>
                 <CommentIcon className='mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1' />
-                <span className='font-bold max-xl:text-sm max-sm:text-xs'>{comments}</span>
+                <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs'>{comments}</span>
             </div>
         </Link>
     )

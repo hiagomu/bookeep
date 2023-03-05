@@ -64,7 +64,7 @@ export const Post = ({
             <div className="w-11/12 mb-3 max-sm:mb-0">
                 <div className="flex items-center mt-2 relative">
                     <span
-                        className="block text-primaryColor dark:text-slate-400 font-bold w-full text-right text-sm serif max-sm:text-xs"
+                        className="font-poppins block text-primaryColor dark:text-slate-400 font-semibold w-full text-right text-sm serif max-sm:text-xs"
                     >
                         {formatDistance(new Date(createdAt), today, {
                             locale: ptBR,
@@ -89,13 +89,13 @@ export const Post = ({
                     <div className="mt-2 h-fit max-lg:mt-1 max-sm:w-44">
                         <Link
                             href={`/post/${id}`}
-                            className="block text-black dark:text-white text-xl font-bold max-xl:text-lg max-lg:text-base max-sm:text-sm max-sm:truncate"
+                            className="font-poppins block text-black dark:text-white text-xl font-bold max-xl:text-lg max-lg:text-base max-sm:text-sm max-sm:truncate"
                         >
                             {title}
                         </Link>
                         <div className="flex items-end">
                             <span
-                                className="block text-primaryColor font-bold text-2xl mt-2 max-xl:text-xl max-lg:text-lg max-lg:mt-1 max-sm:text-base"
+                                className="font-poppins block text-primaryColor font-bold text-2xl mt-2 max-xl:text-xl max-lg:text-lg max-lg:mt-1 max-sm:text-base"
                             >
                                 R${new Intl.NumberFormat('pt-BR', {
                                     style: 'currency',
@@ -104,7 +104,7 @@ export const Post = ({
                             </span>
                             <div className="flex mb-1 ml-4 items-center max-sm:ml-2">
                                 <span
-                                    className="mr-2 font-bold text-slate-500 dark:text-white max-xl:text-sm max-sm:text-xs max-sm:mr-1"
+                                    className="mr-2 font-poppins font-medium text-slate-500 dark:text-white max-xl:text-sm max-sm:text-xs max-sm:mr-1"
                                 >
                                     {marketplace}
                                 </span>
@@ -121,7 +121,7 @@ export const Post = ({
                             />
                             <Link
                                 href={userProfileURL}
-                                className="text-primaryColor dark:text-white mr-2 font-bold max-xl:text-sm max-sm:text-xs max-sm:mr-1"
+                                className="font-poppins text-primaryColor dark:text-white mr-2 font-medium max-xl:text-sm max-sm:text-xs max-sm:mr-1"
                             >
                                 {seller}
                             </Link>
@@ -136,7 +136,7 @@ export const Post = ({
             </div>
             <Link
                 href={`/post/${id}`}
-                className="bg-primaryColor px-12 py-1 rounded-t-lg font-bold hover:bg-primaryHoverColor max-xl:px-8 max-xl:text-sm max-sm:py-0.5 max-sm:text-xs max-sm:mt-2 max-sm:px-5"
+                className="font-poppins bg-primaryColor px-12 py-1 rounded-t-lg font-semibold hover:bg-primaryHoverColor max-xl:px-8 max-xl:text-sm max-sm:py-0.5 max-sm:text-xs max-sm:mt-2 max-sm:px-5"
             >
                 Ver mais
             </Link>

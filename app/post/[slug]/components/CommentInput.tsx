@@ -54,7 +54,7 @@ const CommentInput = ({ id }: ICommentInput) => {
 
     return (
         <div className='flex flex-col justify-center bg-white dark:bg-secondaryDarkColor shadow-primary rounded-lg h-fit w-full px-4 py-3 mt-5'>
-            <h2 className='text-black font-bold mb-2 text-lg dark:text-white'>Comentários</h2>
+            <h2 className='text-black font-bold font-poppins mb-2 text-lg dark:text-white'>Comentários</h2>
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex justify-between"

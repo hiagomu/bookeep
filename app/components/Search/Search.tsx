@@ -30,7 +30,7 @@ export const Search = ({
                 </button>
             </div>
             <button
-                className="bg-primaryColor h-9 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-base font-semibold max-sm:text-xs max-sm:h-7"
+                className="bg-primaryColor font-poppins h-9 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-base font-medium max-sm:text-xs max-sm:h-7"
                 onClick={() => setIsOpen(true)}
             >
                 Novo

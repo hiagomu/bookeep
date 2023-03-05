@@ -23,11 +23,11 @@ const PricingBox =  ({
     return (
         <div className='w-[18rem] h-[13rem] p-5 shadow-primary rounded-lg dark:bg-secondaryDarkColor'>
             <div className='flex justify-between'>
-                <span className='text-primaryColor text-4xl font-bold'>{price}</span>
+                <span className='text-primaryColor text-4xl font-poppins font-semibold'>R$ {price}</span>
                 <ShareIcon className='text-primaryColor w-5 h-5'/>
             </div>
             <div className='flex items-center mt-2'>
-                <span className='text-slate-400 mr-2 font-bold max-xl:text-sm max-sm:text-xs max-sm:mr-1'>{seller}</span>
+                <span className='text-slate-400 mr-2 font-semibold font-poppins max-xl:text-sm max-sm:text-xs max-sm:mr-1'>{seller}</span>
                 { true && <VerifiedIcon className="text-primaryColor max-sm:text-xs"/> }
                 <button className='bg-slate-200 ml-2 p-0.5 rounded-full'>
                     <NotifyIcon className='text-slate-500'/>
@@ -40,7 +40,7 @@ const PricingBox =  ({
                 </div>
             </div>
             <Link
-                className='flex items-center justify-center bg-primaryColor text-white rounded-lg w-full py-1.5 font-bold text-xl mt-5 hover:bg-primaryHoverColor'
+                className='flex items-center justify-center bg-primaryColor font-poppins text-white rounded-lg w-full py-1.5 font-semibold text-xl mt-5 hover:bg-primaryHoverColor'
                 href={saleLink}
             >
                 Ver promoção

@@ -27,7 +27,7 @@ export const Header = ({children}: IHeader) => {
                     />
                 </div>
                 <p
-                    className='text-black ml-1 font-bold max-sm:text-sm dark:text-white'
+                    className='text-black ml-1 font-semibold font-poppins max-sm:text-sm dark:text-white'
                 >
                     BooKeep
                 </p>

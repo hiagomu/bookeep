@@ -104,7 +104,7 @@ export default function Home() {
                   price={post.price}
                   title={post.title}
                   createdAt={post.createdAt}
-                  boos={5}
+                  boos={0}
                   user={post.user}
                   key={post.id}
                   id={post.id}

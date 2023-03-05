@@ -79,7 +79,7 @@ export const NewPost = ({
           setIsOpen={setIsOpen}
         >
           <div className="h-fit p-6 w-fit max-sm:p-4">
-            <h1 className="text-primaryColor font-bold text-2xl mb-4 max-lg:mb-3 max-lg:text-xl max-sm:text-lg max-sm:mb-2">Criar anúncio</h1>
+            <h1 className="text-primaryColor font-bold font-poppins text-2xl mb-4 max-lg:mb-3 max-lg:text-xl max-sm:text-lg max-sm:mb-2">Criar anúncio</h1>
             <form
               onSubmit={handleSubmit(onSubmit)}
             >
@@ -177,13 +177,13 @@ export const NewPost = ({
               />
               <div className="flex w-full justify-end mt-4">
                 <button
-                  className="bg-zinc-500 rounded text-sm py-2 px-3 font-semibold mr-4 outline-none hover:bg-zinc-400 max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
+                  className="bg-zinc-500 rounded text-sm py-2 px-3 font-poppins font-semibold mr-4 outline-none hover:bg-zinc-400 max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
                   onClick={onClose}
                 >
                   Cancel
                 </button>
                 <button
-                  className="flex justify-center items-center bg-primaryColor py-2 px-3 rounded text-sm font-semibold outline-none hover:bg-primaryHoverColor max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
+                  className="flex justify-center items-center bg-primaryColor py-2 px-3 rounded text-sm font-poppins font-semibold outline-none hover:bg-primaryHoverColor max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
                   type="submit"
                   disabled={isSubmitting}
                 >

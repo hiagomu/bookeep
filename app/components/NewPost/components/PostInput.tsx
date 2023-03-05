@@ -33,7 +33,7 @@ const PostInput = ({
     return (
         <div className="flex flex-col">
             <label
-                className="text-primaryColor font-bold mt-2 max-lg:text-sm"
+                className="text-primaryColor font-poppins font-semibold mt-2 max-lg:text-sm"
                 htmlFor={id}
             >
                 {title}
