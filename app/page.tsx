@@ -98,7 +98,6 @@ export default function Home() {
                   userProfileURL={"/"}
                   bookImageURL={post.bookImageURL}
                   marketplace={"Amazon"}
-                  saleLink={post.saleLink}
                   comments={post.comments}
                   seller={post.user.name}
                   price={post.price}
