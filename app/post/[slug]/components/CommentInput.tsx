@@ -24,30 +24,30 @@ interface IComment {
 }
 
 const CommentInput = ({ id }: ICommentInput) => {
-    const { register, handleSubmit, reset, formState:{ isSubmitting } } = useForm({
+    const { register, handleSubmit, reset } = useForm({
         resolver: yupResolver(newCommentSchema)
     });
     const queryClient = useQueryClient()
-    let commentToastId: string
+    let commentToastID: string
 
     const { mutate } = useMutation(
-        async (data: IComment) => await axios.post('/api/posts/addComment', { data }),
+        async (data: IComment) => { return axios.post('/api/posts/addComment', {data})},
         {
             onError: (error) => {
                 if (error instanceof AxiosError) {
-                  toast.error(error?.response?.data.message, {id: commentToastId})
+                  toast.error(error?.response?.data.message, {id: commentToastID})
                 }
             },
-            onSuccess: () => {
-                toast.success("Comentário adicionado", { id: commentToastId })
+            onSuccess: (data) => {
                 queryClient.invalidateQueries(["detail-post"])
+                toast.success("Comentário adicionado", {id: commentToastID})
             }
         }
     )
 
-    const onSubmit = (data: FieldValues) => {
-        commentToastId = toast.loading("Adding your comment", {id: commentToastId })
-        mutate({ comment: data.comment, id: id })
+    const onSubmit = async (data: FieldValues) => {
+        commentToastID = toast.loading("Adicionando comentário...", {id: commentToastID})
+        mutate({comment: data.comment, id: id})
         reset()
     }
     
@@ -74,7 +74,6 @@ const CommentInput = ({ id }: ICommentInput) => {
                 />
                 <button
                     type="submit"
-                    disabled={isSubmitting}
                     className='bg-primaryColor hover:bg-primaryHoverColor text-white rounded-full h-fit p-2'
                 >
                     <SendIcon className='text-white h-5 w-5'/>

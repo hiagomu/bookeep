@@ -1,8 +1,12 @@
 import prisma from "../../../prisma/client"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "../auth/[...nextauth]"
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const session = await getServerSession(req, res, authOptions)
   
   if (!session) {
@@ -10,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   const prismaUser = await prisma.user.findUnique({
-    where: { email: session.user.email },
+    where: {email: session?.user?.email || ""}
   })
   
   if (req.method === "POST") {
@@ -21,14 +25,16 @@ export default async function handler(req, res) {
     }
     
     try {
-      const result = await prisma.comment.create({
-        data: {
-          message: comment,
-          userId: prismaUser.id,
-          postId: id,
-        },
-      })
-      res.status(200).json(result)
+      if (prismaUser) {
+        const result = await prisma.comment.create({
+          data: {
+            message: comment,
+            userId: prismaUser.id,
+            postId: id,
+          },
+        })
+        res.status(200).json(result)
+      }
     } catch (err) {
       res.status(403).json({ err })
     }
