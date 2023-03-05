@@ -81,7 +81,8 @@ export const NewPost = ({
           <div className="h-fit p-6 w-fit max-sm:p-4">
             <h1 className="text-primaryColor font-bold text-2xl mb-4 max-lg:mb-3 max-lg:text-xl max-sm:text-lg max-sm:mb-2">Criar anúncio</h1>
             <form
-              onSubmit={handleSubmit(onSubmit)}>
+              onSubmit={handleSubmit(onSubmit)}
+            >
               <PostInput
                 errorMessage={errors.title ? String(errors.title.message) : ""}
                 placeholder="Insira o nome do produto..."

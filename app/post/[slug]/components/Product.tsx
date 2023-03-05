@@ -52,7 +52,6 @@ const Product = ({
                 </span>
                 <button
                     className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"
-                    onClick={() => console.log("oi")}
                 >
                     <OptionsIcon className="text-primaryColor"/>
                 </button>

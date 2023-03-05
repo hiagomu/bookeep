@@ -34,6 +34,13 @@ interface IPost {
         postId: string
         message: string
         createdAt: string
+        user: {
+            emailVerified: boolean | null
+            email: string
+            image: string
+            name: string
+            id: string
+        }
     }[]
     boos: number
     coupon: string
@@ -82,8 +89,13 @@ export default function PostDetail(url: IURL) {
                     <ProductDetailBox />
                 </div>
                 <div className='w-[51rem]'>
-                    <CommentInput />
-                    <CommentSection />
+                    {
+                        data &&
+                        <>
+                            <CommentInput id={data.id}/>
+                            <CommentSection comments={data.comments}/>
+                        </>
+                    }
                 </div>
             </div>
             <div>
