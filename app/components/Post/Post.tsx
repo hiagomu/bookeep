@@ -26,7 +26,11 @@ interface IPost {
         message: string
         createdAt: string
     }[]
-    boos: number
+    likes?: {
+        id: string
+        postId: string
+        userId: string
+    }[]
     createdAt: Date
     title: string
     price: string
@@ -41,7 +45,7 @@ interface IPost {
 export const Post = ({
     id,
     user,
-    boos,
+    likes,
     title,
     price,
     seller,
@@ -129,7 +133,8 @@ export const Post = ({
                         </div>
                     </div>
                     <Interactions
-                        boos={boos}
+                        id={id}
+                        boos={likes?.length || 0}
                         comments={comments?.length || 0}
                     />
                 </div>

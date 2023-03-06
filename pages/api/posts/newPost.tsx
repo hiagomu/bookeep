@@ -30,7 +30,7 @@ export default async function handler(
     const {title, category, link, price, coupon, description, productImage}: IPost = req.body.data
     
     const user = await prisma.user.findUnique({
-        where: {email: session?.user?.email || ""}
+        where: {email: session?.user?.email || undefined}
     })
 
     try {

@@ -20,8 +20,9 @@ model Post {
   price        String
   saleLink     String
   userId       String
-  user         User     @relation(fields: [userId], references: [id])
   comments Comment[]
+  likes     Like[]
+  user         User     @relation(fields: [userId], references: [id])
 }
 
 model Comment {
@@ -70,6 +71,15 @@ model User {
   sessions      Session[]
   posts          Post[]
   comments Comment[]
+  likes         Like[]
+}
+
+model Like {
+  id     String @id @default(cuid())
+  postId String
+  userId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {

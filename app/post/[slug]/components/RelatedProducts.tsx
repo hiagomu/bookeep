@@ -34,7 +34,7 @@ const RelatedProducts = () => {
                         >
                             Hiago Murilo
                         </Link>
-                        <Interactions comments={0} boos={0} little={true}/>
+                        <Interactions id={""} comments={0} boos={0} little={true}/>
                     </div>
                 </div>
             </div>

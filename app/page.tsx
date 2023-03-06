@@ -37,6 +37,11 @@ interface IPost {
     message: string
     createdAt: string
   }[]
+  likes?: {
+    id: string
+    postId: string
+    userId: string
+  }[]
   id: string
 }
 
@@ -104,7 +109,7 @@ export default function Home() {
                   price={post.price}
                   title={post.title}
                   createdAt={post.createdAt}
-                  boos={0}
+                  likes={post.likes}
                   user={post.user}
                   key={post.id}
                   id={post.id}

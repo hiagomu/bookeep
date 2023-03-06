@@ -42,6 +42,11 @@ interface IPost {
             id: string
         }
     }[]
+    likes?: {
+        id: string
+        postId: string
+        userId: string
+    }[]
     boos: number
     coupon: string
     createdAt: Date
@@ -75,6 +80,7 @@ export default function PostDetail(url: IURL) {
                         createdAt={data.createdAt}
                         comments={data.comments}
                         title={data.title}
+                        likes={data.likes}
                         user={data.user}
                         key={data.id}
                         id={data.id}

@@ -19,6 +19,11 @@ interface IProduct {
         name: string
         id: string
     }
+    likes?: {
+        id: string
+        postId: string
+        userId: string
+    }[]
     comments?: {
         id: string
         userId: string
@@ -31,6 +36,7 @@ interface IProduct {
 const Product = ({
     id,
     user,
+    likes,
     title,
     comments,
     createdAt,
@@ -86,7 +92,8 @@ const Product = ({
                         { true && <VerifiedIcon className="text-primaryColor max-sm:text-xs"/> }
                     </div>
                     <Interactions
-                        boos={5}
+                        id={id}
+                        boos={likes?.length || 0}
                         comments={comments?.length || 0}
                     />
                 </div>
