@@ -5,14 +5,14 @@ import { MdVerified as VerifiedIcon } from 'react-icons/md'
 
 const RelatedProducts = () => {
     return (
-        <div className='w-[18rem] h-[12.5rem] p-5 shadow-primary rounded-lg mb-2 dark:bg-secondaryDarkColor'>
+        <div className='w-[18rem] h-[12.5rem] p-5 shadow-primary rounded-lg mb-2 dark:bg-secondaryDarkColor max-xl:p-4 max-xl:w-[16rem]'>
             <div className='flex'>
                 <Image
                     src="https://bookeep-images.s3.amazonaws.com/m0av9ktcvd-carmilla_jpg"
                     alt="Imagem do produto"
                     width={75}
                     height={90}
-                    className="mr-5 max-xl:w-24 max-xl:h-36 max-lg:w-30 max-lg:h-32 max-sm:w-16 max-sm:h-24 rounded"
+                    className="mr-5 rounded"
                 />
                 <div className='relative'>
                     <span className='text-primaryColor font-poppins font-semibold text-xl'>R$53,90</span>
@@ -38,7 +38,7 @@ const RelatedProducts = () => {
                     </div>
                 </div>
             </div>
-            <span className='text-black font-semibold font-poppins mt-1 block dark:text-white'>Contos de Horror da Mimi (Edição Completa)</span>
+            <span className='text-black font-semibold font-poppins mt-1 block dark:text-white max-xl:text-sm'>Contos de Horror da Mimi (Edição Completa)</span>
         </div>
     )
 }

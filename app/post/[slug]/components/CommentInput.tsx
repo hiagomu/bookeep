@@ -53,8 +53,8 @@ const CommentInput = ({ id }: ICommentInput) => {
     
 
     return (
-        <div className='flex flex-col justify-center bg-white dark:bg-secondaryDarkColor shadow-primary rounded-lg h-fit w-full px-4 py-3 mt-5'>
-            <h2 className='text-black font-bold font-poppins mb-2 text-lg dark:text-white'>Comentários</h2>
+        <div className='flex flex-col justify-center bg-white dark:bg-secondaryDarkColor shadow-primary rounded-lg h-fit w-full px-4 py-3 mt-5 max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[24rem]'>
+            <h2 className='text-black font-bold font-poppins mb-2 text-lg dark:text-white max-md:text-sm'>Comentários</h2>
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex justify-between"
@@ -62,7 +62,7 @@ const CommentInput = ({ id }: ICommentInput) => {
                 <Image
                     alt="Imagem de perfil do usuário"
                     src="https://lh3.googleusercontent.com/ogw/AAEL6sj1srioXDolAgpTtsrJsULc4pGEHcZnS3BOJT7i2w=s32-c-mo"
-                    className="mr-2 rounded-full w-9 h-9"
+                    className="mr-2 rounded-full w-9 h-9 max-md:w-7 max-md:h-7"
                     width={36}
                     height={36}
                 />
@@ -70,13 +70,13 @@ const CommentInput = ({ id }: ICommentInput) => {
                     id=""
                     {...register("comment")}
                     placeholder='Adicione um comentário a publicação'
-                    className='bg-slate-200 rounded-2xl py-1.5 px-2 text-black dark:bg-primaryDarkHoverColor dark:text-white outline-none w-full h-9 resize-none mr-2'
+                    className='bg-slate-200 rounded-2xl py-1.5 px-2 text-black dark:bg-primaryDarkHoverColor dark:text-white outline-none w-full h-9 resize-none mr-2 max-md:h-7 max-md:text-xs'
                 />
                 <button
                     type="submit"
-                    className='bg-primaryColor hover:bg-primaryHoverColor text-white rounded-full h-fit p-2'
+                    className='bg-primaryColor hover:bg-primaryHoverColor text-white rounded-full h-fit p-2 max-md:p-1.5'
                 >
-                    <SendIcon className='text-white h-5 w-5'/>
+                    <SendIcon className='text-white h-5 w-5 max-md:h-4 max-md:w-4'/>
                 </button>
             </form>
         </div>

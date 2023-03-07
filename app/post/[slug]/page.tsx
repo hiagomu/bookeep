@@ -7,6 +7,8 @@ import PricingBox from './components/PricingBox'
 import RelatedProducts from './components/RelatedProducts'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import Link from 'next/link'
+import { FaExternalLinkAlt as VisitIcon } from 'react-icons/fa'
 
 const fecthDetails = async (slug: string) => {
     const response = await axios.get(`/api/posts/${slug}`)
@@ -70,23 +72,27 @@ export default function PostDetail(url: IURL) {
     })
 
     return (
-        <div className="mt-24 flex justify-between w-[78.75rem]">
+        <div className="mt-24 flex justify-between w-[78.75rem] max-2xl:w-[73rem] max-xl:w-[58rem] max-lg:justify-center max-md:w-[36rem] max-sm:w-[24rem] max-lg:mt-20 max-sm:mt-16">
             <div>
-                {
-                    data &&
-                    <Product
-                        bookImageURL={data.bookImageURL}
-                        description={data.description}
-                        createdAt={data.createdAt}
-                        comments={data.comments}
-                        title={data.title}
-                        likes={data.likes}
-                        user={data.user}
-                        key={data.id}
-                        id={data.id}
-                    />
-                }
-                <div className='flex justify-between mt-2'>
+                <div>
+                    {
+                        data &&
+                        <Product
+                            bookImageURL={data.bookImageURL}
+                            description={data.description}
+                            createdAt={data.createdAt}
+                            comments={data.comments}
+                            seller={"Amazon"}
+                            title={data.title}
+                            price={data.price}
+                            likes={data.likes}
+                            user={data.user}
+                            key={data.id}
+                            id={data.id}
+                        />
+                    }
+                </div>
+                <div className='max-lg:hidden flex justify-between mt-2 max-xl:w-[40rem]'>
                     <ProductDetailBox />
                     <ProductDetailBox />
                     <ProductDetailBox />
@@ -94,7 +100,19 @@ export default function PostDetail(url: IURL) {
                     <ProductDetailBox />
                     <ProductDetailBox />
                 </div>
-                <div className='w-[51rem]'>
+                {
+                    data &&
+                    <div className='hidden max-lg:block'>
+                        <Link
+                            className='flex items-center justify-center bg-primaryColor font-poppins text-white rounded-lg w-full py-1.5 font-semibold text-xl mt-5 hover:bg-primaryHoverColor max-md:mt-1 max-lg:text-lg max-md:w-[32rem] max-xl:py-1 max-sm:w-[24rem] max-sm:text-base'
+                            href={data.saleLink}
+                        >
+                            Ver promoção
+                            <VisitIcon className='text-white ml-2'/>
+                        </Link>
+                    </div>
+                }
+                <div className='w-[51rem] max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[24rem]'>
                     {
                         data &&
                         <>
@@ -104,7 +122,7 @@ export default function PostDetail(url: IURL) {
                     }
                 </div>
             </div>
-            <div>
+            <div className='max-lg:hidden'>
                 {
                     data &&
                     <PricingBox
@@ -116,7 +134,7 @@ export default function PostDetail(url: IURL) {
                     />
                 }
                 <div className='mt-16'>
-                    <h2 className='text-black font-bold font-poppins text-2xl mb-4 dark:text-white'>Relacionados</h2>
+                    <h2 className='text-black font-bold font-poppins text-2xl mb-4 dark:text-white max-xl:text-xl'>Relacionados</h2>
                     <RelatedProducts />
                     <RelatedProducts />
                 </div>

@@ -9,6 +9,8 @@ import { ptBR } from "date-fns/locale"
 interface IProduct {
     id: string
     title: string
+    price: string
+    seller: string
     createdAt: Date
     description?: string
     bookImageURL: string
@@ -37,7 +39,9 @@ const Product = ({
     id,
     user,
     likes,
+    price,
     title,
+    seller,
     comments,
     createdAt,
     description,
@@ -47,10 +51,10 @@ const Product = ({
     const today = Date.now()
 
     return (
-        <div className="w-[51rem] h-[17rem] flex flex-col relative">
+        <div className="w-[51rem] h-[17rem] flex flex-col relative max-xl:w-[40rem] max-xl:h-[14rem] max-md:w-[32rem] max-sm:w-[24rem] max-sm:h-[16rem]">
             <div className='flex items-center mt-2'>
                 <span
-                    className="block text-primaryColor dark:text-slate-400 font-poppins font-medium w-full text-right text-sm serif max-sm:text-xs"
+                    className="block text-primaryColor dark:text-slate-400 font-poppins font-medium w-full text-right text-sm serif max-md:text-xs"
                 >
                     {formatDistance(new Date(createdAt), today, {
                         locale: ptBR,
@@ -68,13 +72,20 @@ const Product = ({
                     alt="product"
                     width={136}
                     height={192}
-                    className="mr-5 max-xl:w-24 max-xl:h-36 max-lg:w-30 max-lg:h-32 max-sm:w-16 max-sm:h-24 rounded"
+                    className="mr-5 max-xl:w-24 max-xl:h-36 max-lg:w-32 max-lg:h-44 max-sm:w-24 max-sm:h-40 rounded"
                 />
                 <div className='relative'>
-                    <h1 className="block text-black dark:text-white text-2xl font-poppins font-bold max-xl:text-lg max-lg:text-base max-sm:text-sm max-sm:truncate">
+                    <h1 className="block text-black dark:text-white text-2xl font-poppins font-bold max-xl:text-lg max-sm:text-sm max-sm:truncate">
                         {title}
                     </h1>
-                    { description && <p className='text-sm font-medium mt-2 text-black dark:text-white'>{description}</p> }
+                    <div className="hidden max-lg:flex items-center">
+                        <span className='text-primaryColor text-xl font-poppins font-bold mr-2 max-md:text-lg'>R$ {price}</span>
+                        <div className="flex items-center">
+                            <span className='text-slate-400 mr-2 font-semibold font-poppins max-xl:text-sm max-md:text-xs max-sm:mr-1'>{seller}</span>
+                            { true && <VerifiedIcon className="text-primaryColor max-sm:text-xs"/> }
+                        </div>
+                    </div>
+                    { description && <p className='text-sm font-medium mt-2 text-black dark:text-white max-md:text-xs max-md:mt-1'>{description}</p> }
                     <div className="flex items-center mt-3 max-xl:mt-2 max-lg:mt-1 max-sm:mb-5">
                         <Image
                             alt="Imagem de perfil do usuário"
@@ -85,7 +96,7 @@ const Product = ({
                         />
                         <Link
                             href={"/"}
-                            className="text-primaryColor dark:text-white mr-2 font-medium font-poppins max-xl:text-sm max-sm:text-xs max-sm:mr-1"
+                            className="text-primaryColor dark:text-white mr-2 font-medium font-poppins max-xl:text-sm max-md:text-xs max-sm:mr-1"
                         >
                             {user.name}
                         </Link>

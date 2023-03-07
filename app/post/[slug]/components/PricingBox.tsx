@@ -21,9 +21,9 @@ const PricingBox =  ({
     saleLink
 }: IPricing) => {
     return (
-        <div className='w-[18rem] h-[13rem] p-5 shadow-primary rounded-lg dark:bg-secondaryDarkColor'>
+        <div className='w-[18rem] h-[13rem] p-5 shadow-primary rounded-lg dark:bg-secondaryDarkColor max-xl:p-4 max-xl:w-[16rem] max-xl:h-[11rem]'>
             <div className='flex justify-between'>
-                <span className='text-primaryColor text-4xl font-poppins font-semibold'>R$ {price}</span>
+                <span className='text-primaryColor text-4xl font-poppins font-semibold max-xl:text-3xl'>R$ {price}</span>
                 <ShareIcon className='text-primaryColor w-5 h-5'/>
             </div>
             <div className='flex items-center mt-2'>
@@ -40,7 +40,7 @@ const PricingBox =  ({
                 </div>
             </div>
             <Link
-                className='flex items-center justify-center bg-primaryColor font-poppins text-white rounded-lg w-full py-1.5 font-semibold text-xl mt-5 hover:bg-primaryHoverColor'
+                className='flex items-center justify-center bg-primaryColor font-poppins text-white rounded-lg w-full py-1.5 font-semibold text-xl mt-5 hover:bg-primaryHoverColor max-xl:mt-3 max-xl:text-lg max-xl:py-1'
                 href={saleLink}
             >
                 Ver promoção
