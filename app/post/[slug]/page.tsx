@@ -104,7 +104,7 @@ export default function PostDetail(url: IURL) {
                     data &&
                     <div className='hidden max-lg:block'>
                         <Link
-                            className='flex items-center justify-center bg-primaryColor font-poppins text-white rounded-lg w-full py-1.5 font-semibold text-xl mt-5 hover:bg-primaryHoverColor max-md:mt-1 max-lg:text-lg max-md:w-[32rem] max-xl:py-1 max-sm:w-[24rem] max-sm:text-base'
+                            className='flex items-center justify-center bg-primaryColor font-poppins text-white rounded-lg w-full py-1.5 font-semibold text-xl mt-5 hover:bg-primaryHoverColor max-md:mt-1 max-lg:text-lg max-md:w-[32rem] max-xl:py-1 max-sm:w-[18rem] max-sm:text-base max-sm:mt-5'
                             href={data.saleLink}
                         >
                             Ver promoção
@@ -112,12 +112,15 @@ export default function PostDetail(url: IURL) {
                         </Link>
                     </div>
                 }
-                <div className='w-[51rem] max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[24rem]'>
+                <div className='w-[51rem] max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[18rem]'>
                     {
                         data &&
                         <>
                             <CommentInput id={data.id}/>
-                            <CommentSection comments={data.comments}/>
+                            {
+                                data.comments?.length !== undefined && data.comments?.length > 0 &&
+                                <CommentSection comments={data.comments}/>
+                            }
                         </>
                     }
                 </div>

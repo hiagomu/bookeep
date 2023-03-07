@@ -93,7 +93,7 @@ export const Post = ({
                     <div className="mt-2 h-fit max-lg:mt-1 max-sm:w-44">
                         <Link
                             href={`/post/${id}`}
-                            className="font-poppins block text-black dark:text-white text-xl font-bold max-xl:text-lg max-lg:text-base max-sm:text-sm max-sm:truncate"
+                            className="font-poppins block text-black dark:text-white text-xl font-bold max-xl:text-lg max-lg:text-base max-sm:text-sm max-sm:line-clamp-2"
                         >
                             {title}
                         </Link>
@@ -115,7 +115,7 @@ export const Post = ({
                                 { isMarketplaceVerified && <VerifiedIcon className="text-primaryColor max-sm:text-xs"/> }
                             </div>
                         </div>
-                        <div className="flex items-center mt-3 max-xl:mt-2 max-lg:mt-1 max-sm:mb-5">
+                        <div className="flex items-center mt-3 max-xl:mt-2 max-lg:mt-1 max-sm:mb-6">
                             <Image
                                 alt="Imagem de perfil do usuário"
                                 src={user.image}

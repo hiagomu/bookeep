@@ -53,7 +53,7 @@ const CommentInput = ({ id }: ICommentInput) => {
     
 
     return (
-        <div className='flex flex-col justify-center bg-white dark:bg-secondaryDarkColor shadow-primary rounded-lg h-fit w-full px-4 py-3 mt-5 max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[24rem]'>
+        <div className='flex flex-col justify-center bg-white dark:bg-secondaryDarkColor shadow-primary rounded-lg h-fit w-full px-4 py-3 mt-5 max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[18rem]'>
             <h2 className='text-black font-bold font-poppins mb-2 text-lg dark:text-white max-md:text-sm'>Comentários</h2>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -69,7 +69,7 @@ const CommentInput = ({ id }: ICommentInput) => {
                 <textarea
                     id=""
                     {...register("comment")}
-                    placeholder='Adicione um comentário a publicação'
+                    placeholder='Adicione um comentário'
                     className='bg-slate-200 rounded-2xl py-1.5 px-2 text-black dark:bg-primaryDarkHoverColor dark:text-white outline-none w-full h-9 resize-none mr-2 max-md:h-7 max-md:text-xs'
                 />
                 <button

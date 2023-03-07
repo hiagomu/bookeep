@@ -21,7 +21,7 @@ interface ICommentSection {
 const CommentSection = ({ comments }: ICommentSection) => {
 
     return (
-        <div className='bg-white mt-2 shadow-primary px-4 py-3 rounded-lg dark:bg-secondaryDarkColor max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[24rem]'>
+        <div className='bg-white mt-2 shadow-primary px-4 py-3 rounded-lg dark:bg-secondaryDarkColor max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[18rem]'>
             {
                 comments?.map(comment => {
                     return <div className='flex py-2'>

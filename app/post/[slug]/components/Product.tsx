@@ -51,7 +51,7 @@ const Product = ({
     const today = Date.now()
 
     return (
-        <div className="w-[51rem] h-[17rem] flex flex-col relative max-xl:w-[40rem] max-xl:h-[14rem] max-md:w-[32rem] max-sm:w-[24rem] max-sm:h-[16rem]">
+        <div className="w-[51rem] h-[17rem] flex flex-col relative max-xl:w-[40rem] max-xl:h-[14rem] max-md:w-[32rem] max-sm:w-[18rem] max-sm:h-fit">
             <div className='flex items-center mt-2'>
                 <span
                     className="block text-primaryColor dark:text-slate-400 font-poppins font-medium w-full text-right text-sm serif max-md:text-xs"
@@ -75,7 +75,7 @@ const Product = ({
                     className="mr-5 max-xl:w-24 max-xl:h-36 max-lg:w-32 max-lg:h-44 max-sm:w-24 max-sm:h-40 rounded"
                 />
                 <div className='relative'>
-                    <h1 className="block text-black dark:text-white text-2xl font-poppins font-bold max-xl:text-lg max-sm:text-sm max-sm:truncate">
+                    <h1 className="block text-black dark:text-white text-2xl font-poppins font-bold max-xl:text-lg max-sm:text-sm max-sm:w-[10.75rem] max-sm:line-clamp-2">
                         {title}
                     </h1>
                     <div className="hidden max-lg:flex items-center">
@@ -85,8 +85,8 @@ const Product = ({
                             { true && <VerifiedIcon className="text-primaryColor max-sm:text-xs"/> }
                         </div>
                     </div>
-                    { description && <p className='text-sm font-medium mt-2 text-black dark:text-white max-md:text-xs max-md:mt-1'>{description}</p> }
-                    <div className="flex items-center mt-3 max-xl:mt-2 max-lg:mt-1 max-sm:mb-5">
+                    { description && <p className='text-sm font-medium mt-2 text-black dark:text-white max-xl:line-clamp-4 max-md:text-xs max-md:mt-1 max-sm:h-24 max-sm:line-clamp-6'>{description}</p> }
+                    <div className="flex items-center mt-3 max-xl:mt-2 max-lg:mt-2 max-sm:mb-8 ">
                         <Image
                             alt="Imagem de perfil do usuário"
                             src={user.image}
