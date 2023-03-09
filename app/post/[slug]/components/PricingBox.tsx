@@ -6,20 +6,16 @@ import {
     MdVerified as VerifiedIcon
 } from 'react-icons/md'
 import Link from 'next/link'
+import { PricingBoxType } from '@/app/@types'
 
-interface IPricing {
-    price: string
-    seller: string
-    coupon?: string
-    saleLink: string
-}
+
 
 const PricingBox =  ({
     price,
     coupon,
     seller,
     saleLink
-}: IPricing) => {
+}: PricingBoxType) => {
     return (
         <div className='w-[18rem] h-[13rem] p-5 shadow-primary rounded-lg dark:bg-secondaryDarkColor max-xl:p-4 max-xl:w-[16rem] max-xl:h-[11rem]'>
             <div className='flex justify-between'>

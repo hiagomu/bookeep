@@ -3,20 +3,10 @@
 import {
   BsCamera as ImageIcon
 } from 'react-icons/bs'
-import { FieldValues, UseFormRegister } from "react-hook-form"
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
-interface IPostImageInput {
-  id: string
-  alt: string
-  name: string
-  title: string
-  register: UseFormRegister<FieldValues>
-  innerText: string
-  errorMessage: string
-  setProductImage: (productImage: string) => void
-}
+import { ImageInputType } from '@/app/@types'
 
 const PostImageInput = ({
   id,
@@ -27,7 +17,7 @@ const PostImageInput = ({
   innerText,
   errorMessage,
   setProductImage
-}: IPostImageInput) => {
+}: ImageInputType) => {
 
   const [previewImage, setPreviewImage] = useState<string>()
   const [file, setFile] = useState<any>()

@@ -1,20 +1,10 @@
+import { PostSkeletonType } from "@/app/@types"
 import Skeleton from "react-loading-skeleton"
-
-interface IPostInterectionsSkeleton {
-    skeletonColorsLight: {
-        baseColor: string
-        highlightColor: string
-    }
-    skeletonColorsDark: {
-        baseColor: string
-        highlightColor: string
-    }
-}
 
 const PostInterectionsSkeleton = ({
     skeletonColorsLight,
     skeletonColorsDark
-}: IPostInterectionsSkeleton) => {
+}: PostSkeletonType) => {
     return (
         <>
             <div className="absolute w-32 h-7 rounded-lg bottom-0 right-0 max-lg:h-6 max-lg:w-28 max-sm:w-20 max-sm:h-5 dark:hidden">

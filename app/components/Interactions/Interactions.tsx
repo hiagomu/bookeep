@@ -1,18 +1,12 @@
 "use client"
 
+import { InteractionsType } from '@/app/@types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import {
     FaGhost as BooIcon,
     FaCommentAlt as CommentIcon
 } from 'react-icons/fa'
-
-interface IInteractions {
-    boos: number
-    comments: number
-    little?: boolean
-    id: string
-}
 
 interface IPostID {
     id: string
@@ -23,7 +17,7 @@ export const Interactions = ({
     boos,
     comments,
     little
-}: IInteractions) => {
+}: InteractionsType) => {
     const queryClient = useQueryClient()
 
     const { mutate } = useMutation(

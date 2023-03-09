@@ -1,20 +1,10 @@
+import { PostSkeletonType } from "@/app/@types"
 import Skeleton from "react-loading-skeleton"
-
-interface IPostTitleSkeleton {
-    skeletonColorsLight: {
-        baseColor: string
-        highlightColor: string
-    }
-    skeletonColorsDark: {
-        baseColor: string
-        highlightColor: string
-    }
-}
 
 const PostTitleSkeleton = ({
     skeletonColorsLight,
     skeletonColorsDark
-}: IPostTitleSkeleton) => {
+}: PostSkeletonType) => {
     return (
         <>
             <div className="block dark:hidden">

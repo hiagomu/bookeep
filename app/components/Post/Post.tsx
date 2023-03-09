@@ -9,38 +9,7 @@ import ptBR from "date-fns/locale/pt-BR"
 import Image from "next/image"
 import { useState } from "react"
 import { Actions } from "../Actions"
-
-interface IPost {
-    id: string
-    user: {
-        emailVerified: boolean | null
-        email: string
-        image: string
-        name: string
-        id: string
-    }
-    comments?: {
-        id: string
-        userId: string
-        postId: string
-        message: string
-        createdAt: string
-    }[]
-    likes?: {
-        id: string
-        postId: string
-        userId: string
-    }[]
-    createdAt: Date
-    title: string
-    price: string
-    seller: string
-    marketplace: string
-    bookImageURL: string
-    userProfileURL: string
-    isUserVerified: boolean
-    isMarketplaceVerified: boolean
-}
+import { PostType } from "@/app/@types"
 
 export const Post = ({
     id,
@@ -56,7 +25,7 @@ export const Post = ({
     userProfileURL,
     isUserVerified,
     isMarketplaceVerified
-}: IPost) => {
+}: PostType) => {
 
     const today = Date.now()
     const [isActionsOpen, setIsActionsOpen] = useState(false)

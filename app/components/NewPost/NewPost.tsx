@@ -102,7 +102,7 @@ export const NewPost = ({
                 isSmall={false}
                 title="Link"
                 type="text"
-                name="link"
+                name="saleLink"
                 id="link"
               />
               <div className="flex justify-between">
@@ -136,7 +136,7 @@ export const NewPost = ({
                   innerText="Adicione"
                   register={register}
                   title="Imagem"
-                  name="productImage"
+                  name="bookImageURL"
                   alt="Imagem do produto"
                   id="productImage"
                 />

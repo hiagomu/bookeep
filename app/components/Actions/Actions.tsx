@@ -9,15 +9,10 @@ import axios from 'axios'
 import { Remove } from '../Remove'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
+import { User } from '@/app/@types'
 
 interface IActions {
-    user: {
-        emailVerified: boolean | null
-        email: string
-        image: string
-        name: string
-        id: string
-    }
+    user: User
     postId: string
     isActionsOpen: boolean
     setIsActionsOpen: (isActionsOpen: boolean) => void

@@ -1,22 +1,6 @@
 "use client"
 
-import { FieldValues, UseFormRegister } from "react-hook-form"
-
-interface IPostInput {
-    id: string
-    type?: "text" | "url" | "number"
-    name: string
-    title: string
-    options?: {
-        value: string
-        name: string
-    }[]
-    element: "input" | "select" | "textarea"
-    isSmall?: boolean
-    register: UseFormRegister<FieldValues>
-    placeholder?: string
-    errorMessage: string
-}
+import { PostInputType } from "@/app/@types"
 
 const PostInput = ({
     id,
@@ -29,7 +13,7 @@ const PostInput = ({
     register,
     placeholder,
     errorMessage
-}: IPostInput) => {
+}: PostInputType) => {
     return (
         <div className="flex flex-col">
             <label

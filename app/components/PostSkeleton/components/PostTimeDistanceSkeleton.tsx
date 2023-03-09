@@ -1,20 +1,10 @@
+import { PostSkeletonType } from "@/app/@types"
 import Skeleton from "react-loading-skeleton"
-
-interface IPostTimeDistanceSkeleton {
-    skeletonColorsLight: {
-        baseColor: string
-        highlightColor: string
-    }
-    skeletonColorsDark: {
-        baseColor: string
-        highlightColor: string
-    }
-}
 
 const PostTimeDistanceSkeleton = ({
     skeletonColorsLight,
     skeletonColorsDark
-}: IPostTimeDistanceSkeleton) => {
+}: PostSkeletonType) => {
     return (
         <>
             <div className="w-24 h-5 max-lg:w-20 max-lg:h-4 dark:hidden">

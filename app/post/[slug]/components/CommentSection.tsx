@@ -1,21 +1,9 @@
+import { Comment } from "@/app/@types"
 import Image from "next/image"
 import { MdVerified as VerifiedIcon } from 'react-icons/md'
 
 interface ICommentSection {
-    comments?: {
-        id: string
-        userId: string
-        postId: string
-        message: string
-        createdAt: string
-        user: {
-            emailVerified: boolean | null
-            email: string
-            image: string
-            name: string
-            id: string
-        }
-    }[]
+    comments: Comment[]
 }
 
 const CommentSection = ({ comments }: ICommentSection) => {

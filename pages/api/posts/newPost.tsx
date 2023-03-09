@@ -3,16 +3,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import prisma from '../../../prisma/client'
 import client from '../twitter/twitterConfig'
-
-interface IPost {
-    productImage: string
-    description: string
-    category: string
-    coupon: string
-    title: string
-    price: string
-    link: string
-}
+import { PostType } from '@/app/@types'
 
 export default async function handler(
   req: NextApiRequest,
@@ -27,7 +18,7 @@ export default async function handler(
     if (!session)
         return res.status(401).json({message: "Por favor, faça o login para criar um post!"})
     
-    const {title, category, link, price, coupon, description, productImage}: IPost = req.body.data
+    const {title, category, saleLink, price, coupon, description, bookImageURL}: PostType = req.body.data
     
     const user = await prisma.user.findUnique({
         where: {email: session?.user?.email || undefined}
@@ -37,18 +28,18 @@ export default async function handler(
         if (user) {
             const result = await prisma.post.create({
                 data: {
-                    bookImageURL: productImage,
+                    bookImageURL: bookImageURL,
                     description: description,
                     category: category,
                     coupon: coupon,
                     title: title,
                     price: price,
-                    saleLink: link,
+                    saleLink: saleLink,
                     userId: user.id
                 }
             })
             await client.post("statuses/update", {
-                status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${link}`
+                status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${saleLink}`
             })
             
             res.status(200).json(result)

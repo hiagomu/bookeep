@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Link from 'next/link'
 import { FaExternalLinkAlt as VisitIcon } from 'react-icons/fa'
+import { PostType } from '@/app/@types'
 
 const fecthDetails = async (slug: string) => {
     const response = await axios.get(`/api/posts/${slug}`)
@@ -21,52 +22,9 @@ interface IURL {
     }
 }
 
-interface IPost {
-    id: string
-    user: {
-        emailVerified: boolean | null
-        email: string
-        image: string
-        name: string
-        id: string
-    }
-    comments?: {
-        id: string
-        userId: string
-        postId: string
-        message: string
-        createdAt: string
-        user: {
-            emailVerified: boolean | null
-            email: string
-            image: string
-            name: string
-            id: string
-        }
-    }[]
-    likes?: {
-        id: string
-        postId: string
-        userId: string
-    }[]
-    boos: number
-    coupon: string
-    createdAt: Date
-    description?: string
-    title: string
-    price: string
-    seller: string
-    saleLink: string
-    marketplace: string
-    bookImageURL: string
-    userProfileURL: string
-    isUserVerified: boolean
-    isMarketplaceVerified: boolean
-}
-
 export default function PostDetail(url: IURL) {
 
-    const { data, isLoading } = useQuery<IPost>({
+    const { data, isLoading } = useQuery<PostType>({
         queryKey: ['detail-post'],
         queryFn: () => fecthDetails(url.params.slug)
     })

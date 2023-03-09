@@ -5,35 +5,7 @@ import Link from "next/link"
 import { Interactions } from "@/app/components/Interactions"
 import formatDistance from "date-fns/formatDistance"
 import { ptBR } from "date-fns/locale"
-
-interface IProduct {
-    id: string
-    title: string
-    price: string
-    seller: string
-    createdAt: Date
-    description?: string
-    bookImageURL: string
-    user: {
-        emailVerified: boolean | null
-        email: string
-        image: string
-        name: string
-        id: string
-    }
-    likes?: {
-        id: string
-        postId: string
-        userId: string
-    }[]
-    comments?: {
-        id: string
-        userId: string
-        postId: string
-        message: string
-        createdAt: string
-    }[]
-}
+import { PostDetailedType } from "@/app/@types"
 
 const Product = ({
     id,
@@ -46,7 +18,7 @@ const Product = ({
     createdAt,
     description,
     bookImageURL,
-}: IProduct) => {
+}: PostDetailedType) => {
 
     const today = Date.now()
 
