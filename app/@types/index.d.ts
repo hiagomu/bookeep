@@ -24,7 +24,6 @@ export interface PostType {
 export interface PostBoxType {
     id: string
     user: User
-    boos?: number
     price: string
     likes?: Like[]
     title: string
@@ -78,7 +77,7 @@ export interface User {
 
 export interface InteractionsType {
     id: string
-    boos: number
+    likes?: Like[]
     little?: boolean
     comments: number
 }

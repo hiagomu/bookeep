@@ -103,7 +103,7 @@ export const Post = ({
                     </div>
                     <Interactions
                         id={id}
-                        boos={likes?.length || 0}
+                        likes={likes}
                         comments={comments?.length || 0}
                     />
                 </div>
