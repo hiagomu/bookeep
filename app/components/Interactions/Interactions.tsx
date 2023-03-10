@@ -50,7 +50,7 @@ export const Interactions = ({
                         <BooIcon className={`mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1 ${currentUserLiked ? "text-red-400" : ""}`} />
                     }
                 </button>
-                <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs'>{likes?.length}</span>
+                <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs'>{likes?.length || 0}</span>
             </div>
             <div className='flex items-center'>
                 <CommentIcon className='mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1' />
