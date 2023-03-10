@@ -10,41 +10,7 @@ import { PostSkeleton } from "./components/PostSkeleton"
 import { toast } from "react-hot-toast"
 import { useMutation } from "@tanstack/react-query"
 import { FieldValues } from "react-hook-form"
-
-interface IPost {
-  bookImageURL: string
-  description: string
-  createdAt: Date
-  updatedAt: Date
-  published: boolean
-  category: string
-  saleLink: string
-  userId: string 
-  coupon: string
-  title:string
-  price: string
-  user: {
-    emailVerified: boolean | null
-    email: string
-    image: string
-    name: string
-    id: string
-  }
-  comments?: {
-    id: string
-    userId: string
-    postId: string
-    message: string
-    createdAt: string
-  }[]
-  likes?: {
-    id: string
-    postId: string
-    userId: string
-  }[]
-  id: string
-}
-
+import { PostType } from "./@types"
 
 const getPosts = async () => {
   const response = await axios.get('/api/posts/getPosts')
@@ -55,7 +21,7 @@ export default function Home() {
 
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
-  const { data, isLoading } = useQuery<IPost[]>({
+  const { data, isLoading } = useQuery<PostType[]>({
     queryFn: getPosts,
     queryKey: ["posts"],
     onError: err => err,
@@ -97,7 +63,7 @@ export default function Home() {
             isLoading ?
               <PostSkeleton count={5}/>
               : 
-              data?.map((post: IPost) => 
+              data?.map((post: PostType) => 
                 <Post
                   isMarketplaceVerified={true}
                   isUserVerified={true}

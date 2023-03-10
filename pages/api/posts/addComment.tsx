@@ -10,18 +10,24 @@ export default async function handler(
   const session = await getServerSession(req, res, authOptions)
   
   if (!session) {
-    return res.status(401).json({ message: "Por favor, faça login para comentar" })
+    return res
+      .status(401)
+      .json({ message: "Por favor, faça login para comentar!" })
   }
 
   const prismaUser = await prisma.user.findUnique({
-    where: {email: session?.user?.email || undefined}
+    where: {
+      email: session?.user?.email || undefined
+    }
   })
   
   if (req.method === "POST") {
     const { comment, id } = req.body.data
     
     if (!comment.length) {
-      return res.status(401).json({ message: "Adicione um comentário válido" })
+      return res
+        .status(401)
+        .json({ message: "Adicione um comentário válido" })
     }
     
     try {

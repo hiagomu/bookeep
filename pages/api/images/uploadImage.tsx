@@ -6,18 +6,16 @@ const s3 = new S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   signatureVersion: "v4",
-});
+})
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "GET") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
+  if (req.method !== "GET") return res.status(405).json({ message: "Method not allowed" })
 
   try {
-    let { name } = req.query;
+    let { name } = req.query
     const prefix = Math.random().toString(32).slice(2)
     const key = `${prefix}-${name}`.replaceAll(".", "_")
 
@@ -30,11 +28,11 @@ export default async function handler(
 
     const url = await uploadURL
 
-    res.status(200).json({ url });
+    res.status(200).json({ url })
   } catch (err) {
-    res.status(400).json({ message: err });
+    res.status(400).json({ message: err })
   }
-};
+}
 
 export const config = {
   api: {

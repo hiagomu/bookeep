@@ -3,14 +3,33 @@ import { FieldValues, UseFormRegister } from "react-hook-form"
 export interface PostType {
     id: string
     user: User
-    boos: number
+    boos?: number
     price: string
     likes?: Like[]
     title: string
     seller: string
-    coupon: string
+    coupon?: string
     category: string
     saleLink: string
+    comments?: Comment[]
+    createdAt: Date
+    marketplace: string
+    description?: string
+    bookImageURL: string
+    userProfileURL: string
+    isUserVerified: boolean
+    isMarketplaceVerified: boolean
+}
+
+export interface PostBoxType {
+    id: string
+    user: User
+    boos?: number
+    price: string
+    likes?: Like[]
+    title: string
+    seller: string
+    coupon?: string
     comments?: Comment[]
     createdAt: Date
     marketplace: string

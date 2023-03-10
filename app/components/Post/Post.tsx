@@ -9,7 +9,7 @@ import ptBR from "date-fns/locale/pt-BR"
 import Image from "next/image"
 import { useState } from "react"
 import { Actions } from "../Actions"
-import { PostType } from "@/app/@types"
+import { PostBoxType } from "@/app/@types"
 
 export const Post = ({
     id,
@@ -25,7 +25,7 @@ export const Post = ({
     userProfileURL,
     isUserVerified,
     isMarketplaceVerified
-}: PostType) => {
+}: PostBoxType) => {
 
     const today = Date.now()
     const [isActionsOpen, setIsActionsOpen] = useState(false)

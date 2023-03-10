@@ -9,19 +9,29 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    if (req.method !== "POST") {
-        res.status(405).end()
-    }
+    if (req.method !== "POST") return res.status(405).end()
 
     const session = await getServerSession(req, res, authOptions)
     
     if (!session)
-        return res.status(401).json({message: "Por favor, faça o login para criar um post!"})
+        return res
+            .status(401)
+            .json({message: "Por favor, faça o login para criar um post!"})
     
-    const {title, category, saleLink, price, coupon, description, bookImageURL}: PostType = req.body.data
+    const {
+        price,
+        title,
+        coupon,
+        category,
+        saleLink,
+        description,
+        bookImageURL
+    }: PostType = req.body.data
     
     const user = await prisma.user.findUnique({
-        where: {email: session?.user?.email || undefined}
+        where: {
+            email: session?.user?.email || undefined
+        }
     })
 
     try {
@@ -38,6 +48,7 @@ export default async function handler(
                     userId: user.id
                 }
             })
+
             await client.post("statuses/update", {
                 status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${saleLink}`
             })
@@ -45,7 +56,7 @@ export default async function handler(
             res.status(200).json(result)
         }
 
-    } catch(err) {
-        res.status(403).json({err: "Erro ocorreu durante a criação do post"})
+    } catch (err) {
+        res.status(403).json({ err })
     }
 }
