@@ -6,6 +6,7 @@ import { object, string } from 'yup';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
+import { User } from '@/app/@types';
 
 const newCommentSchema = object({
     comment:
@@ -16,6 +17,7 @@ const newCommentSchema = object({
   });
 interface ICommentInput {
     id: string
+    user: User
 }
 
 interface IComment {
@@ -23,7 +25,7 @@ interface IComment {
     comment: string
 }
 
-const CommentInput = ({ id }: ICommentInput) => {
+const CommentInput = ({ id, user }: ICommentInput) => {
     const { register, handleSubmit, reset } = useForm({
         resolver: yupResolver(newCommentSchema)
     });
@@ -61,7 +63,7 @@ const CommentInput = ({ id }: ICommentInput) => {
             >
                 <Image
                     alt="Imagem de perfil do usuário"
-                    src="https://lh3.googleusercontent.com/ogw/AAEL6sj1srioXDolAgpTtsrJsULc4pGEHcZnS3BOJT7i2w=s32-c-mo"
+                    src={user.image}
                     className="mr-2 rounded-full w-9 h-9 max-md:w-7 max-md:h-7"
                     width={36}
                     height={36}

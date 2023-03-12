@@ -74,7 +74,7 @@ export default function PostDetail(url: IURL) {
                     {
                         data &&
                         <>
-                            <CommentInput id={data.id}/>
+                            <CommentInput id={data.id} user={data.user}/>
                             {
                                 data.comments?.length !== undefined && data.comments?.length > 0 &&
                                 <CommentSection comments={data.comments}/>
