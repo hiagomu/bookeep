@@ -39,7 +39,7 @@ export default async function handler(
         })
 
         await client.post("statuses/update", {
-            status: `⭐️Promoção via Amazon\n\n📚${body.title}\n💰R$${body.price}\nConfira:${body.saleLink}`
+            status: `✨Promoção via Amazon\n\n📚${body.title}\n💵R$${body.price}\n🚨Confira:${body.saleLink}`
         })
 
         return res.status(200).json(result)
