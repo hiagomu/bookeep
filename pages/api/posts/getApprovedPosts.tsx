@@ -9,6 +9,9 @@ export default async function handler(
 
     try {
         const data = await prisma.post.findMany({
+            where: {
+                published: true
+            },
             include: {
                 user: true,
                 comments: true,
@@ -18,6 +21,7 @@ export default async function handler(
                 createdAt: "desc",
             }
         })
+        
         res.status(200).json(data)
     } catch(err) {
         res.status(403).json({ err })

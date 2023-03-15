@@ -10,6 +10,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { Actions } from "../Actions"
 import { PostBoxType } from "@/app/@types"
+import { ReviewButtons } from "../ReviewButtons"
 
 export const Post = ({
     id,
@@ -18,10 +19,15 @@ export const Post = ({
     title,
     price,
     seller,
+    coupon,
+    category,
+    saleLink,
     comments,
     createdAt,
     marketplace,
+    description,
     bookImageURL,
+    interactions,
     userProfileURL,
     isUserVerified,
     isMarketplaceVerified
@@ -101,11 +107,26 @@ export const Post = ({
                             { isUserVerified && <VerifiedIcon className="text-primaryColor max-sm:text-xs"/> }
                         </div>
                     </div>
-                    <Interactions
-                        id={id}
-                        likes={likes}
-                        comments={comments?.length || 0}
-                    />
+                    {
+                        interactions ?
+                        <Interactions
+                            id={id}
+                            likes={likes}
+                            comments={comments?.length || 0}
+                        />
+                        :
+                        <ReviewButtons
+                            id={id}
+                            price={price}
+                            title={title}
+                            coupon={coupon || ""}
+                            userId={user.id}
+                            saleLink={saleLink}
+                            category={category}
+                            description={description}
+                            bookImageURL={bookImageURL}
+                        />
+                    }
                 </div>
             </div>
             <Link

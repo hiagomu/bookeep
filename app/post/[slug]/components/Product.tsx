@@ -17,7 +17,7 @@ const Product = ({
     comments,
     createdAt,
     description,
-    bookImageURL,
+    bookImageURL
 }: PostDetailedType) => {
 
     const today = Date.now()

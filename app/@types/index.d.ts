@@ -28,12 +28,15 @@ export interface PostBoxType {
     likes?: Like[]
     title: string
     seller: string
-    coupon?: string
+    coupon: string
+    category: string,
+    saleLink: string,
     comments?: Comment[]
     createdAt: Date
     marketplace: string
-    description?: string
+    description: string
     bookImageURL: string
+    interactions?: boolean 
     userProfileURL: string
     isUserVerified: boolean
     isMarketplaceVerified: boolean

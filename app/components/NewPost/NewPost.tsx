@@ -23,7 +23,7 @@ const newPostSchema = object({
     .min(3, "O título deve ter o mínimo de 3 caracteres")
     .max(60, "O título deve ter o máximo de 60 caracteres")
     .required(),
-  link:
+  saleLink:
     string()
     .url("Insira uma URL válida")
     .required("O link é obrigatório"),
@@ -36,7 +36,7 @@ const newPostSchema = object({
     .required("O preço é obrigatório"),
   coupon: string().max(30, "O cupom deve ter o máximo de 30 caracteres"),
   description: string().max(500, "A descrição dever ter no máximo 500 caracteres"),
-  productImage: mixed().test("required", "A imagem do produto é obrigatória", (file: any) => {
+  bookImageURL: mixed().test("required", "A imagem do produto é obrigatória", (file: any) => {
     if (file.length !== 0) return true
     return false
   }),
@@ -60,10 +60,10 @@ export const NewPost = ({
       category: data.category,
       coupon: data.coupon,
       description: data.description,
-      link: data.link,
+      saleLink: data.saleLink,
       price: data.price,
       title: data.title,
-      productImage: productImage
+      bookImageURL: productImage
     })
     reset()
   }

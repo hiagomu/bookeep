@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from "next-auth/next"
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import prisma from '../../../prisma/client'
-import client from '../twitter/twitterConfig'
 import { PostType } from '@/app/@types'
 
 export default async function handler(
@@ -47,10 +46,6 @@ export default async function handler(
                     saleLink: saleLink,
                     userId: user.id
                 }
-            })
-
-            await client.post("statuses/update", {
-                status: `⭐️Promoção via Amazon\n\n📚${title}\n💰R$${price}\nConfira:${saleLink}`
             })
             
             res.status(200).json(result)

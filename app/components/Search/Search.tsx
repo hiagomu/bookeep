@@ -3,11 +3,13 @@
 import { BsSearch as SearchIcon } from 'react-icons/bs'
 
 interface ISearch {
-    setIsOpen: (isOpen: boolean) => void
+    setIsOpen?: (isOpen: boolean) => void
+    isReviewPage?: boolean
 }
 
 export const Search = ({
-    setIsOpen
+    setIsOpen,
+    isReviewPage
 }: ISearch) => {
     return (
         <div
@@ -29,12 +31,15 @@ export const Search = ({
                     />
                 </button>
             </div>
-            <button
-                className="bg-primaryColor font-poppins h-9 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-base font-medium max-sm:text-xs max-sm:h-7"
-                onClick={() => setIsOpen(true)}
-            >
-                Novo
-            </button>
+            {
+                !isReviewPage && setIsOpen &&
+                <button
+                    className="bg-primaryColor font-poppins h-9 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-base font-medium max-sm:text-xs max-sm:h-7"
+                    onClick={() => setIsOpen(true)}
+                >
+                    Novo
+                </button>
+            }
         </div>
     )
 }
