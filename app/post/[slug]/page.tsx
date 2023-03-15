@@ -39,6 +39,7 @@ export default function PostDetail(url: IURL) {
                             bookImageURL={data.bookImageURL}
                             description={data.description}
                             createdAt={data.createdAt}
+                            published={data.published}
                             comments={data.comments}
                             seller={"Amazon"}
                             title={data.title}

@@ -16,6 +16,7 @@ const Product = ({
     seller,
     comments,
     createdAt,
+    published,
     description,
     bookImageURL
 }: PostDetailedType) => {
@@ -28,15 +29,22 @@ const Product = ({
                 <span
                     className="block text-primaryColor dark:text-slate-400 font-poppins font-medium w-full text-right text-sm serif max-md:text-xs"
                 >
-                    {formatDistance(new Date(createdAt), today, {
-                        locale: ptBR,
-                    })}
+                    {
+                        published ?
+                            formatDistance(new Date(createdAt), today, {
+                                locale: ptBR,
+                            })
+                            : "Aguardando análise"
+                    }
                 </span>
-                <button
-                    className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"
-                >
-                    <OptionsIcon className="text-primaryColor"/>
-                </button>
+                {
+                    published &&
+                        <button
+                            className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"
+                        >
+                            <OptionsIcon className="text-primaryColor"/>
+                        </button>
+                }
             </div>
             <div className='flex'>
                 <Image

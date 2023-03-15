@@ -24,6 +24,7 @@ export const Post = ({
     saleLink,
     comments,
     createdAt,
+    published,
     marketplace,
     description,
     bookImageURL,
@@ -45,17 +46,26 @@ export const Post = ({
                     <span
                         className="font-poppins block text-primaryColor dark:text-slate-400 font-semibold w-full text-right text-sm serif max-sm:text-xs"
                     >
-                        {formatDistance(new Date(createdAt), today, {
-                            locale: ptBR,
-                        })}
+                        {
+                            published ?
+                                formatDistance(new Date(createdAt), today, {
+                                    locale: ptBR,
+                                })
+                                : "Aguardando análise"
+                        }
                     </span>
-                    <button
-                        className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"
-                        onClick={() => setIsActionsOpen(!isActionsOpen)}
-                    >
-                        <OptionsIcon className="text-primaryColor"/>
-                    </button>
-                    <Actions user={user} postId={id} isActionsOpen={isActionsOpen} setIsActionsOpen={setIsActionsOpen}/>
+                    {
+                        published &&
+                            <>
+                                <button
+                                    className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"
+                                    onClick={() => setIsActionsOpen(!isActionsOpen)}
+                                >
+                                    <OptionsIcon className="text-primaryColor"/>
+                                </button>
+                                <Actions user={user} postId={id} isActionsOpen={isActionsOpen} setIsActionsOpen={setIsActionsOpen}/>
+                            </>
+                    }
                 </div>
                 <div className="flex relative">
                         <Image

@@ -10,6 +10,7 @@ export interface PostType {
     seller: string
     coupon?: string
     category: string
+    published: boolean
     saleLink: string
     comments?: Comment[]
     createdAt: Date
@@ -32,6 +33,7 @@ export interface PostBoxType {
     category: string,
     saleLink: string,
     comments?: Comment[]
+    published: boolean
     createdAt: Date
     marketplace: string
     description: string
@@ -51,6 +53,7 @@ export interface PostDetailedType {
     seller: string
     comments?: Comment[]
     createdAt: Date
+    published: boolean
     description?: string
     bookImageURL: string
 }

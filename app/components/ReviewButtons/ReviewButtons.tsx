@@ -53,7 +53,10 @@ export const ReviewButtons = ({
                 Aprovar
                 <ApproveIcon className="text-white ml-2 max-sm:ml-1"/>
             </button>
-            <button className="bg-red-500 hover:opacity-50 py-1 px-2 rounded-lg font-bold text-sm flex items-center justify-center max-sm:text-xs max-sm:py-0.5">
+            <button
+                className="bg-red-500 hover:opacity-50 py-1 px-2 rounded-lg font-bold text-sm flex items-center justify-center max-sm:text-xs max-sm:py-0.5"
+                
+            >
                 Rejeitar
                 <RejectIcon className="text-white ml-2 max-sm:ml-1"/>
             </button>
