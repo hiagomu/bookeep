@@ -54,7 +54,7 @@ const Product = ({
                     height={192}
                     className="mr-5 max-xl:w-24 max-xl:h-36 max-lg:w-32 max-lg:h-44 max-sm:w-24 max-sm:h-40 rounded"
                 />
-                <div className='relative'>
+                <div className='relative break-words w-[41.25rem] max-xl:w-[32.75rem] max-lg:w-[30.75rem] max-md:w-[22.75rem] max-sm:w-[10.75rem]'>
                     <h1 className="block text-black dark:text-white text-2xl font-poppins font-bold max-xl:text-lg max-sm:text-sm max-sm:w-[10.75rem] max-sm:line-clamp-2">
                         {title}
                     </h1>
@@ -65,7 +65,7 @@ const Product = ({
                             { true && <VerifiedIcon className="text-primaryColor max-sm:text-xs"/> }
                         </div>
                     </div>
-                    { description && <p className='text-sm font-medium mt-2 text-black dark:text-white max-xl:line-clamp-4 max-md:text-xs max-md:mt-1 max-sm:h-24 max-sm:line-clamp-6'>{description}</p> }
+                    { description && <p className='text-sm font-medium mt-2 break-words text-black dark:text-white max-xl:line-clamp-4 max-md:text-xs max-md:mt-1 max-sm:h-24 max-sm:line-clamp-6 max-sm:w-[10.75rem]'>{description}</p> }
                     <div className="flex items-center mt-3 max-xl:mt-2 max-lg:mt-2 max-sm:mb-8 ">
                         <Image
                             alt="Imagem de perfil do usuário"

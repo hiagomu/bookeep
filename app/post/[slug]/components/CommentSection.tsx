@@ -25,7 +25,7 @@ const CommentSection = ({ comments }: ICommentSection) => {
                                 {comment.user.name}
                                 { true && <VerifiedIcon className="text-primaryColor max-sm:text-xs ml-1"/> }
                             </span>
-                            <p className='text-black dark:text-white max-md:text-sm'>{comment.message}</p>
+                            <p className='text-black dark:text-white max-md:text-sm break-words w-[46rem] max-xl:w-[35rem] max-md:w-[27.5rem] max-sm:w-[13.5rem]'>{comment.message}</p>
                         </div>
                     </div>
                 })
