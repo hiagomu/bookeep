@@ -21,7 +21,7 @@ export default function Home() {
 
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
-  const { data, isLoading } = useQuery<PostType[]>({
+  const { data, isLoading, status } = useQuery<PostType[]>({
     queryFn: getPosts,
     queryKey: ["posts"],
     onError: err => err,
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
         <div  className="mt-40 z-0 max-sm:mt-28">
           {
-            isLoading ?
+            status === "loading" || isLoading ?
               <PostSkeleton count={5}/>
               : 
               data?.map((post: PostType) => 

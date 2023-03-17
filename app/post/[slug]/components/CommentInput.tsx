@@ -7,6 +7,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import { User } from '@/app/@types';
+import { useSession } from 'next-auth/react'
+import defaultProfileImage from '../../../../public/assets/default_user.png'
 
 const newCommentSchema = object({
     comment:
@@ -31,6 +33,7 @@ const CommentInput = ({ id, user }: ICommentInput) => {
     });
     const queryClient = useQueryClient()
     let commentToastID: string
+    const { data: session } = useSession()
 
     const { mutate } = useMutation(
         async (data: IComment) => { return axios.post('/api/posts/addComment', {data})},
@@ -63,7 +66,7 @@ const CommentInput = ({ id, user }: ICommentInput) => {
             >
                 <Image
                     alt="Imagem de perfil do usuário"
-                    src={user.image}
+                    src={session?.user.image ||  defaultProfileImage}
                     className="mr-2 rounded-full w-9 h-9 max-md:w-7 max-md:h-7"
                     width={36}
                     height={36}
