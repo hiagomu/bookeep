@@ -11,6 +11,7 @@ import { toast } from "react-hot-toast"
 import { useMutation } from "@tanstack/react-query"
 import { FieldValues } from "react-hook-form"
 import { PostType } from "./@types"
+import { useSession } from "next-auth/react"
 
 const getPosts = async () => {
   const response = await axios.get('/api/posts/getApprovedPosts')
@@ -18,6 +19,10 @@ const getPosts = async () => {
 }
 
 export default function Home() {
+
+  const session = useSession()
+
+  console.log(session)
 
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)

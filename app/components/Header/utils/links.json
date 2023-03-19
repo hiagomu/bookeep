@@ -1,14 +1,17 @@
 [
     {
         "href": "/",
-        "name": "For you"
+        "name": "For you",
+        "access_level": ["admin", "client"]
     },
     {
         "href": "/review",
-        "name": "Review"
+        "name": "Review",
+        "access_level": ["admin"]
     },
     {
         "href": "/",
-        "name": "Market"
+        "name": "Market",
+        "access_level": ["admin", "client"]
     }
 ]

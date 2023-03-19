@@ -9,16 +9,18 @@ export default async function Navbar() {
 
     const session = await getServerSession(authOptions)
 
+    const userLinks = links.filter(link => link.access_level.includes(session?.user.user_access_level || "client"))
+
     return (
         <nav className='flex items-center max-sm:hidden'>
             <ul className="z-40">
                 {
-                    links.map(link =>
+                    userLinks.map(link =>
                         <NavbarLink
                             key={link.name}
                             href={link.href}
                             name={link.name}
-                        />
+                        />    
                     )
                 }
             </ul>

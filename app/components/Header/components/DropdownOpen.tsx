@@ -9,10 +9,12 @@ const DropdownOpen  = async () => {
 
     const session = await getServerSession(authOptions)
 
+    const userLinks = links.filter(link => link.access_level.includes(session?.user.user_access_level || "client"))
+
     return (
         <nav className='flex absolute flex-col items-center py-3 bg-white dark:bg-secondaryDarkColor shadow-secondary rounded-lg right-0 top-0 mt-10 z-10'>
             {
-                links.map((link, index) => 
+                userLinks.map((link, index) => 
                     <DropdownLink name={link.name} href={link.href} key={index}/>
                 )
             }

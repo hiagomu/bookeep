@@ -68,10 +68,12 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  isVerified    Boolean @default(false)
+  access_level  enum_users_access_level @default(client)
   accounts      Account[]
   sessions      Session[]
-  posts          Post[]
-  comments Comment[]
+  posts         Post[]
+  comments      Comment[]
   likes         Like[]
 }
 
@@ -89,4 +91,9 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+enum enum_users_access_level {
+  client
+  admin
 }
