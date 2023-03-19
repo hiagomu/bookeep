@@ -20,6 +20,7 @@ export const authOptions = {
       if (session?.user) {
         session.user.id = user.id;
         const user_acess_level = await axios.get('http://localhost:3000/api/posts/getUserById', { params: {id: user.id}})
+          .catch(err => console.log(err))
         session.user.user_access_level = user_acess_level.data.access_level
       }
       return session;
