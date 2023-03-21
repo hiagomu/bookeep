@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import prisma from '../../../prisma/client'
 import { authOptions } from '../auth/[...nextauth]'
 import client from '../twitter/twitterConfig'
+import TelegramBot from "node-telegram-bot-api"
 
 export default async function handler(
     req: NextApiRequest,
@@ -37,10 +38,18 @@ export default async function handler(
                 published: true
             }
         })
+        
+        const bot = new TelegramBot(String(process.env.TELEGRAM_API_TOKEN))
+        
+        try {
+            bot.sendMessage("@starbooksbr", `✨Promoção via Amazon\n\n📚${body.title}\n💵R$${body.price}\n🚨Confira:${body.saleLink}`);
+        } catch (err) {
+            console.log(err)
+        }
 
-        await client.post("statuses/update", {
-            status: `✨Promoção via Amazon\n\n📚${body.title}\n💵R$${body.price}\n🚨Confira:${body.saleLink}`
-        })
+        // await client.post("statuses/update", {
+        //     status: `✨Promoção via Amazon\n\n📚${body.title}\n💵R$${body.price}\n🚨Confira:${body.saleLink}`
+        // })
 
         return res.status(200).json(result)
     } catch (err) {

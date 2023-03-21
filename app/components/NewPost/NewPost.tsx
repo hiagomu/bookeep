@@ -53,8 +53,8 @@ export const NewPost = ({
   const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm({
     resolver: yupResolver(newPostSchema)
   });
-
-  const onSubmit = (data: FieldValues) => {
+  
+  const onSubmit = async (data: FieldValues) => {
     setIsOpen(false)
     createPost({
       category: data.category,
@@ -68,7 +68,7 @@ export const NewPost = ({
     reset()
   }
 
-  const onClose = () => {
+  const handleReset = () => {
     setIsOpen(false)
     reset()
   }
@@ -178,7 +178,7 @@ export const NewPost = ({
               <div className="flex w-full justify-end mt-4">
                 <button
                   className="bg-zinc-500 rounded text-sm py-2 px-3 font-poppins font-semibold mr-4 outline-none hover:bg-zinc-400 max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
-                  onClick={onClose}
+                  onClick={handleReset}
                 >
                   Cancel
                 </button>
