@@ -73,7 +73,7 @@ export default async function handler(
                 })
         }
 
-        downloadImageFromS3(`@${process.env.BUCKET_NAME}`, body.bookImageURL.split('/')[3], (imageBuffer: Buffer) => {
+        downloadImageFromS3(`${process.env.BUCKET_NAME}`, body.bookImageURL.split('/')[3], (imageBuffer: Buffer) => {
             sendImageToTelegramChannel(`@${process.env.TELEGRAM_CHANNEL}`, imageBuffer)
         })
 

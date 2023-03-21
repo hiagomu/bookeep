@@ -6,6 +6,8 @@ import { Search } from "../components/Search"
 import { useQuery } from "@tanstack/react-query"
 import { PostSkeleton } from "../components/PostSkeleton"
 import { PostType } from "../@types"
+import Image from "next/image"
+import noReviewImage from "../../public/assets/no_review.svg"
 
 const getPosts = async () => {
   const response = await axios.get('/api/posts/getPendingPosts')
@@ -52,6 +54,19 @@ export default function Home() {
                   id={post.id}
                 />
               )
+          }
+          {
+            data?.length === 0 &&
+            <div className="flex justify-center flex-col items-center">
+              <span className="mb-6 text-2xl font-bold text-primaryColor dark:text-white max-md:text-xl text-center max-sm:w-[12rem] max-sm:text-lg">Sem anúncios para analisar no momento</span>
+              <Image
+                alt="Sem anúcios"
+                src={noReviewImage}
+                width={180}
+                height={180}
+                className="max-sm:w-[8rem] max-sm:h-[8rem]"
+              />
+            </div>
           }
         </div>
       </main>
