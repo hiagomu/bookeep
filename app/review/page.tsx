@@ -48,6 +48,7 @@ export default function Home() {
                   price={post.price}
                   title={post.title}
                   createdAt={post.createdAt}
+                  updatedAt={post.updatedAt}
                   likes={post.likes}
                   user={post.user}
                   key={post.id}
