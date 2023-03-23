@@ -18,7 +18,7 @@ export default async function handler(
                 likes: true
             },
             orderBy: {
-                createdAt: "desc",
+                updatedAt: "desc",
             }
         })
         

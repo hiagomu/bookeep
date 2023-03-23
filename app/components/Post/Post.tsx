@@ -23,7 +23,7 @@ export const Post = ({
     category,
     saleLink,
     comments,
-    createdAt,
+    updatedAt,
     published,
     marketplace,
     description,
@@ -48,7 +48,7 @@ export const Post = ({
                     >
                         {
                             published ?
-                                formatDistance(new Date(createdAt), today, {
+                                formatDistance(new Date(updatedAt), today, {
                                     locale: ptBR,
                                 })
                                 : "Aguardando análise"

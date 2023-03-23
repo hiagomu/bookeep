@@ -3,7 +3,6 @@ import { FieldValues, UseFormRegister } from "react-hook-form"
 export interface PostType {
     id: string
     user: User
-    boos?: number
     price: string
     likes?: Like[]
     title: string
@@ -14,6 +13,7 @@ export interface PostType {
     saleLink: string
     comments?: Comment[]
     createdAt: Date
+    updatedAt: Date
     marketplace: string
     description?: string
     bookImageURL: string
@@ -35,6 +35,7 @@ export interface PostBoxType {
     comments?: Comment[]
     published: boolean
     createdAt: Date
+    updatedAt: Date
     marketplace: string
     description: string
     bookImageURL: string
