@@ -30,7 +30,7 @@ export const Share = ({
     setIsOpen
 }: IShare) => {
 
-    const shareTitle = "Aproveite a promoção, acesse o link anexado 😉"
+    const shareTitle = "Aproveite a promoção, acesse o link anexado 😉\n"
     let toastPostID: string
 
     return (
@@ -39,9 +39,9 @@ export const Share = ({
             setIsOpen={setIsOpen}
         >
             <div className="p-5 max-sm:p-3">
-                <h1 className="text-xl font-bold font-poppins max-sm:text-lg">Compartilhar</h1>
+                <h1 className="text-xl font-bold font-poppins max-sm:text-lg dark:text-white text-primaryColor">Compartilhar</h1>
                 <div className="mt-4 text-sm">
-                    <span className="font-poppins font-medium max-sm:text-sm">Compartilhar link via:</span>
+                    <span className="font-poppins font-medium dark:text-white text-gray-400 max-sm:text-sm">Compartilhar link via:</span>
                     <ul className="flex justify-between mt-3">
                         <li className="p-3 rounded-full bg-facebook h-11 w-11 flex justify-center items-center max-sm:h-9 max-sm:w-9">
                             <FacebookShareButton
@@ -85,11 +85,11 @@ export const Share = ({
                     </ul>
                 </div>
                 <div className="mt-5">
-                    <span className="font-poppins font-medium max-sm:text-sm">Copiar link:</span>
-                    <div className="mt-3 bg-secondaryDarkColor rounded-md flex items-center py-1 px-1">
+                    <span className="font-poppins font-medium dark:text-white text-gray-400 max-sm:text-sm">Copiar link:</span>
+                    <div className="mt-3 dark:bg-secondaryDarkColor bg-gray-400 rounded-md flex items-center py-1 px-1">
                         <LinkIcon className="ml-1"/>
                         <input
-                            value={`bookeep.io/${postId}`}
+                            value={`bookeep.io/posts/${postId}`}
                             className="outline-none mr-2 px-2 bg-transparent overflow-hidden max-sm:text-xs"
                             type="text"
                             readOnly
@@ -97,7 +97,7 @@ export const Share = ({
                         <button
                             className="bg-primaryColor hover:bg-primaryHoverColor py-1 px-1.5 rounded-sm max-sm:text-sm"
                             onClick={() => {
-                                navigator.clipboard.writeText(`https://bookeep.io/${postId}`)
+                                navigator.clipboard.writeText(`https://bookeep.io/posts/${postId}`)
                                 toast.success("Copiado para área de transferência", {id: toastPostID})
                             }}
                         >
