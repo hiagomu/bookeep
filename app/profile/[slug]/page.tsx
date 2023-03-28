@@ -42,9 +42,9 @@ export default function Home() {
   })
 
   return (
-      <main className="flex justify-center h-fit relative" >
+      <main className="flex justify-center h-fit relative max-lg:flex-col" >
         <Profile posts={posts.data} user={userData?.data}/>
-        <div  className="mt-28 z-0 max-sm:mt-28">
+        <div  className="mt-28 z-0 max-lg:mt-8 max-sm:mt-6">
           {
             posts.status === "loading" || posts.isLoading ?
               <PostSkeleton count={5}/>

@@ -76,6 +76,9 @@ export interface Comment {
 
 export interface User {
     id: string
+    bio?: string
+    createdAt: Date
+    interests: string[]
     name: string
     email: string
     image: string

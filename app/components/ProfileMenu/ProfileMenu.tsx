@@ -31,7 +31,7 @@ export const ProfileMenu = ({
                         src={profilePic}
                         className="rounded-full mr-2"
                     />
-                    <span className="block text-black dark:text-white text-sm w-24 truncate">{name || "a"}</span>
+                    <span className="block text-black dark:text-white text-sm w-28 truncate">{name || ""}</span>
                 </div>
                 <div className="w-full border-b border-slate-100 dark:border-slate-500 pb-2">
                     <Link href={`/profile/${session?.user.id}`} className="flex w-full mt-1 py-1.5 px-2 rounded items-center outline-none hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor">

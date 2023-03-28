@@ -25,7 +25,7 @@ const LoggedButton = ({
     const [isSignOutOpen, setIsSignOutOpen] = useState(false)
 
     return (
-        <>
+        <div className='relative'>
             <SignOut isOpen={isSignOutOpen} setIsOpen={setIsSignOutOpen}/>
             {
                 isProfileMenuOpen && !isDropdown &&
@@ -68,7 +68,7 @@ const LoggedButton = ({
                     onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                 />
             }
-        </>
+        </div>
     )
 }
 
