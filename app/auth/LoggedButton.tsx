@@ -8,6 +8,7 @@ import { MdLogout as SingOutIcon } from 'react-icons/md'
 import { BsFilePerson as ProfileCardIcon } from 'react-icons/bs'
 import Link from 'next/link'
 import { SignOut } from '../components/SignOut'
+import { useSession } from 'next-auth/react'
 
 interface ILoggedButton {
     name: string
@@ -23,6 +24,7 @@ const LoggedButton = ({
 
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
     const [isSignOutOpen, setIsSignOutOpen] = useState(false)
+    const { data: session } = useSession()
 
     return (
         <div className='relative'>
@@ -34,8 +36,9 @@ const LoggedButton = ({
             {
                 isDropdown ?
                 <div className='px-2'>
-                    <div
+                    <Link
                         className='flex items-center py-1.5 cursor-pointer border-y border-slate-200 dark:border-slate-500'
+                        href={`/profile/${session?.user.id}`}
                     >
                         <Image
                             width={26}
@@ -45,9 +48,9 @@ const LoggedButton = ({
                             className="rounded-full mr-2"
                         />
                         <span className='font-medium text-xs truncate w-24 text-primaryColor dark:text-white hover:underline decoration-2'>{name}</span>
-                    </div>
+                    </Link>
                     <div className="w-full border-b border-slate-100 dark:border-slate-500 pb-2">
-                        <Link href="/" className="flex w-full mt-1 py-1.5 px-2 rounded items-center outline-none hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor">
+                        <Link href={`/profile/${session?.user.id}`} className="flex w-full mt-1 py-1.5 px-2 rounded items-center outline-none hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor">
                             <ProfileCardIcon className='text-slate-600 dark:text-slate-200 w-4 h-4 mr-2' />
                             <span className="text-black dark:text-white text-xs">Meu perfil</span>
                         </Link>
