@@ -1,10 +1,8 @@
 "use client"
 
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import axios, { AxiosError } from "axios"
-import { PostType } from '@/app/@types'
-import { FieldValues } from "react-hook-form"
-import { toast } from "react-hot-toast"
+import { PostType, User } from '@/app/@types'
 import { Profile } from "@/app/components/Profile"
 import { PostSkeleton } from "@/app/components/PostSkeleton"
 import { Post } from "@/app/components/Post"
@@ -12,7 +10,6 @@ import { usePathname } from 'next/navigation'
 
 export default function Home() {
   const userId = usePathname()?.split("/")[2]
-  const queryClient = useQueryClient()
 
   const getPostsByUser = async () => {
     const response = await axios.get('/api/posts/getPostsByUser', {
@@ -23,21 +20,36 @@ export default function Home() {
     return response.data
   }
 
-  const { data, isLoading, status } = useQuery<PostType[]>({
+  const getUserById = async () => {
+    const response = await axios.get('/api/posts/getUserById', {
+        params: {
+            id: userId
+        }
+    })
+    return response.data
+}
+
+  const posts = useQuery<PostType[]>({
     queryFn: getPostsByUser,
     queryKey: ["userPosts"],
     onError: err => err,
   })
 
+  const userData = useQuery<User>({
+    queryFn: getUserById,
+    queryKey: ["userData"],
+    onError: err => err,
+  })
+
   return (
       <main className="flex justify-center h-fit relative" >
-        <Profile posts={data}/>
+        <Profile posts={posts.data} user={userData?.data}/>
         <div  className="mt-28 z-0 max-sm:mt-28">
           {
-            status === "loading" || isLoading ?
+            posts.status === "loading" || posts.isLoading ?
               <PostSkeleton count={5}/>
-              : 
-              data?.map((post: PostType) => 
+              :
+              posts.data?.map((post: PostType) => 
                 <Post
                   published={post.published}
                   category={post.category}

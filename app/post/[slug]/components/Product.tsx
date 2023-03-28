@@ -6,7 +6,6 @@ import { Interactions } from "@/app/components/Interactions"
 import formatDistance from "date-fns/formatDistance"
 import { ptBR } from "date-fns/locale"
 import { PostDetailedType } from "@/app/@types"
-import { useSession } from "next-auth/react"
 
 const Product = ({
     id,
@@ -23,7 +22,6 @@ const Product = ({
 }: PostDetailedType) => {
 
     const today = Date.now()
-    const { data: session } = useSession()
 
     return (
         <div className="w-[51rem] h-[17rem] flex flex-col relative max-xl:w-[40rem] max-xl:h-[14rem] max-md:w-[32rem] max-sm:w-[18rem] max-sm:h-fit">
@@ -77,7 +75,7 @@ const Product = ({
                             height={24}
                         />
                         <Link
-                            href={`/profile/${session?.user.id}`}
+                            href={`/profile/${user.id}`}
                             className="text-primaryColor dark:text-white mr-2 font-medium font-poppins max-xl:text-sm max-md:text-xs max-sm:mr-1"
                         >
                             {user.name}

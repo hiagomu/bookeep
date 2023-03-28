@@ -1,12 +1,14 @@
 import Image from "next/image"
 import { BsCamera as PhotoIcon } from "react-icons/bs"
 import { FaRegCalendarAlt as CalendarIcon } from "react-icons/fa"
+import { User } from '@/app/@types'
 
 interface IProfile {
     posts: any
+    user?: User
 }
 
-export const Profile = ({ posts }: IProfile) => {
+export const Profile = ({ posts, user }: IProfile) => {
 
     const today = new Date().getDay()
     const todayPosts = posts?.filter((post: any) =>  new Date(post.createdAt).getDay() === today)
@@ -19,7 +21,7 @@ export const Profile = ({ posts }: IProfile) => {
                 <div className="relative">
                     <Image
                         alt="Foto de Perfil"
-                        src={"https://lh3.googleusercontent.com/a/AGNmyxbIG4GCxMq-02DDguCNe4OaUq0aXxo9L8CYUvbF4Q=s96-c"}
+                        src={user?.image || ""}
                         width={85}
                         height={85}
                         className="rounded-full"
@@ -28,7 +30,7 @@ export const Profile = ({ posts }: IProfile) => {
                         <PhotoIcon />
                     </div>
                 </div>
-                <span className="ml-4 mt-14 text-xl font-bold font-poppins text-black dark:text-white">Hiago Murilo</span>
+                <span className="ml-4 mt-14 text-xl font-bold font-poppins text-black dark:text-white">{user?.name}</span>
             </div>
             <p className="mt-12 ml-5 font-poppins text-black text-opacity-60 font-semibold dark:text-white">Lorem ipsum dolor sit amet, consectetur</p>
             <div className="mt-2 ml-5 flex items-center">
