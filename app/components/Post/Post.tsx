@@ -11,6 +11,7 @@ import { useState } from "react"
 import { Actions } from "../Actions"
 import { PostBoxType } from "@/app/@types"
 import { ReviewButtons } from "../ReviewButtons"
+import { useSession } from "next-auth/react"
 
 export const Post = ({
     id,
@@ -35,6 +36,7 @@ export const Post = ({
 }: PostBoxType) => {
 
     const today = Date.now()
+    const { data: session } = useSession()
     const [isActionsOpen, setIsActionsOpen] = useState(false)
 
     return (
@@ -109,7 +111,7 @@ export const Post = ({
                                 height={24}
                             />
                             <Link
-                                href={userProfileURL}
+                                href={`/profile/${session?.user.id}`}
                                 className="font-poppins text-primaryColor dark:text-white mr-2 font-medium max-xl:text-sm max-sm:text-xs max-sm:mr-1"
                             >
                                 {seller}

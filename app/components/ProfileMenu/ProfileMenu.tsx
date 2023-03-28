@@ -5,6 +5,7 @@ import { BsFilePerson as ProfileCardIcon } from 'react-icons/bs'
 import { MdLogout as SingOutIcon } from 'react-icons/md'
 import Image from "next/image"
 import { Darkmode } from "../Darkmode"
+import { useSession } from "next-auth/react"
 
 interface IProfileMenu {
     profilePic: string
@@ -16,6 +17,7 @@ export const ProfileMenu = ({
 }: IProfileMenu) => {
     
     const [isOpen, setIsOpen] = useState(false)
+    const { data: session } = useSession()
 
     return (
         <>
@@ -32,7 +34,7 @@ export const ProfileMenu = ({
                     <span className="block text-black dark:text-white text-sm w-24 truncate">{name || "a"}</span>
                 </div>
                 <div className="w-full border-b border-slate-100 dark:border-slate-500 pb-2">
-                    <Link href="/" className="flex w-full mt-1 py-1.5 px-2 rounded items-center outline-none hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor">
+                    <Link href={`/profile/${session?.user.id}`} className="flex w-full mt-1 py-1.5 px-2 rounded items-center outline-none hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor">
                         <ProfileCardIcon className='text-slate-600 dark:text-slate-200 w-5 h-5 mr-2' />
                         <span className="text-black dark:text-white text-sm">Meu perfil</span>
                     </Link>
