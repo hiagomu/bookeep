@@ -43,7 +43,9 @@ export default function Home() {
 
   return (
       <main className="flex justify-center h-fit relative max-lg:flex-col" >
-        <Profile posts={posts.data} user={userData?.data}/>
+        <div className="relative w-[25rem] h-[26.5rem] mt-28 mr-24 max-xl:w-[19rem] max-xl:h-[23rem] max-xl:mr-8 max-lg:mr-0 max-lg:mt-20 max-lg:w-post-lg max-md:w-post-md max-sm:w-post-sm max-sm:h-[18rem]">
+          <Profile posts={posts.data} user={userData?.data}/>
+        </div>
         <div  className="mt-28 z-0 max-lg:mt-8 max-sm:mt-6">
           {
             posts.status === "loading" || posts.isLoading ?
