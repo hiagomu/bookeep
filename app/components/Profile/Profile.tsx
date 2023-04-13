@@ -13,7 +13,7 @@ export const Profile = ({ posts, user }: IProfile) => {
 
     const today = new Date().getDay()
     const todayPosts = posts?.filter((post: any) =>  new Date(post.createdAt).getDay() === today)
-    const inReviewPosts = posts?.filter((post: any) =>  !post.published)
+    const inReviewPosts = posts?.filter((post: any) =>  post.status === "pending")
 
     const userCreatedAtFormated = () => {
         if (user?.createdAt) {

@@ -6,6 +6,8 @@ import { Interactions } from "@/app/components/Interactions"
 import formatDistance from "date-fns/formatDistance"
 import { ptBR } from "date-fns/locale"
 import { PostDetailedType } from "@/app/@types"
+import { Actions } from "@/app/components/Actions"
+import { useState } from "react"
 
 const Product = ({
     id,
@@ -16,12 +18,13 @@ const Product = ({
     seller,
     comments,
     createdAt,
-    published,
+    status,
     description,
     bookImageURL
 }: PostDetailedType) => {
 
     const today = Date.now()
+    const [isActionsOpen, setIsActionsOpen] = useState(false)
 
     return (
         <div className="w-[51rem] h-[17rem] flex flex-col relative max-xl:w-[40rem] max-xl:h-[14rem] max-md:w-[32rem] max-sm:w-[18rem] max-sm:h-fit">
@@ -30,7 +33,7 @@ const Product = ({
                     className="block text-primaryColor dark:text-slate-400 font-poppins font-medium w-full text-right text-sm serif max-md:text-xs"
                 >
                     {
-                        published ?
+                        status === "published" ?
                             formatDistance(new Date(createdAt), today, {
                                 locale: ptBR,
                             })
@@ -38,12 +41,16 @@ const Product = ({
                     }
                 </span>
                 {
-                    published &&
-                        <button
-                            className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"
-                        >
-                            <OptionsIcon className="text-primaryColor"/>
-                        </button>
+                    status === "published" &&
+                        <>
+                            <button
+                                className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"
+                                onClick={() => setIsActionsOpen(!isActionsOpen)}
+                            >
+                                <OptionsIcon className="text-primaryColor"/>
+                            </button>
+                            <Actions user={user} postId={id} isActionsOpen={isActionsOpen} setIsActionsOpen={setIsActionsOpen} />
+                        </>
                 }
             </div>
             <div className='flex'>

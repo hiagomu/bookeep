@@ -9,7 +9,7 @@ export interface PostType {
     seller: string
     coupon?: string
     category: string
-    published: boolean
+    status: "rejected" | "pending" | "published"
     saleLink: string
     comments?: Comment[]
     createdAt: Date
@@ -33,7 +33,7 @@ export interface PostBoxType {
     category: string,
     saleLink: string,
     comments?: Comment[]
-    published: boolean
+    status: "rejected" | "pending" | "published"
     createdAt: Date
     updatedAt: Date
     marketplace: string
@@ -54,7 +54,7 @@ export interface PostDetailedType {
     seller: string
     comments?: Comment[]
     createdAt: Date
-    published: boolean
+    status: "rejected" | "pending" | "published"
     description?: string
     bookImageURL: string
 }

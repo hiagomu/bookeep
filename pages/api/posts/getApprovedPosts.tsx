@@ -10,7 +10,7 @@ export default async function handler(
     try {
         const data = await prisma.post.findMany({
             where: {
-                published: true
+                status: "published"
             },
             include: {
                 user: true,

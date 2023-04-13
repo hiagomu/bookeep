@@ -12,8 +12,7 @@ model Post {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   title        String   @db.VarChar(255)
-  published    Boolean  @default(false)
-  rejected     Boolean  @default(false)
+  status       String   @default("pending")
   bookImageURL String
   category     String
   coupon       String?

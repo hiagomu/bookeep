@@ -24,7 +24,7 @@ export const Post = ({
     saleLink,
     comments,
     updatedAt,
-    published,
+    status,
     marketplace,
     description,
     bookImageURL,
@@ -47,7 +47,7 @@ export const Post = ({
                         className="font-poppins block text-primaryColor dark:text-slate-400 font-semibold w-full text-right text-sm serif max-sm:text-xs"
                     >
                         {
-                            published ?
+                            status === "published" ?
                                 formatDistance(new Date(updatedAt), today, {
                                     locale: ptBR,
                                 })
@@ -55,7 +55,7 @@ export const Post = ({
                         }
                     </span>
                     {
-                        published &&
+                        status === "published" &&
                             <>
                                 <button
                                     className="text-black ml-2 flex items-center justify-center rounded-full h-6 w-6 bg-slate-200 dark:bg-primaryDarkHoverColor"

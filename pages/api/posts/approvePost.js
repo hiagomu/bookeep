@@ -45,7 +45,7 @@ export default async function handler(
                 price: body.price,
                 saleLink: body.saleLink,
                 userId: body.userId,
-                published: true
+                status: "published"
             }
         })
         

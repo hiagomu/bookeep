@@ -53,7 +53,7 @@ export default function Home() {
               :
               posts.data?.map((post: PostType) => 
                 <Post
-                  published={post.published}
+                  status={post.status}
                   category={post.category}
                   saleLink={post.saleLink}
                   coupon={post.coupon || ""}
