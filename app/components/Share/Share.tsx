@@ -45,14 +45,14 @@ export const Share = ({
                     <ul className="flex justify-between mt-3">
                         <li className="p-3 rounded-full bg-facebook h-11 w-11 flex justify-center items-center max-sm:h-9 max-sm:w-9">
                             <FacebookShareButton
-                                url={`https://bookeep.io/${postId}`}
+                                url={`https://bookeep.io/post/${postId}`}
                             >
                                 <FacebookIcon className="text-white h-5 w-5 max-sm:h-4 max-sm:w-4"/>
                             </FacebookShareButton>
                         </li>
                         <li className="p-3 rounded-full bg-twitter h-11 w-11 flex justify-center items-center max-sm:h-9 max-sm:w-9">
                             <TwitterShareButton
-                                url={`https://bookeep.io/${postId}`}
+                                url={`https://bookeep.io/post/${postId}`}
                                 title={shareTitle}
                             >
                                 <TwitterIcon className="text-white h-5 w-5 max-sm:h-4 max-sm:w-4"/>
@@ -60,7 +60,7 @@ export const Share = ({
                         </li>
                         <li className="p-3 rounded-full bg-whatsapp h-11 w-11 flex justify-center items-center max-sm:h-9 max-sm:w-9">
                             <WhatsappShareButton
-                                url={`https://bookeep.io/${postId}`}
+                                url={`https://bookeep.io/post/${postId}`}
                                 title={shareTitle}
                             >
                                 <WhatsappIcon className="text-white h-5 w-5 max-sm:h-4 max-sm:w-4"/>
@@ -68,7 +68,7 @@ export const Share = ({
                         </li>
                         <li className="p-3 rounded-full bg-telegram h-11 w-11 flex justify-center items-center max-sm:h-9 max-sm:w-9">
                             <TelegramShareButton
-                                url={`https://bookeep.io/${postId}`}
+                                url={`https://bookeep.io/post/${postId}`}
                                 title={shareTitle}
                             >
                                 <TelegramIcon className="text-white h-5 w-5 max-sm:h-4 max-sm:w-4"/>
@@ -77,7 +77,7 @@ export const Share = ({
                         <li className="p-3 rounded-full bg-gray-600 h-11 w-11 flex justify-center items-center max-sm:h-9 max-sm:w-9">
                             <EmailShareButton
                                 subject={shareTitle}
-                                url={`https://bookeep.io/${postId}`}
+                                url={`https://bookeep.io/post/${postId}`}
                             >
                                 <EmailIcon className="text-white h-5 w-5 max-sm:h-4 max-sm:w-4"/>
                             </EmailShareButton>
@@ -89,7 +89,7 @@ export const Share = ({
                     <div className="mt-3 dark:bg-secondaryDarkColor bg-gray-400 rounded-md flex items-center py-1 px-1">
                         <LinkIcon className="ml-1"/>
                         <input
-                            value={`bookeep.io/posts/${postId}`}
+                            value={`bookeep.io/post/${postId}`}
                             className="outline-none mr-2 px-2 bg-transparent overflow-hidden max-sm:text-xs"
                             type="text"
                             readOnly
@@ -97,7 +97,7 @@ export const Share = ({
                         <button
                             className="bg-primaryColor hover:bg-primaryHoverColor py-1 px-1.5 rounded-sm max-sm:text-sm"
                             onClick={() => {
-                                navigator.clipboard.writeText(`https://bookeep.io/posts/${postId}`)
+                                navigator.clipboard.writeText(`https://bookeep.io/post/${postId}`)
                                 toast.success("Copiado para área de transferência", {id: toastPostID})
                             }}
                         >
