@@ -24,7 +24,7 @@ export const Profile = ({ posts, user }: IProfile) => {
     }
 
     return (
-        <div className="fixed z-50 max-lg:static">
+        <div className="fixed max-lg:static">
             <div className="bg-white dark:bg-secondaryDarkColor shadow-primary rounded-lg relative">
                 <div className="bg-primaryColor rounded-t-lg h-32 max-xl:h-28 max-sm:h-20" />
                 <div className="h-28 flex absolute top-0 ml-5 mt-20 max-xl:mt-16 max-sm:mt-10">

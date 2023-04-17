@@ -15,6 +15,7 @@ import { Share } from "../Share"
 interface IActions {
     user: User
     postId: string
+    status: "pending" | "published" | "rejected"
     isActionsOpen: boolean
     setIsActionsOpen: (isActionsOpen: boolean) => void
 }
@@ -23,7 +24,7 @@ interface IDeletePost {
     id: string
 }
 
-export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen }: IActions) => {
+export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status }: IActions) => {
     
     let deleteToastID: string
     const { data: session } = useSession()
@@ -57,22 +58,28 @@ export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen }: IActi
                         className="flex flex-col dark:shadow-dark-secondary justify-evenly items-center absolute bg-white shadow-primary h-fit py-2 w-28 z-40 right-0 top-0 mt-7 rounded-lg dark:bg-secondaryDarkColor"
                         onMouseLeave={() => setIsActionsOpen(false)}
                     >
-                        <button
-                            className="flex items-center w-11/12 px-1 h-5 hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor text-black dark:text-white text-xs font-bold rounded-md"
-                            onClick={() => setIsShareOpen(true)}
-                        >
-                            <ShareIcon className='mr-1.5'/>
-                            <p>Compartilhar</p>
-                        </button>
+                        {
+                            status === "published" &&
+                            <button
+                                className="flex items-center w-11/12 px-1 h-5 hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor text-black dark:text-white text-xs font-bold rounded-md"
+                                onClick={() => setIsShareOpen(true)}
+                            >
+                                <ShareIcon className='mr-1.5'/>
+                                <p>Compartilhar</p>
+                            </button>
+                        }
                         {
                             session?.user?.email === user.email &&
                             <>
-                                <button
-                                    className="flex items-center w-11/12 px-1 h-5 hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor text-black dark:text-white text-xs font-bold rounded-md"
-                                >
-                                    <EditIcon className='mr-1.5'/>
-                                    <p>Editar</p>
-                                </button>
+                                {
+                                    status !== "rejected" &&
+                                    <button
+                                        className="flex items-center w-11/12 px-1 h-5 hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor text-black dark:text-white text-xs font-bold rounded-md"
+                                    >
+                                        <EditIcon className='mr-1.5'/>
+                                        <p>Editar</p>
+                                    </button>
+                                }
                                 <button
                                     className="flex items-center w-11/12 px-1 h-5 hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor text-red-500 text-xs font-bold rounded-md"
                                     onClick={() => setIsRemoveOpen(true)}

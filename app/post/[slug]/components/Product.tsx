@@ -49,7 +49,7 @@ const Product = ({
                             >
                                 <OptionsIcon className="text-primaryColor"/>
                             </button>
-                            <Actions user={user} postId={id} isActionsOpen={isActionsOpen} setIsActionsOpen={setIsActionsOpen} />
+                            <Actions user={user} postId={id} isActionsOpen={isActionsOpen} setIsActionsOpen={setIsActionsOpen} status={status}/>
                         </>
                 }
             </div>
