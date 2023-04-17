@@ -29,7 +29,7 @@ export default function Home() {
   let toastPostID: string
 
   const { mutate } = useMutation(
-    async (data: FieldValues) => await axios.post("/api/posts/newPost", { data }),
+    async (data: FieldValues) => await axios.post("/api/posts/createPost", { data }),
     {
       onError: (error) => {
         if (error instanceof AxiosError) {

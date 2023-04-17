@@ -21,7 +21,7 @@ export default function Home() {
   }
 
   const getUserById = async () => {
-    const response = await axios.get('/api/posts/getUserById', {
+    const response = await axios.get('/api/users/getUserById', {
         params: {
             id: userId
         }
