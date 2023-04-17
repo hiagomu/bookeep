@@ -131,6 +131,7 @@ export interface PostSkeletonType {
 }
 
 export interface PricingBoxType {
+    postId: string
     price: string
     seller: string
     coupon?: string

@@ -29,7 +29,6 @@ export const Post = ({
     description,
     bookImageURL,
     interactions,
-    userProfileURL,
     isUserVerified,
     isMarketplaceVerified
 }: PostBoxType) => {

@@ -35,6 +35,11 @@ const newPostSchema = object({
     .matches(/^[0-9]+([,.][0-9]+)?$/, "O preço precisa ser um número válido")
     .required("O preço é obrigatório"),
   coupon: string().max(30, "O cupom deve ter o máximo de 30 caracteres"),
+  seller:
+    string()
+    .min(2, "O vendedor deve ter o mínimo de 2 caracteres")
+    .max(25, "O vendedor deve ter o máximo de 25 caracteres")
+    .required("O vendedor é obrigatório"),
   description: string().max(500, "A descrição dever ter no máximo 500 caracteres"),
   bookImageURL: mixed().test("required", "A imagem do produto é obrigatória", (file: any) => {
     if (file.length !== 0) return true
@@ -60,6 +65,7 @@ export const NewPost = ({
       category: data.category,
       coupon: data.coupon,
       description: data.description,
+      seller: data.seller,
       saleLink: data.saleLink,
       price: data.price,
       title: data.title,
@@ -140,30 +146,43 @@ export const NewPost = ({
                   alt="Imagem do produto"
                   id="productImage"
                 />
+                <div>
                 <PostInput
-                  element="select"
-                  register={register}
-                  id="category"
-                  name="category"
-                  isSmall={true}
-                  title="Categoria"
-                  options={[
-                    {name: "", value: ""},
-                    {name: "Drama", value: "drama"},
-                    {name: "Terror", value: "terror"},
-                    {name: "Ficção", value: "ficction"},
-                    {name: "Romance", value: "romance"},
-                    {name: "História", value: "history"},
-                    {name: "Fantasia", value: "fantasy"},
-                    {name: "Mistério", value: "mistery"},
-                    {name: "Suspense", value: "thriller"},
-                    {name: "Aventura", value: "aventure"},
-                    {name: "Religioso", value: "religious"},
-                    {name: "Educação", value: "educational"},
-                    {name: "Literatura Clássica", value: "classical-literature"},
-                  ]}
-                  errorMessage={errors.category ? String(errors.category.message) : ""}
-                />
+                    errorMessage={errors.seller ? String(errors.seller.message) : ""}
+                    placeholder="Insira o marketplace..."
+                    register={register}
+                    element="input"
+                    isSmall={true}
+                    title="Marketplace"
+                    type="text"
+                    name="seller"
+                    id="seller"
+                  />
+                  <PostInput
+                    element="select"
+                    register={register}
+                    id="category"
+                    name="category"
+                    isSmall={true}
+                    title="Categoria"
+                    options={[
+                      {name: "", value: ""},
+                      {name: "Drama", value: "drama"},
+                      {name: "Terror", value: "terror"},
+                      {name: "Ficção", value: "ficction"},
+                      {name: "Romance", value: "romance"},
+                      {name: "História", value: "history"},
+                      {name: "Fantasia", value: "fantasy"},
+                      {name: "Mistério", value: "mistery"},
+                      {name: "Suspense", value: "thriller"},
+                      {name: "Aventura", value: "aventure"},
+                      {name: "Religioso", value: "religious"},
+                      {name: "Educação", value: "educational"},
+                      {name: "Literatura Clássica", value: "classical-literature"},
+                    ]}
+                    errorMessage={errors.category ? String(errors.category.message) : ""}
+                  />
+                </div>
               </div>
               <PostInput
                 errorMessage={errors.description ? String(errors.description.message) : ""}

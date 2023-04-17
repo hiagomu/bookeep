@@ -13,6 +13,7 @@ model Post {
   updatedAt    DateTime @updatedAt
   title        String   @db.VarChar(255)
   status       String   @default("pending")
+  seller       String   @default("Amazon")
   bookImageURL String
   category     String
   coupon       String?

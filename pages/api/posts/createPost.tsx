@@ -20,6 +20,7 @@ export default async function handler(
     const {
         price,
         title,
+        seller,
         coupon,
         category,
         saleLink,
@@ -40,6 +41,7 @@ export default async function handler(
                     bookImageURL: bookImageURL,
                     description: description,
                     category: category,
+                    seller: seller,
                     coupon: coupon,
                     title: title,
                     price: price,

@@ -89,7 +89,8 @@ export default function PostDetail(url: IURL) {
                     data &&
                     <PricingBox
                         saleLink={data.saleLink}
-                        seller={"Amazon"}
+                        postId={data.id}
+                        seller={data.seller}
                         coupon={data.coupon}
                         price={data.price}
                         key={data.id}
