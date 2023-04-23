@@ -49,7 +49,7 @@ export default async function handler(
             }
         })
 
-        const message = `Oferta 📢 #AmazonBrasil\n\n📖${body.title} (Por: R$ ${body.price})\n📦Entrega grátis (Amazon Prime)\n\n${body.saleLink.split("https://")[1]}\n${body.saleLink.split("https://")[1]}\n${body.saleLink.split("https://")[1]}`
+        const message = `Oferta 📢 #AmazonBrasil\n\n📖${body.title} (Por: R$ ${body.price})\n📦Entrega grátis (Amazon Prime)${body.coupon ? `\n🎟️Cupom (${body.coupon})`: ""}\n\n${body.saleLink.split("https://")[1]}\n${body.saleLink.split("https://")[1]}\n${body.saleLink.split("https://")[1]}\n${body.saleLink.split("https://")[1]}`
         
         bot.sendMessage("@starbooksbr", message)
         await client.v2.tweet(message)
