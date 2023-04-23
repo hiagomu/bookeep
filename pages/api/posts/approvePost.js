@@ -30,7 +30,7 @@ export default async function handler(
 
     try {
         const body = await req.body.data
-        // const bot = new TelegramBot(String(process.env.TELEGRAM_API_TOKEN))
+        const bot = new TelegramBot(String(process.env.TELEGRAM_API_TOKEN))
 
         const result = await prisma.post.update({
             where: {
@@ -48,11 +48,12 @@ export default async function handler(
                 status: "published"
             }
         })
-        
-        // bot.sendMessage("@starbooksbr", `✨Promoção via Amazon\n\n📚${body.title}\n💵R$${body.price}\n🚨Confira:${body.saleLink}`)
 
-        await client.v2.tweet(`✨Promoção via Amazon\n\n📚${body.title}\n💵R$${body.price}\n🚨Confira:${body.saleLink}`)
+        const message = `Oferta 📢 #AmazonBrasil\n\n📖${body.title} (Por: R$ ${body.price})\n📦Entrega grátis (Amazon Prime)\n\n${body.saleLink.split("https://")[1]}\n${body.saleLink.split("https://")[1]}\n${body.saleLink.split("https://")[1]}`
         
+        bot.sendMessage("@starbooksbr", message)
+        await client.v2.tweet(message)
+
         return res.status(200).json(result)
     } catch (err) {
         console.log(err.response)
