@@ -19,10 +19,10 @@ export const Filters =  ({min, max, defaultValue}: Props) => {
 
     return (
         <ChakraProvider>
-            <div className="w-[19rem] h-[28rem] bg-filters rounded-xl mt-40 shadow-primary flex justify-center items-center">
+            <div className="w-[19rem] h-[28rem] bg-filters dark:bg-secondaryDarkColor rounded-xl mt-40 shadow-primary flex justify-center items-center">
                 <div className="w-10/12 h-[26rem]">
                     <div className="flex justify-between">
-                        <h2 className="text-black font-bold text-xl font-nunito mb-6">Filtros</h2>   
+                        <h2 className="text-black font-bold text-xl font-nunito mb-6 dark:text-white">Filtros</h2>   
                         <button></button>
                     </div>
                     <RangeSliderInput defaultValue={defaultValue}/>
@@ -57,7 +57,7 @@ export const Filters =  ({min, max, defaultValue}: Props) => {
                         ]}
                     />
                     <div className="w-64 flex justify-center mt-6">
-                        <button className="bg-primaryColor rounded-lg py-1.5 px-6 shadow-primary font-semibold  hover:bg-primaryHoverColor">Aplicar</button>
+                        <button className="bg-primaryColor rounded-lg py-1.5 px-6 shadow-primary font-semibold hover:bg-primaryHoverColor">Aplicar</button>
                     </div>
                 </div>
             </div>

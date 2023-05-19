@@ -8,7 +8,7 @@ export default async function handler(
     if (req.method !== "GET") return res.status(405).end()
 
     try {
-        const places = await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${"biblioteca"}&key=${"AIzaSyCZ2R308_puhvxxOGdxa1y0C5HB6bhLcaE"}`)
+        const places = await axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${process.env.GOOGLE_MAPS_QUERY}&key=${process.env.GOOGLE_API_KEY}`)
         
         const data =  places.data.results.slice(0, 4)
 

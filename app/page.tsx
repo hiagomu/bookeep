@@ -60,12 +60,14 @@ export default function Home() {
             createPost={createPost}
           />
         </div>
-        <div className="flex gap-10">
-          <Filters
-            min={0}
-            max={100}
-            defaultValue={[25, 75]}
-          />
+        <div>
+          <div className="fixed left-0 top-0 ml-48">
+            <Filters
+              min={0}
+              max={100}
+              defaultValue={[25, 75]}
+            />
+          </div>
           <div  className="mt-40 z-0 max-sm:mt-28">
             {
               status === "loading" || isLoading ?
@@ -98,7 +100,9 @@ export default function Home() {
                 )
             }
           </div>
-          <Bookstores />
+          <div className="fixed right-0 top-0 mr-48">
+            <Bookstores />
+          </div>
         </div>
       </main>
   )

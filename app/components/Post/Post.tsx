@@ -40,9 +40,9 @@ export const Post = ({
         <div
             className="bg-white dark:bg-secondaryDarkColor w-post h-fit rounded-3xl flex items-center flex-col shadow-primary mb-10 relative overflow-hidden max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm max-sm:mb-5"
         >
-            <div className={`${status === "rejected" && "bg-black dark:bg-white z-10 w-full h-full absolute opacity-30"}`} />
+            <div className={`${status === "rejected" && "bg-black dark:bg-white w-full h-full absolute opacity-30"}`} />
             <div className="w-11/12 mb-3 max-sm:mb-0">
-                <div className="flex items-center mt-2 relative z-20">
+                <div className="flex items-center mt-2 relative">
                     <span
                         className={`font-poppins block ${status === "rejected" ? "text-red-500" : "text-primaryColor dark:text-slate-400"} font-semibold w-full text-right text-sm serif max-sm:text-xs`}
                     >

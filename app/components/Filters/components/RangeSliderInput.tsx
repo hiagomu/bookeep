@@ -21,11 +21,11 @@ const RangeSliderInput = ({defaultValue}: IRangeSliderInput) => {
     return (
         <div>
             <div className="mb-2">
-                <span className="text-black font-bold font-nunito text-lg">Faixa de preço</span>
+                <span className="text-black font-bold font-nunito text-lg dark:text-white">Faixa de preço</span>
             </div>
             <div className='mb-2'>
                 <RangeSlider aria-label={['min', 'max']} defaultValue={defaultValue} colorScheme='purple' min={0} max={100} onChange={(val) => handleWithMinMaxValues(val)}>
-                    <RangeSliderTrack bg="white">
+                    <RangeSliderTrack>
                         <RangeSliderFilledTrack />
                     </RangeSliderTrack>
                     <RangeSliderThumb index={0} bgColor="purple.500" />
@@ -37,18 +37,18 @@ const RangeSliderInput = ({defaultValue}: IRangeSliderInput) => {
                 </div>
             </div>
             <div className="flex justify-between">
-                <div className="flex flex-col items-center bg-white rounded-lg w-28 h-12">
+                <div className="flex flex-col items-center bg-white dark:bg-neutral-700 rounded-lg w-28 h-12">
                     <label htmlFor="min" className="text-slate-300 font-bold text-xs mb-1 w-24">min</label>
                     <div className="flex items-center justify-center gap-1 ">
-                        <span className="font-bold text-black text-sm">R$</span>
-                        <input type="number" name="min" id="min" defaultValue={values[0]} className="w-20 text-black font-bold text-sm"/>
+                        <span className="font-bold text-black text-sm dark:text-white">R$</span>
+                        <input type="number" name="min" id="min" value={values[0]} className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700"/>
                     </div>
                 </div>
-                <div className="flex flex-col items-center bg-white rounded-lg w-28 h-12">
+                <div className="flex flex-col items-center bg-white dark:bg-neutral-700 rounded-lg w-28 h-12">
                     <label htmlFor="min" className="text-slate-300 font-bold text-xs mb-1 w-24">max</label>
                     <div className="flex items-center justify-center gap-1 ">
-                        <span className="font-bold text-black text-sm">R$</span>
-                        <input type="number" name="max" id="max" defaultValue={values[1]} className="w-20 text-black font-bold text-sm"/>
+                        <span className="font-bold text-black text-sm dark:text-white">R$</span>
+                        <input type="number" name="max" id="max" value={values[1]} className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700"/>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@ const SelectInput = ({
     return (
         <div className="flex flex-col mt-2">
             <label
-                className="text-black font-bold font-nunito text-lg mb-1"
+                className="text-black font-bold font-nunito text-lg mb-1 dark:text-white"
                 htmlFor={id}
             >
                 {title}
