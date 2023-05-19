@@ -11,6 +11,8 @@ import { toast } from "react-hot-toast"
 import { useMutation } from "@tanstack/react-query"
 import { FieldValues } from "react-hook-form"
 import { PostType } from "./@types"
+import { Filters } from "./components/Filters"
+import { Bookstores } from "./components/Bookstores"
 
 const getPosts = async () => {
   const response = await axios.get('/api/posts/getApprovedPosts')
@@ -58,37 +60,45 @@ export default function Home() {
             createPost={createPost}
           />
         </div>
-        <div  className="mt-40 z-0 max-sm:mt-28">
-          {
-            status === "loading" || isLoading ?
-              <PostSkeleton count={5}/>
-              : 
-              data?.map((post: PostType) => 
-                <Post
-                  status={post.status}
-                  category={post.category}
-                  saleLink={post.saleLink}
-                  coupon={post.coupon || ""}
-                  description={post.description || ""}
-                  isMarketplaceVerified={true}
-                  isUserVerified={true}
-                  userProfileURL={"/"}
-                  interactions={true}
-                  bookImageURL={post.bookImageURL}
-                  marketplace={post.seller}
-                  comments={post.comments}
-                  seller={post.user.name}
-                  price={post.price}
-                  title={post.title}
-                  createdAt={post.createdAt}
-                  updatedAt={post.updatedAt}
-                  likes={post.likes}
-                  user={post.user}
-                  key={post.id}
-                  id={post.id}
-                />
-              )
-          }
+        <div className="flex gap-10">
+          <Filters
+            min={0}
+            max={100}
+            defaultValue={[25, 75]}
+          />
+          <div  className="mt-40 z-0 max-sm:mt-28">
+            {
+              status === "loading" || isLoading ?
+                <PostSkeleton count={5}/>
+                : 
+                data?.map((post: PostType) => 
+                  <Post
+                    status={post.status}
+                    category={post.category}
+                    saleLink={post.saleLink}
+                    coupon={post.coupon || ""}
+                    description={post.description || ""}
+                    isMarketplaceVerified={true}
+                    isUserVerified={true}
+                    userProfileURL={"/"}
+                    interactions={true}
+                    bookImageURL={post.bookImageURL}
+                    marketplace={post.seller}
+                    comments={post.comments}
+                    seller={post.user.name}
+                    price={post.price}
+                    title={post.title}
+                    createdAt={post.createdAt}
+                    updatedAt={post.updatedAt}
+                    likes={post.likes}
+                    user={post.user}
+                    key={post.id}
+                    id={post.id}
+                  />
+                )
+            }
+          </div>
+          <Bookstores />
         </div>
       </main>
   )

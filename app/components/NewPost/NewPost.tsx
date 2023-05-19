@@ -1,12 +1,13 @@
 "use client"
 
 import { Modal } from "../Modal"
-import PostInput from "./components/PostInput"
+
 import {
   FaGhost as BooIcon
 } from 'react-icons/fa'
 import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
+import PostInput from "./components/PostInput" 
 import { mixed, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useState } from "react"

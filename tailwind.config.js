@@ -20,6 +20,7 @@ module.exports = {
         primaryHoverColor: '#B4A2FD',
         primaryDarkHoverColor: '#3F4448',
         modalDarkColor: '#2A2634',
+        filters: '#EFF3F4',
         search: '#E9E9E9',
         facebook: '#3b5998',
         whatsapp: '#25D366',

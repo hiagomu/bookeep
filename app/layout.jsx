@@ -28,15 +28,15 @@ export default function RootLayout({
       <body className={`flex flex-col items-center dark:bg-primaryDarkColor ${poppins.variable} ${nunito.variable} font-nunito`}>
         <AuthContext>
           <QueryWrapper>
-              <ThemeContext>
-                <Header>
-                  <Navbar />
-                  <Dropdown>
-                    <DropdownOpen />
-                  </Dropdown>
-                </Header>
-                {children}
-              </ThemeContext>
+            <ThemeContext>
+              <Header>
+                <Navbar />
+                <Dropdown>
+                  <DropdownOpen />
+                </Dropdown>
+              </Header>
+              {children}
+            </ThemeContext>
           </QueryWrapper>
         </AuthContext> 
       </body>
