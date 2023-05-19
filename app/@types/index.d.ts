@@ -130,6 +130,14 @@ export interface SelectFilterType {
     register: UseFormRegister<FieldValues>
 }
 
+export interface RangeInputType {
+    id: string
+    name: string
+    title: string
+    defaultValue: number[]
+    register: UseFormRegister<FieldValues>
+}
+
 export interface BookstoresType {
     business_status: string
     formatted_address: string
