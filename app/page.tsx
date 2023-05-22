@@ -4,6 +4,7 @@ import { Post } from "./components/Post"
 import { Search } from "./components/Search"
 import { useState } from "react"
 import { NewPost } from "./components/NewPost"
+import Image from "next/image"
 import axios, { AxiosError } from "axios"
 import { QueryFunctionContext, QueryKey, useQuery, useQueryClient } from "@tanstack/react-query"
 import { PostSkeleton } from "./components/PostSkeleton"
@@ -14,7 +15,12 @@ import { FilterQueryParams, PostType } from "./@types"
 import { Filters } from "./components/Filters"
 import { Bookstores } from "./components/Bookstores"
 import qs from "query-string"
+import notFoundImage from "../public/assets/not_found.svg"
 
+const getPosts = async (searchParams: QueryFunctionContext<QueryKey, any>) => {
+  const response = await axios.get(`/api/posts/getApprovedPosts${searchParams.queryKey[1] ? "/?" + qs.stringify(searchParams.queryKey[1]) : ""}`)
+  return response.data
+}
 
 export default function Home() {
   
@@ -24,12 +30,6 @@ export default function Home() {
     category: "all",
     orderBy: "desc"
   })
-
-  const getPosts = async (searchParams: QueryFunctionContext<QueryKey, any>) => {
-    const response = await axios.get(`/api/posts/getApprovedPosts${searchParams.queryKey[1] ? "/?" + qs.stringify(searchParams.queryKey[1]) : ""}`)
-    return response.data
-  }
-
 
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
@@ -84,32 +84,44 @@ export default function Home() {
             {
               status === "loading" || isLoading ?
                 <PostSkeleton count={5}/>
-                : 
-                data?.map((post: PostType) => 
-                  <Post
-                    status={post.status}
-                    category={post.category}
-                    saleLink={post.saleLink}
-                    coupon={post.coupon || ""}
-                    description={post.description || ""}
-                    isMarketplaceVerified={true}
-                    isUserVerified={true}
-                    userProfileURL={"/"}
-                    interactions={true}
-                    bookImageURL={post.bookImageURL}
-                    marketplace={post.seller}
-                    comments={post.comments}
-                    seller={post.user.name}
-                    price={post.price}
-                    title={post.title}
-                    createdAt={post.createdAt}
-                    updatedAt={post.updatedAt}
-                    likes={post.likes}
-                    user={post.user}
-                    key={post.id}
-                    id={post.id}
-                  />
-                )
+                :
+                data?.length ?
+                  data?.map((post: PostType) => 
+                    <Post
+                      status={post.status}
+                      category={post.category}
+                      saleLink={post.saleLink}
+                      coupon={post.coupon || ""}
+                      description={post.description || ""}
+                      isMarketplaceVerified={true}
+                      isUserVerified={true}
+                      userProfileURL={"/"}
+                      interactions={true}
+                      bookImageURL={post.bookImageURL}
+                      marketplace={post.seller}
+                      comments={post.comments}
+                      seller={post.user.name}
+                      price={post.price}
+                      title={post.title}
+                      createdAt={post.createdAt}
+                      updatedAt={post.updatedAt}
+                      likes={post.likes}
+                      user={post.user}
+                      key={post.id}
+                      id={post.id}
+                    />
+                  )
+                  :
+                  <div className="max-xl:w-post-xl max-lg:w-post-lg max-sm:w-post-sm flex flex-col justify-center items-center">
+                    <span className="mb-6 text-2xl font-bold text-primaryColor dark:text-white max-md:text-xl text-center max-sm:w-[12rem] max-sm:text-lg">Que pena 😥 nenhum anúncio foi encontrado!</span>
+                    <Image
+                      alt="Sem anúcios"
+                      src={notFoundImage}
+                      width={180}
+                      height={180}
+                      className="max-sm:w-[8rem] max-sm:h-[8rem]"
+                    />
+                  </div>
             }
           </div>
           <div className="w-[19rem] h-[36rem] max-2xl:w-[16rem] max-xl:hidden">

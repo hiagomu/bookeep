@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query"
 import { PostSkeleton } from "../components/PostSkeleton"
 import { PostType } from "../@types"
 import Image from "next/image"
-import noReviewImage from "../../public/assets/no_review.svg"
+import notFoundImage from "../../public/assets/not_found.svg"
 
 const getPosts = async () => {
   const response = await axios.get('/api/posts/getPendingPosts')
@@ -62,7 +62,7 @@ export default function Home() {
               <span className="mb-6 text-2xl font-bold text-primaryColor dark:text-white max-md:text-xl text-center max-sm:w-[12rem] max-sm:text-lg">Sem anúncios para analisar no momento</span>
               <Image
                 alt="Sem anúcios"
-                src={noReviewImage}
+                src={notFoundImage}
                 width={180}
                 height={180}
                 className="max-sm:w-[8rem] max-sm:h-[8rem]"
