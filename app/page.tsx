@@ -71,8 +71,8 @@ export default function Home() {
             createPost={createPost}
           />
         </div>
-        <div>
-          <div className="fixed left-0 top-0 ml-48">
+        <div className="flex justify-center gap-12 max-2xl:gap-8">
+          <div className="w-[19rem] h-[28rem] max-2xl:w-[16rem] max-lg:hidden">
             <Filters
               min={0}
               max={100}
@@ -80,7 +80,7 @@ export default function Home() {
               setSearchParams={setSearchParams}
             />
           </div>
-          <div  className="mt-40 z-0 max-sm:mt-28">
+          <div className="mt-40 z-0 max-sm:mt-28 max-2xl:h-[26rem]">
             {
               status === "loading" || isLoading ?
                 <PostSkeleton count={5}/>
@@ -112,7 +112,7 @@ export default function Home() {
                 )
             }
           </div>
-          <div className="fixed right-0 top-0 mr-48">
+          <div className="w-[19rem] h-[36rem] max-2xl:w-[16rem] max-xl:hidden">
             <Bookstores />
           </div>
         </div>

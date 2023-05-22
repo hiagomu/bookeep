@@ -15,16 +15,16 @@ export const Bookstores =  () => {
     })
 
     return (
-        <div className="w-[19rem] h-[41rem] bg-filters dark:bg-secondaryDarkColor rounded-xl mt-40 shadow-primary px-6 py-5">
+        <div className="fixed w-[19rem] h-[36rem] max-2xl:w-[16rem] bg-filters dark:bg-secondaryDarkColor rounded-xl mt-40 shadow-primary px-6 py-5">
             <h2 className="text-xl text-black font-bold mb-5 dark:text-white">Bibliotecas</h2>
             {
                     data?.map((bookstore: BookstoresType) =>  
-                            <div className="flex flex-col mb-2 w-[16rem]">
+                            <div className="flex flex-col mb-2 w-[16rem] max-2xl:w-[13rem]">
                                 <div className="flex justify-between">
-                                    <h3 className="text-black font-bold text-lg w-[12.8rem] dark:text-white">{bookstore.name}</h3>
+                                    <h3 className="text-black font-bold text-lg w-[12.8rem] dark:text-white line-clamp-2 max-2xl:text-base max-2xl:w-[9.8rem]">{bookstore.name}</h3>
                                     <span className="text-primaryColor font-bold text-base">{bookstore.rating} ⭐</span>
                                 </div>
-                                <p className="text-sm text-black dark:text-white">{bookstore.formatted_address}</p>
+                                <p className="text-sm text-black dark:text-white line-clamp-2 max-2xl:text-xs">{bookstore.formatted_address}</p>
                                 <button className="bg-primaryColor py-0.5 mt-2 text-white font-semibold rounded-md hover:bg-primaryHoverColor">Conhecer</button>
                             </div>
                     )

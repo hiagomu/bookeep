@@ -10,7 +10,8 @@ import {
     RangeSliderFilledTrack,
     RangeSliderThumb
 } from '@chakra-ui/react'
-import { FilterQueryParams } from '@/app/@types';
+import { FilterQueryParams } from '@/app/@types'
+import { MdRestore as ResetFiltersIcon } from "react-icons/md"
 
 type Props = {
     min: number
@@ -23,7 +24,7 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
 
     const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm()
 
-    const onSubmit = async (data: FieldValues) => {
+    const onSubmit = (data: FieldValues) => {
 
         let currentQuery = {
             orderBy: data.orderBy,
@@ -35,6 +36,15 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
         setSearchParams(currentQuery)
     }
 
+    const resetFilters = () => {
+        setSearchParams({
+            min: 0,
+            max: 100,
+            category: "all",
+            orderBy: "desc"
+        })
+    }
+
     const [values, setValues] = useState<number[]>([defaultValue[0], defaultValue[1]])
 
     const handleWithMinMaxValues = (val: number[]) => {
@@ -43,16 +53,19 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
 
     return (
         <ChakraProvider>
-            <div className="w-[19rem] h-[28rem] bg-filters dark:bg-secondaryDarkColor rounded-xl mt-40 shadow-primary flex justify-center items-center">
-                <div className="w-10/12 h-[26rem]">
+            <div className="fixed mt-40 w-[19rem] h-[28rem] max-2xl:w-[16rem] max-2xl:h-[25rem] bg-filters dark:bg-secondaryDarkColor rounded-xl shadow-primary flex justify-center items-center">
+                <div className="w-10/12 h-[26rem] max-2xl:h-[22rem]">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="flex justify-between">
-                            <h2 className="text-black font-bold text-xl font-nunito mb-6 dark:text-white">Filtros</h2>   
-                            <button></button>
+                        <div className="flex justify-between align-top">
+                            <h2 className="text-black font-bold text-xl font-nunito mb-6 dark:text-white max-2xl:mb-4">Filtros</h2>
+                            <ResetFiltersIcon
+                                className="text-primaryColor w-5 h-5 cursor-pointer"
+                                onClick={resetFilters}
+                            />
                         </div>
                         <div>
                             <div className="mb-2">
-                                <span className="text-black font-bold font-nunito text-lg dark:text-white">Faixa de preço</span>
+                                <span className="text-black font-bold font-nunito text-lg dark:text-white max-2xl:text-base">Faixa de preço</span>
                             </div>
                             <div className='mb-2'>
                                 <RangeSlider aria-label={['min', 'max']} defaultValue={defaultValue} colorScheme='purple' min={0} max={100} onChange={(val) => handleWithMinMaxValues(val)}>
@@ -68,18 +81,34 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
                                 </div>
                             </div>
                             <div className="flex justify-between">
-                                <div className="flex flex-col items-center bg-white dark:bg-neutral-700 rounded-lg w-28 h-12">
-                                    <label htmlFor="min" className="text-slate-300 font-bold text-xs mb-1 w-24">min</label>
+                                <div className="flex flex-col items-center bg-white dark:bg-neutral-700 rounded-lg w-28 h-12 max-2xl:w-24 max-2xl:h-10">
+                                    <label htmlFor="min" className="text-slate-300 font-bold text-xs mb-1 w-24 max-2xl:w-20">min</label>
                                     <div className="flex items-center justify-center gap-1 ">
                                         <span className="font-bold text-black text-sm dark:text-white">R$</span>
-                                        <input type="number" id="min" name="min" defaultValue={values[0]} value={values[0]} readOnly className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700 outline-none"/>
+                                        <input
+                                            id="min"
+                                            name="min"
+                                            type="number"
+                                            defaultValue={values[0]}
+                                            value={values[0]}
+                                            readOnly
+                                            className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700 outline-none max-2xl:w-16"
+                                        />
                                     </div>
                                 </div>
-                                <div className="flex flex-col items-center bg-white dark:bg-neutral-700 rounded-lg w-28 h-12">
-                                    <label htmlFor="min" className="text-slate-300 font-bold text-xs mb-1 w-24">max</label>
+                                <div className="flex flex-col items-center bg-white dark:bg-neutral-700 rounded-lg w-28 h-12 max-2xl:w-24 max-2xl:h-10">
+                                    <label htmlFor="min" className="text-slate-300 font-bold text-xs mb-1 w-24 max-2xl:w-20">max</label>
                                     <div className="flex items-center justify-center gap-1 ">
                                         <span className="font-bold text-black text-sm dark:text-white">R$</span>
-                                        <input type="number" id="max" name="max" defaultValue={values[1]} value={values[1]} readOnly className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700 outline-none"/>
+                                        <input
+                                            id="max"
+                                            name="max"
+                                            type="number"
+                                            defaultValue={values[1]}
+                                            value={values[1]}
+                                            readOnly
+                                            className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700 outline-none max-2xl:w-16"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -115,8 +144,8 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
                                 {name: "Mais antigos", value: "asc"},
                             ]}
                         />
-                        <div className="w-64 flex justify-center mt-6">
-                            <button type="submit" className="bg-primaryColor rounded-lg py-1.5 px-6 shadow-primary font-semibold hover:bg-primaryHoverColor">Aplicar</button>
+                        <div className="w-full flex justify-center mt-6 max-2xl:mt-4">
+                            <button type="submit" className="bg-primaryColor rounded-lg py-1.5 px-6 shadow-primary font-semibold hover:bg-primaryHoverColor max-2xl:py-1 max-2xl:px-4">Aplicar</button>
                         </div>
                     </form>
                 </div>
