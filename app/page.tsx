@@ -25,11 +25,11 @@ export default function Home() {
     orderBy: "desc"
   })
 
-
   const getPosts = async (searchParams: QueryFunctionContext<QueryKey, any>) => {
     const response = await axios.get(`/api/posts/getApprovedPosts${searchParams.queryKey[1] ? "/?" + qs.stringify(searchParams.queryKey[1]) : ""}`)
     return response.data
   }
+
 
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
