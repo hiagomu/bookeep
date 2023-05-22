@@ -138,6 +138,13 @@ export interface RangeInputType {
     register: UseFormRegister<FieldValues>
 }
 
+export interface FilterQueryParams {
+    orderBy: string
+    category: string
+    min: number
+    max: number
+}
+
 export interface BookstoresType {
     business_status: string
     formatted_address: string

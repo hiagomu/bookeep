@@ -68,7 +68,7 @@ export const NewPost = ({
       description: data.description,
       seller: data.seller,
       saleLink: data.saleLink,
-      price: data.price,
+      price: Number(data.price.replace(",", ".")),
       title: data.title,
       bookImageURL: productImage
     })
@@ -176,7 +176,7 @@ export const NewPost = ({
                       {name: "Fantasia", value: "fantasy"},
                       {name: "Mistério", value: "mistery"},
                       {name: "Suspense", value: "thriller"},
-                      {name: "Aventura", value: "aventure"},
+                      {name: "Aventura", value: "adventure"},
                       {name: "Religioso", value: "religious"},
                       {name: "Educação", value: "educational"},
                       {name: "Literatura Clássica", value: "classical-literature"},

@@ -86,7 +86,7 @@ export const Post = ({
                                 R${new Intl.NumberFormat('pt-BR', {
                                     style: 'currency',
                                     currency: 'BRL',
-                                }).format(Number(price.replace(",", "."))).slice(3)}
+                                }).format(Number(price)).slice(3)}
                             </span>
                             <div className="flex mb-1 ml-4 items-center max-sm:ml-2">
                                 <span

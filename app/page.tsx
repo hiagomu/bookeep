@@ -5,27 +5,38 @@ import { Search } from "./components/Search"
 import { useState } from "react"
 import { NewPost } from "./components/NewPost"
 import axios, { AxiosError } from "axios"
-import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { QueryFunctionContext, QueryKey, useQuery, useQueryClient } from "@tanstack/react-query"
 import { PostSkeleton } from "./components/PostSkeleton"
 import { toast } from "react-hot-toast"
 import { useMutation } from "@tanstack/react-query"
 import { FieldValues } from "react-hook-form"
-import { PostType } from "./@types"
+import { FilterQueryParams, PostType } from "./@types"
 import { Filters } from "./components/Filters"
 import { Bookstores } from "./components/Bookstores"
+import qs from "query-string"
 
-const getPosts = async () => {
-  const response = await axios.get('/api/posts/getApprovedPosts')
-  return response.data
-}
 
 export default function Home() {
+  
+  const [searchParams, setSearchParams] = useState<FilterQueryParams>({
+    min: 0,
+    max: 100,
+    category: "all",
+    orderBy: "desc"
+  })
+
+
+  const getPosts = async (searchParams: QueryFunctionContext<QueryKey, any>) => {
+    const response = await axios.get(`/api/posts/getApprovedPosts${searchParams.queryKey[1] ? "/?" + qs.stringify(searchParams.queryKey[1]) : ""}`)
+    return response.data
+  }
 
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
+
   const { data, isLoading, status } = useQuery<PostType[]>({
-    queryFn: getPosts,
-    queryKey: ["posts"],
+    queryFn: (searchParams) => getPosts(searchParams),
+    queryKey: ["posts", searchParams],
     onError: err => err,
   })
   let toastPostID: string
@@ -66,6 +77,7 @@ export default function Home() {
               min={0}
               max={100}
               defaultValue={[25, 75]}
+              setSearchParams={setSearchParams}
             />
           </div>
           <div  className="mt-40 z-0 max-sm:mt-28">

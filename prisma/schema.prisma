@@ -18,7 +18,7 @@ model Post {
   category     String
   coupon       String?
   description  String?
-  price        String
+  price        Float
   saleLink     String
   userId       String
   comments     Comment[]

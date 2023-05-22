@@ -3,16 +3,6 @@ import prisma from '../../../prisma/client'
 import { authOptions } from '../auth/[...nextauth]'
 import client from '../twitter/twitterConfig'
 import TelegramBot from "node-telegram-bot-api"
-import S3 from "aws-sdk/clients/s3"
-
-
-// const s3 = new S3({
-//   region: process.env.AWS_DEFAULT_REGION,
-//   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-//   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-//   signatureVersion: "v4",
-// })
-
 
 export default async function handler(
     req,
@@ -56,7 +46,6 @@ export default async function handler(
 
         return res.status(200).json(result)
     } catch (err) {
-        console.log(err.response)
         res.status(403).json({ err })
     }
 }

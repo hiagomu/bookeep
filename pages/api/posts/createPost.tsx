@@ -44,7 +44,7 @@ export default async function handler(
                     seller: seller,
                     coupon: coupon,
                     title: title,
-                    price: price,
+                    price: Number(price),
                     saleLink: saleLink,
                     userId: user.id
                 }

@@ -24,7 +24,12 @@ const PricingBox =  ({
         <div className='w-[18rem] h-[13rem] p-5 shadow-primary rounded-lg dark:bg-secondaryDarkColor max-xl:p-4 max-xl:w-[16rem] max-xl:h-[11rem]'>
             <Share isOpen={isOpen} setIsOpen={setIsOpen} postId={postId}/>
             <div className='flex justify-between'>
-                <span className='text-primaryColor text-4xl font-poppins font-semibold max-xl:text-3xl'>R$ {price}</span>
+                <span className='text-primaryColor text-4xl font-poppins font-semibold max-xl:text-3xl'>
+                    R$ {new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                    }).format(Number(price)).slice(3)}
+                </span>
                 <div className='rounded-full hover:bg-slate-200 w-fit h-fit p-1.5 flex justify-center items-center dark:hover:bg-primaryDarkHoverColor cursor-pointer'>    
                     <ShareIcon
                         className='text-primaryColor w-5 h-5'

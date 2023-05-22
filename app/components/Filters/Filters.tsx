@@ -10,23 +10,29 @@ import {
     RangeSliderFilledTrack,
     RangeSliderThumb
 } from '@chakra-ui/react'
+import { FilterQueryParams } from '@/app/@types';
 
 type Props = {
     min: number
     max: number
     defaultValue: [number, number]
+    setSearchParams: (searchParams: FilterQueryParams) => void
 };
 
-export const Filters =  ({min, max, defaultValue}: Props) => {
+export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
 
     const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm()
 
     const onSubmit = async (data: FieldValues) => {
-        console.log({
-            ...data,
+
+        let currentQuery = {
+            orderBy: data.orderBy,
+            category: data.category,
             min: values[0],
             max: values[1]
-        })
+        }
+
+        setSearchParams(currentQuery)
     }
 
     const [values, setValues] = useState<number[]>([defaultValue[0], defaultValue[1]])
@@ -34,8 +40,6 @@ export const Filters =  ({min, max, defaultValue}: Props) => {
     const handleWithMinMaxValues = (val: number[]) => {
         setValues(val)
     }
-
-
 
     return (
         <ChakraProvider>
@@ -68,14 +72,14 @@ export const Filters =  ({min, max, defaultValue}: Props) => {
                                     <label htmlFor="min" className="text-slate-300 font-bold text-xs mb-1 w-24">min</label>
                                     <div className="flex items-center justify-center gap-1 ">
                                         <span className="font-bold text-black text-sm dark:text-white">R$</span>
-                                        <input type="number" id="min" name="min" defaultValue={values[0]} readOnly className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700 outline-none"/>
+                                        <input type="number" id="min" name="min" defaultValue={values[0]} value={values[0]} readOnly className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700 outline-none"/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-center bg-white dark:bg-neutral-700 rounded-lg w-28 h-12">
                                     <label htmlFor="min" className="text-slate-300 font-bold text-xs mb-1 w-24">max</label>
                                     <div className="flex items-center justify-center gap-1 ">
                                         <span className="font-bold text-black text-sm dark:text-white">R$</span>
-                                        <input type="number" id="max" name="max" defaultValue={values[1]} readOnly className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700 outline-none"/>
+                                        <input type="number" id="max" name="max" defaultValue={values[1]} value={values[1]} readOnly className="w-20 text-black dark:text-white font-bold text-sm dark:bg-neutral-700 outline-none"/>
                                     </div>
                                 </div>
                             </div>
@@ -86,6 +90,7 @@ export const Filters =  ({min, max, defaultValue}: Props) => {
                             name="category"
                             title="Categoria"
                             options={[
+                                {name: "Todas", value: "all"},
                                 {name: "Drama", value: "drama"},
                                 {name: "Terror", value: "terror"},
                                 {name: "Ficção", value: "ficction"},
@@ -94,7 +99,7 @@ export const Filters =  ({min, max, defaultValue}: Props) => {
                                 {name: "Fantasia", value: "fantasy"},
                                 {name: "Mistério", value: "mistery"},
                                 {name: "Suspense", value: "thriller"},
-                                {name: "Aventura", value: "aventure"},
+                                {name: "Aventura", value: "adventure"},
                                 {name: "Religioso", value: "religious"},
                                 {name: "Educação", value: "educational"},
                                 {name: "Literatura Clássica", value: "classical-literature"},
@@ -102,12 +107,12 @@ export const Filters =  ({min, max, defaultValue}: Props) => {
                         />
                         <SelectInput
                             register={register}
-                            id="sortBy"
-                            name="sortBy"
+                            id="orderBy"
+                            name="orderBy"
                             title="Ordenar por"
                             options={[
-                                {name: "Mais recentes", value: "recent"},
-                                {name: "Mais antigos", value: "old"},
+                                {name: "Mais recentes", value: "desc"},
+                                {name: "Mais antigos", value: "asc"},
                             ]}
                         />
                         <div className="w-64 flex justify-center mt-6">
