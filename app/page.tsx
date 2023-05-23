@@ -124,7 +124,7 @@ export default function Home() {
                   </div>
             }
           </div>
-          <div className="w-[19rem] h-[36rem] max-2xl:w-[16rem] max-xl:hidden">
+          <div className="w-[19rem] h-[36rem] max-2xl:w-[16rem]">
             <Bookstores />
           </div>
         </div>
