@@ -47,14 +47,14 @@ export const Interactions = ({
                     {loading ?
                         <Loading size="xs" color="white" className="mr-2 max-sm:mr-1"/>
                         :
-                        <BooIcon className={`mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1 ${currentUserLiked ? "text-red-400" : ""}`} />
+                        <BooIcon className={`mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1 text-white ${currentUserLiked ? "text-red-400" : ""}`} />
                     }
                 </button>
-                <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs'>{likes?.length || 0}</span>
+                <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs text-white'>{likes?.length || 0}</span>
             </div>
             <div className='flex items-center'>
-                <CommentIcon className='mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1' />
-                <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs'>{comments}</span>
+                <CommentIcon className='mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1 text-white' />
+                <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs text-white'>{comments}</span>
             </div>
         </div>
     )

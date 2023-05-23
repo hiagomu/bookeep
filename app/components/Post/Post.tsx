@@ -138,7 +138,7 @@ export const Post = ({
             </div>
             <Link
                 href={`/post/${id}`}
-                className="font-poppins bg-primaryColor px-12 py-1 rounded-t-lg font-semibold hover:bg-primaryHoverColor max-xl:px-8 max-xl:text-sm max-sm:py-0.5 max-sm:text-xs max-sm:mt-2 max-sm:px-5"
+                className="font-poppins text-white bg-primaryColor px-12 py-1 rounded-t-lg font-semibold hover:bg-primaryHoverColor max-xl:px-8 max-xl:text-sm max-sm:py-0.5 max-sm:text-xs max-sm:mt-2 max-sm:px-5"
             >
                 Ver mais
             </Link>

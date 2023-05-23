@@ -145,7 +145,7 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
                             ]}
                         />
                         <div className="w-full flex justify-center mt-6 max-2xl:mt-4">
-                            <button type="submit" className="bg-primaryColor rounded-lg py-1.5 px-6 shadow-primary font-semibold hover:bg-primaryHoverColor max-2xl:py-1 max-2xl:px-4">Aplicar</button>
+                            <button type="submit" className="bg-primaryColor text-white rounded-lg py-1.5 px-6 shadow-primary font-semibold hover:bg-primaryHoverColor max-2xl:py-1 max-2xl:px-4">Aplicar</button>
                         </div>
                     </form>
                 </div>
