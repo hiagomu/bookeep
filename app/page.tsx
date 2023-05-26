@@ -3,11 +3,11 @@
 import { Post } from "./components/Post"
 import { Search } from "./components/Search"
 import { useState } from "react"
-import { NewPost } from "./components/NewPost"
+import { NewPost } from "./components/Modals/NewPost"
 import Image from "next/image"
 import axios, { AxiosError } from "axios"
 import { QueryFunctionContext, QueryKey, useQuery, useQueryClient } from "@tanstack/react-query"
-import { PostSkeleton } from "./components/PostSkeleton"
+import { PostSkeleton } from "./components/Skeletons/PostSkeleton"
 import { toast } from "react-hot-toast"
 import { useMutation } from "@tanstack/react-query"
 import { FieldValues } from "react-hook-form"
@@ -18,8 +18,13 @@ import qs from "query-string"
 import notFoundImage from "../public/assets/not_found.svg"
 
 const getPosts = async (searchParams: QueryFunctionContext<QueryKey, any>) => {
-  const response = await axios.get(`/api/posts/getApprovedPosts${searchParams.queryKey[1] ? "/?" + qs.stringify(searchParams.queryKey[1]) : ""}`)
-  return response.data
+  if (searchParams.queryKey[1]) {
+    const response = await axios.get(`/api/posts/getApprovedPosts/?${qs.stringify(searchParams.queryKey[1])}`)
+    return response.data
+  } else {
+    const response = await axios.get("/api/posts/getApprovedPosts")
+    return response.data
+  }
 }
 
 export default function Home() {
@@ -28,7 +33,8 @@ export default function Home() {
     min: 0,
     max: 100,
     category: "all",
-    orderBy: "desc"
+    orderBy: "desc",
+    search: ""
   })
 
   const queryClient = useQueryClient()
@@ -39,6 +45,7 @@ export default function Home() {
     queryKey: ["posts", searchParams],
     onError: err => err,
   })
+  
   let toastPostID: string
 
   const { mutate } = useMutation(
@@ -64,7 +71,7 @@ export default function Home() {
   return (
       <main className="flex justify-center items-center h-fit flex-col relative" >
         <div className="fixed top-0 w-full h-36 flex justify-center bg-white z-10 max-sm:h-28 dark:bg-primaryDarkColor">
-          <Search setIsOpen={setIsOpen}/>
+          <Search setIsOpen={setIsOpen} searchParams={searchParams} setSearchParams={setSearchParams}/>
           <NewPost
             isOpen={isOpen}
             setIsOpen={setIsOpen}

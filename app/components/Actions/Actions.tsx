@@ -6,11 +6,11 @@ import {
 import { useSession } from 'next-auth/react'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import { Remove } from '../Remove'
+import { Remove } from '../Modals/Remove'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { User } from '@/app/@types'
-import { Share } from "../Share"
+import { Share } from "../Modals/Share"
 
 interface IActions {
     user: User

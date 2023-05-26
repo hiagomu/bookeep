@@ -1,48 +1,41 @@
 "use client"
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
-import { useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 import { BsSearch as SearchIcon } from 'react-icons/bs'
 import { object, string } from 'yup'
+import { FilterQueryParams } from '@/app/@types'
 
 interface ISearch {
     setIsOpen?: (isOpen: boolean) => void
     isReviewPage?: boolean
+    searchParams: FilterQueryParams
+    setSearchParams: (searchParams: FilterQueryParams) => void
 }
 
 const searchSchema = object({
     query: string().min(3).required()
 })
 
-const getFilteredPosts = async (query: string) => {
-    if (query) {
-        const response = await axios.get(`/api/posts/getFilteredPosts?search=${query}`)
-        return response.data
-    }
-
-    return null
-}
-
 export const Search = ({
     setIsOpen,
-    isReviewPage
+    isReviewPage,
+    setSearchParams,
+    searchParams
 }: ISearch) => {
-
-    const [query, setQuery] = useState("")
-
-    const { data, isError, isLoading } = useQuery(["filteredPosts", query], () => getFilteredPosts(query))
-    
-    let toastPostID: string
 
     const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm({
         resolver: yupResolver(searchSchema)
     });
 
     const onSubmit = (data: FieldValues) => {
-        setQuery(data.query)
+        setSearchParams({
+            category: searchParams.category,
+            max: searchParams.max,
+            min: searchParams.min,
+            orderBy: searchParams.orderBy,
+            search: String(data.query)
+        })
         reset()
     }
 
@@ -72,7 +65,7 @@ export const Search = ({
             {
                 !isReviewPage && setIsOpen &&
                 <button
-                    className="bg-primaryColor font-poppins h-9 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-base font-medium max-sm:text-xs max-sm:h-7"
+                    className="bg-primaryColor font-poppins text-white h-9 px-2 rounded-lg ml-2 hover:bg-primaryHoverColor text-base font-medium max-sm:text-xs max-sm:h-7"
                     onClick={() => setIsOpen(true)}
                 >
                     Novo

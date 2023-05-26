@@ -7,7 +7,7 @@ import {
 import { User } from '@/app/@types'
 import { format } from "date-fns"
 import ptBR from "date-fns/locale/pt-BR"
-import { NewPost } from "../NewPost"
+import { NewPost } from "../Modals/NewPost"
 import { useState } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { FieldValues } from "react-hook-form"

@@ -1,10 +1,10 @@
 "use client"
 
 import { useQuery } from "@tanstack/react-query"
-import axios, { AxiosError } from "axios"
+import axios from "axios"
 import { PostType, User } from '@/app/@types'
 import { Profile } from "@/app/components/Profile"
-import { PostSkeleton } from "@/app/components/PostSkeleton"
+import { PostSkeleton } from "@/app/components/Skeletons/PostSkeleton"
 import { Post } from "@/app/components/Post"
 import { usePathname } from 'next/navigation'
 

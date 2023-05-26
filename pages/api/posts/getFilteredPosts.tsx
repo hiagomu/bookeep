@@ -12,10 +12,10 @@ export default async function handler(
     try {
         const data = await prisma.post.findMany({
             where: {
-                title: {
-                    contains: String(search),
-                    mode: 'insensitive'
-                }
+                OR: [
+                    { title: { contains: String(search), mode: 'insensitive' } },
+                    { seller: { contains: String(search), mode: 'insensitive' } },
+                ]
             },
             include: {
                 user: true,

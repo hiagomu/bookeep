@@ -2,7 +2,7 @@
 
 import { FiLogIn as LoginIcon } from 'react-icons/fi'
 import { useState } from 'react'
-import { Login } from '../components/Login'
+import { Login } from '../components/Modals/Login'
 
 interface ILoginButton {
     isDropdown: boolean

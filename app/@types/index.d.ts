@@ -143,6 +143,7 @@ export interface FilterQueryParams {
     category: string
     min: number
     max: number
+    search: string
 }
 
 export interface BookstoresType {

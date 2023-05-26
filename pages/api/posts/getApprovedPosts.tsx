@@ -11,7 +11,8 @@ export default async function getApprovedPosts(
         min,
         max,
         category,
-        orderBy
+        orderBy,
+        search
       } = req.query;
 
     let query: any = {}
@@ -34,7 +35,11 @@ export default async function getApprovedPosts(
                     price: {
                         gte: Number(min),
                         lte: Number(max)
-                    }
+                    },
+                    OR: [
+                        { title: { contains: String(search), mode: 'insensitive' } },
+                        { seller: { contains: String(search), mode: 'insensitive' } },
+                    ]
                 },
                 include: {
                     user: true,
@@ -55,7 +60,11 @@ export default async function getApprovedPosts(
                         gte: Number(min),
                         lte: Number(max)
                     },
-                    category: String(category)
+                    category: String(category),
+                    OR: [
+                        { title: { contains: String(search), mode: 'insensitive' } },
+                        { seller: { contains: String(search), mode: 'insensitive' } },
+                    ]
                 },
                 include: {
                     user: true,

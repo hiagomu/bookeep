@@ -33,8 +33,7 @@ export const Interactions = ({
     },
     {
         onSuccess: (data) => {
-            queryClient.invalidateQueries(["detail-post"])
-            queryClient.invalidateQueries(["posts"])
+            queryClient.invalidateQueries(["detail-post", "posts"])
             setLoading(false)
         }
     })

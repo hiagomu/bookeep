@@ -7,7 +7,7 @@ import {
 } from 'react-icons/md'
 import Link from 'next/link'
 import { PricingBoxType } from '@/app/@types'
-import { Share } from '@/app/components/Share'
+import { Share } from '@/app/components/Modals/Share'
 import { useState } from 'react'
 
 const PricingBox =  ({

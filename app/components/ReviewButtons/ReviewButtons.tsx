@@ -6,7 +6,7 @@ import { useQueryClient, useMutation } from '@tanstack/react-query'
 import axios from "axios"
 import toast from "react-hot-toast"
 import { useState } from "react"
-import { RejectPost } from "../RejectPost"
+import { RejectPost } from "../Modals/RejectPost"
 
 interface ReviewButtons {
     id: string,

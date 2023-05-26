@@ -7,7 +7,7 @@ import { Darkmode } from '../components/Darkmode'
 import { MdLogout as SingOutIcon } from 'react-icons/md'
 import { BsFilePerson as ProfileCardIcon } from 'react-icons/bs'
 import Link from 'next/link'
-import { SignOut } from '../components/SignOut'
+import { SignOut } from '../components/Modals/SignOut'
 import { useSession } from 'next-auth/react'
 
 interface ILoggedButton {

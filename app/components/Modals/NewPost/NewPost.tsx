@@ -197,13 +197,13 @@ export const NewPost = ({
               />
               <div className="flex w-full justify-end mt-4">
                 <button
-                  className="bg-zinc-500 rounded text-sm py-2 px-3 font-poppins font-semibold mr-4 outline-none hover:bg-zinc-400 max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
+                  className="bg-zinc-500 rounded text-sm py-2 px-3 font-poppins text-white font-semibold mr-4 outline-none hover:bg-zinc-400 max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
                   onClick={handleReset}
                 >
                   Cancel
                 </button>
                 <button
-                  className="flex justify-center items-center bg-primaryColor py-2 px-3 rounded text-sm font-poppins font-semibold outline-none hover:bg-primaryHoverColor max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
+                  className="flex justify-center items-center bg-primaryColor py-2 px-3 rounded text-white text-sm font-poppins font-semibold outline-none hover:bg-primaryHoverColor max-lg:py-1.5 max-lg:px-2.5 max-lg:text-xs"
                   type="submit"
                   disabled={isSubmitting}
                 >

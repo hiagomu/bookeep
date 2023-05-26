@@ -87,15 +87,15 @@ export const Share = ({
                 <div className="mt-5">
                     <span className="font-poppins font-medium dark:text-white text-gray-400 max-sm:text-sm">Copiar link:</span>
                     <div className="mt-3 dark:bg-secondaryDarkColor bg-gray-400 rounded-md flex items-center py-1 px-1">
-                        <LinkIcon className="ml-1"/>
+                        <LinkIcon className="ml-1 text-white"/>
                         <input
                             value={`bookeep.io/post/${postId}`}
-                            className="outline-none mr-2 px-2 bg-transparent overflow-hidden max-sm:text-xs"
+                            className="outline-none mr-2 px-2 bg-transparent overflow-hidden max-sm:text-xs text-white"
                             type="text"
                             readOnly
                         />
                         <button
-                            className="bg-primaryColor hover:bg-primaryHoverColor py-1 px-1.5 rounded-sm max-sm:text-sm"
+                            className="bg-primaryColor hover:bg-primaryHoverColor py-1 px-1.5 rounded-sm max-sm:text-sm text-white"
                             onClick={() => {
                                 navigator.clipboard.writeText(`https://bookeep.io/post/${postId}`)
                                 toast.success("Copiado para área de transferência", {id: toastPostID})

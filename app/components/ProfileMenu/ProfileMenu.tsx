@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { SignOut } from "../SignOut"
+import { SignOut } from "../Modals/SignOut"
 import { useState } from "react"
 import { BsFilePerson as ProfileCardIcon } from 'react-icons/bs'
 import { MdLogout as SingOutIcon } from 'react-icons/md'

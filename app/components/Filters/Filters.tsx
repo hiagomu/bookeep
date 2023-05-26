@@ -30,7 +30,8 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
             orderBy: data.orderBy,
             category: data.category,
             min: values[0],
-            max: values[1]
+            max: values[1],
+            search: ""
         }
 
         setSearchParams(currentQuery)
@@ -41,7 +42,8 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
             min: 0,
             max: 100,
             category: "all",
-            orderBy: "desc"
+            orderBy: "desc",
+            search: ""
         })
     }
 
