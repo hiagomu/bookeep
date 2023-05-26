@@ -2,7 +2,6 @@
 
 import axios from "axios"
 import { Post } from "../components/Post"
-import { Search } from "../components/Search"
 import { useQuery } from "@tanstack/react-query"
 import { PostSkeleton } from "../components/Skeletons/PostSkeleton"
 import { PostType } from "../@types"
@@ -23,15 +22,12 @@ export default function Home() {
 
   return (
       <main className="flex justify-center items-center h-fit flex-col relative" >
-        <div className="fixed top-0 w-full h-36 flex justify-center bg-white z-10 max-sm:h-28 dark:bg-primaryDarkColor">
-          <Search isReviewPage={true}/>
-        </div>
-        <div  className="mt-40 z-0 max-sm:mt-28">
+        <div  className="mt-24 z-0 max-sm:mt-16">
           {
             isLoading ?
               <PostSkeleton count={5}/>
               : 
-              data?.map((post: PostType) => 
+              data?.map((post: PostType) =>
                 <Post
                   status={post.status}
                   category={post.category}
