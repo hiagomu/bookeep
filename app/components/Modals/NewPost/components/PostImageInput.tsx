@@ -13,6 +13,7 @@ const PostImageInput = ({
   alt,
   name,
   title,
+  value,
   register,
   innerText,
   errorMessage,
@@ -54,10 +55,10 @@ const PostImageInput = ({
             <ImageIcon className="text-primaryColor dark:text-zinc-400 w-5 h-5 font-bold"/>
           </div>
           {
-            previewImage &&
+            (previewImage || value) &&
             <div className="flex justify-center items-center flex-col h-16 w-14 mr-2 border-2 border-primaryColor rounded cursor-pointer overflow-hidden">
               <img
-                src={previewImage} 
+                src={previewImage ?? value}
                 alt={alt}
               />
             </div>

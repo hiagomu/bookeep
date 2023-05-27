@@ -18,6 +18,9 @@ const Product = ({
     seller,
     comments,
     createdAt,
+    coupon,
+    saleLink,
+    category,
     status,
     description,
     bookImageURL
@@ -49,7 +52,25 @@ const Product = ({
                             >
                                 <OptionsIcon className="text-primaryColor"/>
                             </button>
-                            <Actions user={user} postId={id} isActionsOpen={isActionsOpen} setIsActionsOpen={setIsActionsOpen} status={status}/>
+                            <Actions
+                                user={user}
+                                postId={id}
+                                isActionsOpen={isActionsOpen}
+                                setIsActionsOpen={setIsActionsOpen}
+                                status={status}
+                                postData={{
+                                    id: id,
+                                    title: title,
+                                    bookImageURL: bookImageURL,
+                                    category: category,
+                                    coupon: coupon,
+                                    description: description,
+                                    saleLink: saleLink,
+                                    status: status,
+                                    seller: seller,
+                                    price: price
+                                }}
+                            />
                         </>
                 }
             </div>

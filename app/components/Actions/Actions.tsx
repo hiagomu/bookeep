@@ -5,14 +5,17 @@ import {
 } from 'react-icons/fa'
 import { useSession } from 'next-auth/react'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { Remove } from '../Modals/Remove'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
-import { User } from '@/app/@types'
+import { EditPostType, User } from '@/app/@types'
 import { Share } from "../Modals/Share"
+import { NewPost } from '../Modals/NewPost'
+import { FieldValues } from 'react-hook-form'
 
 interface IActions {
+    postData: EditPostType
     user: User
     postId: string
     status: "pending" | "published" | "rejected"
@@ -24,13 +27,15 @@ interface IDeletePost {
     id: string
 }
 
-export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status }: IActions) => {
+export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status, postData }: IActions) => {
     
     let deleteToastID: string
+    let editPostToastID: string
     const { data: session } = useSession()
     const queryClient = useQueryClient()
     const [isRemoveOpen, setIsRemoveOpen] = useState(false)
     const [isShareOpen, setIsShareOpen] = useState(false)
+    const [isEditOpen, setIsEditOpen] = useState(false)
     const deletePost = useMutation(
         async ({ id }: IDeletePost) => {
             deleteToastID = toast.loading("Removendo anúncio...", { id: deleteToastID})
@@ -44,6 +49,27 @@ export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status 
         }
     )
 
+    const { mutate } = useMutation(
+        async (data: FieldValues) => await axios.put("/api/posts/editPost", { ...data }),
+        {
+          onError: (error) => {
+            if (error instanceof AxiosError) {
+              toast.error(error?.response?.data.message, {id: editPostToastID})
+            }
+          },
+          onSuccess: () => {
+            toast.success("Anúncio editado com sucesso!", {id: editPostToastID})
+            queryClient.invalidateQueries(["posts"])
+          }
+        }
+      )
+    
+    const editPost = (data: FieldValues) => {
+        editPostToastID = toast.loading("Atualizando anúncio...", {id: editPostToastID})
+        mutate(data)
+    }
+
+
     return (
         <>
             <Remove isOpen={isRemoveOpen} setIsOpen={setIsRemoveOpen} deletePost={deletePost} id={postId}/>
@@ -51,6 +77,13 @@ export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status 
                 isOpen={isShareOpen}
                 postId={postId}
                 setIsOpen={setIsShareOpen}
+            />
+            <NewPost
+                createPost={editPost}
+                isOpen={isEditOpen}
+                setIsOpen={setIsEditOpen}
+                isEdit={true}
+                postData={postData}
             />
             {
                 isActionsOpen &&
@@ -75,6 +108,7 @@ export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status 
                                     status !== "rejected" &&
                                     <button
                                         className="flex items-center w-11/12 px-1 h-5 hover:bg-slate-200 dark:hover:bg-primaryDarkHoverColor text-black dark:text-white text-xs font-bold rounded-md"
+                                        onClick={() => setIsEditOpen(true)}
                                     >
                                         <EditIcon className='mr-1.5'/>
                                         <p>Editar</p>

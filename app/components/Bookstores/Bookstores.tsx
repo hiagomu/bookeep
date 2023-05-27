@@ -15,7 +15,7 @@ export const Bookstores =  () => {
     })
 
     return (
-        <div className="fixed w-[19rem] h-[36rem] max-2xl:w-[16rem] bg-filters dark:bg-secondaryDarkColor rounded-xl mt-40 shadow-primary px-6 py-5">
+        <div className="fixed w-[19rem] min-h-[36rem] h-fit max-2xl:w-[16rem] bg-filters dark:bg-secondaryDarkColor rounded-xl mt-40 shadow-primary px-6 py-5">
             <h2 className="text-xl text-black font-bold mb-5 dark:text-white">Bibliotecas</h2>
             {
                     data?.map((bookstore: BookstoresType) =>  

@@ -48,6 +48,9 @@ export default function PostDetail(url: IURL) {
                             user={data.user}
                             key={data.id}
                             id={data.id}
+                            category={data.category}
+                            saleLink={data.saleLink}
+                            coupon={data.coupon}
                         />
                     }
                 </div>

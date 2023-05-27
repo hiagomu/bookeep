@@ -76,6 +76,7 @@ export default function Home() {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             createPost={createPost}
+            isEdit={false}
           />
         </div>
         <div className="flex justify-center gap-12 max-2xl:gap-8">
@@ -131,7 +132,7 @@ export default function Home() {
                   </div>
             }
           </div>
-          <div className="w-[19rem] h-[36rem] max-2xl:w-[16rem] max-xl:hidden">
+          <div className="w-[19rem] h-fit max-2xl:w-[16rem] max-xl:hidden">
             <Bookstores />
           </div>
         </div>

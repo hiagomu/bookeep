@@ -22,6 +22,19 @@ export interface PostType {
     isMarketplaceVerified: boolean
 }
 
+export interface EditPostType {
+    id: string
+    title: string
+    bookImageURL: string
+    category: string
+    coupon?: string
+    description?: string
+    saleLink: string
+    status: "rejected" | "pending" | "published"
+    seller: string
+    price: string
+}
+
 export interface PostBoxType {
     id: string
     user: User
@@ -52,6 +65,9 @@ export interface PostDetailedType {
     price: string
     likes?: Like[]
     seller: string
+    category: string
+    coupon?: string
+    saleLink: string
     comments?: Comment[]
     createdAt: Date
     status: "rejected" | "pending" | "published"
@@ -96,6 +112,7 @@ export interface ImageInputType {
     id: string
     alt: string
     name: string
+    value?: string
     title: string
     register: UseFormRegister<FieldValues>
     innerText: string
@@ -106,6 +123,7 @@ export interface ImageInputType {
 export interface PostInputType {
     id: string
     name: string
+    value?: any
     type?: "text" | "url" | "number"
     title: string
     element: "input" | "select" | "textarea"
