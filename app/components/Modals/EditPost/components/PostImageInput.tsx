@@ -6,7 +6,7 @@ import {
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
-import { ImageInputType } from '@/app/@types'
+import { EditImageInputType } from '@/app/@types'
 
 const PostImageInput = ({
   id,
@@ -14,11 +14,9 @@ const PostImageInput = ({
   name,
   title,
   value,
-  register,
   innerText,
-  errorMessage,
   setProductImage
-}: ImageInputType) => {
+}: EditImageInputType) => {
 
   const [previewImage, setPreviewImage] = useState<string>()
   const [file, setFile] = useState<any>()
@@ -55,10 +53,10 @@ const PostImageInput = ({
             <ImageIcon className="text-primaryColor dark:text-zinc-400 w-5 h-5 font-bold"/>
           </div>
           {
-            previewImage &&
+            (previewImage || value) &&
             <div className="flex justify-center items-center flex-col h-16 w-14 mr-2 border-2 border-primaryColor rounded cursor-pointer overflow-hidden">
               <img
-                src={previewImage}
+                src={previewImage ?? value}
                 alt={alt}
               />
             </div>
@@ -67,23 +65,9 @@ const PostImageInput = ({
       </label>
       <input
         className='hidden'
-        {...register(name, {
-          onChange: (e) => {
-            setFile(e.target.files[0])
-            if (e?.target?.files?.[0]) {
-              const file = e.target.files[0]
-              const reader = new FileReader()
-              reader.onloadend = () => {
-                setPreviewImage(reader.result as string)
-              }
-              reader.readAsDataURL(file)
-            }
-          }
-        })}
         type="file"
         id={id}
       />
-      {errorMessage && <span className="block text-red-500 text-xs font-bold max-lg:mb-2">{errorMessage}</span>}
     </div>
   )
 }

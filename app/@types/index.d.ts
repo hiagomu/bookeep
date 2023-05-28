@@ -120,6 +120,16 @@ export interface ImageInputType {
     setProductImage: (productImage: string) => void
 }
 
+export interface EditImageInputType {
+    id: string
+    alt: string
+    name: string
+    value?: string
+    title: string
+    innerText: string
+    setProductImage: (productImage: string) => void
+}
+
 export interface PostInputType {
     id: string
     name: string
@@ -135,6 +145,23 @@ export interface PostInputType {
     register: UseFormRegister<FieldValues>
     placeholder?: string
     errorMessage: string
+}
+
+export interface EditPostInputType {
+    id: string
+    name: string
+    value?: any
+    type?: "text" | "url" | "number"
+    title: string
+    element: "input" | "select" | "textarea"
+    isSmall?: boolean
+    options?: {
+        value: string
+        name: string
+    }[]
+    placeholder?: string
+    currentPostData: EditPostType
+    setCurrentPostData: (currentPostData: EditPostType) => void
 }
 
 export interface SelectFilterType {

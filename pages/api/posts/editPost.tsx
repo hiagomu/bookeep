@@ -27,7 +27,7 @@ export default async function handler(
         saleLink,
         description,
         bookImageURL
-    }: EditPostType = req.body.data
+    }: EditPostType = req.body
     
     const user = await prisma.user.findUnique({
         where: {

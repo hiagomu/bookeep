@@ -11,7 +11,7 @@ import { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { EditPostType, User } from '@/app/@types'
 import { Share } from "../Modals/Share"
-import { NewPost } from '../Modals/NewPost'
+import { EditPost } from '../Modals/EditPost'
 import { FieldValues } from 'react-hook-form'
 
 interface IActions {
@@ -50,7 +50,7 @@ export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status,
     )
 
     const { mutate } = useMutation(
-        async (data: FieldValues) => await axios.put("/api/posts/editPost", { ...data }),
+        async (data: FieldValues) => await axios.put("/api/posts/editPost", { ...data, id: postId }),
         {
           onError: (error) => {
             if (error instanceof AxiosError) {
@@ -78,7 +78,7 @@ export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status,
                 postId={postId}
                 setIsOpen={setIsShareOpen}
             />
-            <NewPost
+            <EditPost
                 createPost={editPost}
                 isOpen={isEditOpen}
                 setIsOpen={setIsEditOpen}
