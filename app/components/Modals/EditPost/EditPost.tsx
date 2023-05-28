@@ -159,7 +159,7 @@ export const EditPost = ({
           setIsOpen={setIsOpen}
         >
           <div className="h-fit p-6 w-fit max-sm:p-4">
-            <h1 className="text-primaryColor font-bold font-poppins text-2xl mb-4 max-lg:mb-3 max-lg:text-xl max-sm:text-lg max-sm:mb-2">Criar anúncio</h1>
+            <h1 className="text-primaryColor font-bold font-poppins text-2xl mb-4 max-lg:mb-3 max-lg:text-xl max-sm:text-lg max-sm:mb-2">Editar anúncio</h1>
             <form
               onSubmit={async (e) => {
                 e.preventDefault()
@@ -265,7 +265,7 @@ export const EditPost = ({
                     Imagem
                     <div className="flex w-fit">
                       <div className="flex justify-center items-center flex-col h-20 w-16 mb-1 mr-2 border-2 bg-slate-200 dark:bg-neutral-700 border-primaryColor rounded cursor-pointer">
-                        <span className="block text-xs text-center text-primaryColor dark:text-zinc-400">Adicione</span>
+                        <span className="block text-xs text-center text-primaryColor dark:text-zinc-400">Alterar</span>
                         <ImageIcon className="text-primaryColor dark:text-zinc-400 w-5 h-5 font-bold"/>
                       </div>
                       {
@@ -386,7 +386,7 @@ export const EditPost = ({
                   type="submit"
                 >
                   <BooIcon className="mr-2"/>
-                  Post
+                  Atualizar
                 </button>
               </div>
             </form>
