@@ -77,7 +77,7 @@ export const EditPost = ({
     description: postData.description,
     saleLink: postData.saleLink,
     status: postData.status,
-    marketplace: postData.marketplace,
+    seller: postData.seller,
     price: postData.price
   })
 
@@ -96,6 +96,8 @@ export const EditPost = ({
     {name: "Educação", value: "educational"},
     {name: "Literatura Clássica", value: "classical-literature"},
   ]
+
+  console.log(postData)
 
   const { mutate } = useMutation(
     (async () => {
@@ -147,7 +149,7 @@ export const EditPost = ({
       description: postData.description,
       saleLink: postData.saleLink,
       status: postData.status,
-      marketplace: postData.marketplace,
+      seller: postData.seller,
       price: postData.price
     })
     setIsOpen(false)
@@ -312,10 +314,10 @@ export const EditPost = ({
                         onChange={(e) => {
                           setCurrentPostData({
                             ...currentPostData,
-                            marketplace: e.target.value
+                            seller: e.target.value
                           })
                         }}
-                        value={currentPostData.marketplace}
+                        value={currentPostData.seller}
                         name="marketplace"
                         type="text"
                         id="marketplace"

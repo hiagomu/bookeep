@@ -31,7 +31,7 @@ export interface EditPostType {
     description?: string
     saleLink: string
     status: "rejected" | "pending" | "published"
-    marketplace: string
+    seller: string
     price: string
 }
 

@@ -68,7 +68,7 @@ const Product = ({
                                     description: description,
                                     saleLink: saleLink,
                                     status: status,
-                                    marketplace: marketplace,
+                                    seller: marketplace,
                                     price: price
                                 }}
                             />
