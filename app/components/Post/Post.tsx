@@ -77,7 +77,7 @@ export const Post = ({
                             description: description,
                             saleLink: saleLink,
                             status: status,
-                            seller: seller,
+                            marketplace: marketplace,
                             price: price
                         }}
                     />

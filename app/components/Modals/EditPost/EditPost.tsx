@@ -77,7 +77,7 @@ export const EditPost = ({
     description: postData.description,
     saleLink: postData.saleLink,
     status: postData.status,
-    seller: postData.seller,
+    marketplace: postData.marketplace,
     price: postData.price
   })
 
@@ -147,7 +147,7 @@ export const EditPost = ({
       description: postData.description,
       saleLink: postData.saleLink,
       status: postData.status,
-      seller: postData.seller,
+      marketplace: postData.marketplace,
       price: postData.price
     })
     setIsOpen(false)
@@ -302,7 +302,7 @@ export const EditPost = ({
                   <div className="flex flex-col">
                     <label
                         className="text-primaryColor font-poppins font-semibold mt-2 max-lg:text-sm"
-                        htmlFor="seller"
+                        htmlFor="marketplace"
                     >
                         Marketplace
                     </label>
@@ -312,13 +312,13 @@ export const EditPost = ({
                         onChange={(e) => {
                           setCurrentPostData({
                             ...currentPostData,
-                            seller: e.target.value
+                            marketplace: e.target.value
                           })
                         }}
-                        value={currentPostData.seller}
-                        name="seller"
+                        value={currentPostData.marketplace}
+                        name="marketplace"
                         type="text"
-                        id="seller"
+                        id="marketplace"
                     />
                   </div>
                   <div className="flex flex-col">
