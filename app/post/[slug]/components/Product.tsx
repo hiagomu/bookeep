@@ -18,6 +18,7 @@ const Product = ({
     seller,
     comments,
     createdAt,
+    marketplace,
     coupon,
     saleLink,
     category,
@@ -67,7 +68,7 @@ const Product = ({
                                     description: description,
                                     saleLink: saleLink,
                                     status: status,
-                                    seller: seller,
+                                    marketplace: marketplace,
                                     price: price
                                 }}
                             />

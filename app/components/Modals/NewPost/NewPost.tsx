@@ -158,16 +158,16 @@ export const NewPost = ({
                 />
                 <div>
                 <PostInput
-                    errorMessage={errors.seller ? String(errors.seller.message) : ""}
+                    errorMessage={errors.marketplace ? String(errors.marketplace.message) : ""}
                     placeholder="Insira o marketplace..."
                     register={register}
                     element="input"
                     isSmall={true}
-                    value={postData?.seller}
+                    value={postData?.marketplace}
                     title="Marketplace"
                     type="text"
-                    name="seller"
-                    id="seller"
+                    name="marketplace"
+                    id="marketplace"
                   />
                   <PostInput
                     element="select"

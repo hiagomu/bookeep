@@ -69,6 +69,7 @@ export interface PostDetailedType {
     coupon?: string
     saleLink: string
     comments?: Comment[]
+    marketplace: string
     createdAt: Date
     status: "rejected" | "pending" | "published"
     description?: string
