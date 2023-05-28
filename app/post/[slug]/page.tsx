@@ -38,7 +38,7 @@ export default function PostDetail(url: IURL) {
                         <Product
                             bookImageURL={data.bookImageURL}
                             description={data.description}
-                            marketplace={data.marketplace}
+                            marketplace={data.seller}
                             createdAt={data.createdAt}
                             status={data.status}
                             comments={data.comments}

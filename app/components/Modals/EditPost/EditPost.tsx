@@ -97,8 +97,6 @@ export const EditPost = ({
     {name: "Literatura Clássica", value: "classical-literature"},
   ]
 
-  console.log(postData)
-
   const { mutate } = useMutation(
     (async () => {
       const response = await axios.get("/api/images/uploadImage", {

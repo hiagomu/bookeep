@@ -30,6 +30,8 @@ const Product = ({
     const today = Date.now()
     const [isActionsOpen, setIsActionsOpen] = useState(false)
 
+    console.log(marketplace)
+
     return (
         <div className="w-[51rem] h-[17rem] flex flex-col relative max-xl:w-[40rem] max-xl:h-[14rem] max-md:w-[32rem] max-sm:w-[18rem] max-sm:h-fit">
             <div className='flex items-center mt-2'>
