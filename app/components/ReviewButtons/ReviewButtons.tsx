@@ -3,7 +3,7 @@ import {
     FaTrashAlt as RejectIcon
 } from "react-icons/fa"
 import { useQueryClient, useMutation } from '@tanstack/react-query'
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import toast from "react-hot-toast"
 import { useState } from "react"
 import { RejectPost } from "../Modals/RejectPost"
@@ -43,6 +43,11 @@ export const ReviewButtons = ({
             await axios.put(`/api/posts/approvePost`, {data: { id, price, title, coupon, userId, saleLink, category, description, bookImageURL }})
         },
         {
+            onError: (error) => {
+                if (error instanceof AxiosError) {
+                  toast.error(error?.response?.data.message, {id: approveToastID})
+                }
+            },
             onSuccess: () => {
                 toast.success("Anúncio aprovado com sucesso!", { id: approveToastID })
                 queryClient.invalidateQueries(["posts"])
@@ -56,6 +61,11 @@ export const ReviewButtons = ({
             await axios.put(`/api/posts/rejectPost`, {data: { id, price, title, coupon, userId, saleLink, category, description, bookImageURL }})
         },
         {
+            onError: (error) => {
+                if (error instanceof AxiosError) {
+                  toast.error(error?.response?.data.message, {id: rejectToastID})
+                }
+            },
             onSuccess: () => {
                 toast.success("Anúncio removido com sucesso!", { id: rejectToastID })
                 queryClient.invalidateQueries(["posts"])

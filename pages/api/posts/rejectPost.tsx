@@ -15,6 +15,12 @@ export default async function handler(
             .json({ message: "Por favor, faça login para avaliar post!" })
     }
 
+    if (session.user.user_access_level !== "admin") {
+        return res
+            .status(401)
+            .json({ message: "Você não possui permissão para avaliar" })
+    }
+
     if (req.method !== "PUT") return res.status(405).end()
 
     try {
