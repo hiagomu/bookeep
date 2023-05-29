@@ -33,7 +33,8 @@ export const Interactions = ({
     },
     {
         onSuccess: (data) => {
-            queryClient.invalidateQueries(["detail-post", "posts"])
+            queryClient.invalidateQueries(["posts"])
+            queryClient.invalidateQueries(["detail-post"])
             setLoading(false)
         }
     })
@@ -46,7 +47,7 @@ export const Interactions = ({
                     {loading ?
                         <Loading size="xs" color="white" className="mr-2 max-sm:mr-1"/>
                         :
-                        <BooIcon className={`mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1 text-white ${currentUserLiked ? "text-red-400" : ""}`} />
+                        <BooIcon className={`mr-2 hover:text-primaryHoverColor max-xl:text-sm max-sm:text-xs max-sm:mr-1 ${currentUserLiked ? "text-red-400" : "text-white"}`} />
                     }
                 </button>
                 <span className='font-poppins font-bold max-xl:text-sm max-sm:text-xs text-white'>{likes?.length || 0}</span>

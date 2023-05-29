@@ -55,14 +55,16 @@ export default function PostDetail(url: IURL) {
                         />
                     }
                 </div>
-                <div className='max-lg:hidden flex justify-between mt-2 max-xl:w-[40rem]'>
-                    <ProductDetailBox />
-                    <ProductDetailBox />
-                    <ProductDetailBox />
-                    <ProductDetailBox />
-                    <ProductDetailBox />
-                    <ProductDetailBox />
-                </div>
+                {
+                    // <div className='max-lg:hidden flex justify-between mt-2 max-xl:w-[40rem]'>
+                    //     <ProductDetailBox />
+                    //     <ProductDetailBox />
+                    //     <ProductDetailBox />
+                    //     <ProductDetailBox />
+                    //     <ProductDetailBox />
+                    //     <ProductDetailBox />
+                    // </div>
+                }
                 {
                     data &&
                     <div className='hidden max-lg:block'>
@@ -101,8 +103,7 @@ export default function PostDetail(url: IURL) {
                     />
                 }
                 <div className='mt-16'>
-                    <h2 className='text-black font-bold font-poppins text-2xl mb-4 dark:text-white max-xl:text-xl'>Relacionados</h2>
-                    <RelatedProducts />
+                    <h2 className='text-black font-bold font-poppins text-2xl mb-4 dark:text-white max-xl:text-xl'>Outros</h2>
                     <RelatedProducts />
                 </div>
             </div>
