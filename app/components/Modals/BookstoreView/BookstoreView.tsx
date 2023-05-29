@@ -31,8 +31,6 @@ export const BookstoreView = ({ isOpen, setIsOpen, bookstore}: BookstoreViewType
         googleMapsApiKey: String(process.env.NEXT_PUBLIC_GOOGLE_API_KEY)
     })
 
-    console.log(bookstore)
-
     return (
         <Modal
             isOpen={isOpen}

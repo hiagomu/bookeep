@@ -76,7 +76,6 @@ export default function Home() {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             createPost={createPost}
-            isEdit={false}
           />
         </div>
         <div className="flex justify-center gap-12 max-2xl:gap-8">

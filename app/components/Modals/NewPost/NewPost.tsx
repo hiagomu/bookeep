@@ -1,24 +1,20 @@
 "use client"
 
 import { Modal } from "../Modal"
-
+import PostInput from "./components/PostInput"
 import {
   FaGhost as BooIcon
 } from 'react-icons/fa'
 import { FieldValues, useForm } from 'react-hook-form'
 import PostImageInput from "./components/PostImageInput"
-import PostInput from "./components/PostInput" 
 import { mixed, object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useState } from "react"
-import { EditPostType } from "@/app/@types"
 
 interface INewPost {
     isOpen: boolean
     setIsOpen: (isOpen: boolean) => void
     createPost: (data: FieldValues) => void
-    postData?: EditPostType
-    isEdit: boolean 
 }
 
 const newPostSchema = object({
@@ -54,8 +50,7 @@ const newPostSchema = object({
 export const NewPost = ({
   isOpen,
   setIsOpen,
-  createPost,
-  postData
+  createPost
 }: INewPost) => {
 
   const [productImage, setProductImage]= useState<string>()
@@ -100,7 +95,6 @@ export const NewPost = ({
                 register={register}
                 element="input"
                 isSmall={false}
-                value={postData?.title}
                 title="Título"
                 type="text"
                 name="title"
@@ -112,7 +106,6 @@ export const NewPost = ({
                 register={register}
                 element="input"
                 isSmall={false}
-                value={postData?.saleLink}
                 title="Link"
                 type="text"
                 name="saleLink"
@@ -125,7 +118,6 @@ export const NewPost = ({
                   register={register}
                   element="input"
                   isSmall={true}
-                  value={postData?.price}
                   title="Preço"
                   type="text"
                   name="price"
@@ -137,7 +129,6 @@ export const NewPost = ({
                   register={register}
                   element="input"
                   isSmall={true}
-                  value={postData?.coupon}
                   title="Cupom"
                   type="text"
                   name="coupon"
@@ -150,7 +141,6 @@ export const NewPost = ({
                   setProductImage={setProductImage}
                   innerText="Adicione"
                   register={register}
-                  value={postData?.bookImageURL}
                   title="Imagem"
                   name="bookImageURL"
                   alt="Imagem do produto"
@@ -158,16 +148,15 @@ export const NewPost = ({
                 />
                 <div>
                 <PostInput
-                    errorMessage={errors.marketplace ? String(errors.marketplace.message) : ""}
+                    errorMessage={errors.seller ? String(errors.seller.message) : ""}
                     placeholder="Insira o marketplace..."
                     register={register}
                     element="input"
                     isSmall={true}
-                    value={postData?.seller}
                     title="Marketplace"
                     type="text"
-                    name="marketplace"
-                    id="marketplace"
+                    name="seller"
+                    id="seller"
                   />
                   <PostInput
                     element="select"
@@ -175,7 +164,6 @@ export const NewPost = ({
                     id="category"
                     name="category"
                     isSmall={true}
-                    value={postData?.category}
                     title="Categoria"
                     options={[
                       {name: "", value: ""},
@@ -202,7 +190,6 @@ export const NewPost = ({
                 register={register}
                 element="textarea"
                 isSmall={true}
-                value={postData?.description}
                 title="Descrição"
                 name="description"
                 id="description"
