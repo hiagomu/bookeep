@@ -16,6 +16,8 @@ import { Filters } from "./components/Filters"
 import { Bookstores } from "./components/Bookstores"
 import qs from "query-string"
 import notFoundImage from "../public/assets/not_found.svg"
+import { MobileFilter } from "./components/Modals/MobileFilter"
+import { FaSlidersH as FilterIcon } from "react-icons/fa"
 
 const getPosts = async (searchParams: QueryFunctionContext<QueryKey, any>) => {
   if (searchParams.queryKey[1]) {
@@ -39,6 +41,7 @@ export default function Home() {
 
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false)
 
   const { data, isLoading, status } = useQuery<PostType[]>({
     queryFn: (searchParams) => getPosts(searchParams),
@@ -77,10 +80,19 @@ export default function Home() {
             setIsOpen={setIsOpen}
             createPost={createPost}
           />
+          <MobileFilter
+            isOpen={isMobileFilterOpen}
+            setIsOpen={setIsMobileFilterOpen}
+            min={0}
+            max={100}
+            defaultValue={[0, 100]}
+            setSearchParams={setSearchParams}
+          />
         </div>
         <div className="flex justify-center gap-12 max-2xl:gap-8">
           <div className="w-[19rem] h-[28rem] max-2xl:w-[16rem] max-lg:hidden">
             <Filters
+              isModal={false}
               min={0}
               max={100}
               defaultValue={[0, 100]}
@@ -135,6 +147,12 @@ export default function Home() {
             <Bookstores />
           </div>
         </div>
+        <button
+          className="hidden max-lg:flex rounded-full bg-primaryColor h-8 w-8 fixed bottom-0 right-0 mr-4 mb-4 justify-center items-center shadow-secondary"
+          onClick={() => setIsMobileFilterOpen(true)}
+        >
+          <FilterIcon className="text-white h-4 w-4 font-bold"/>
+        </button>
       </main>
   )
 }

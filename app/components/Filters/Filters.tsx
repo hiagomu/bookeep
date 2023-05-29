@@ -18,9 +18,11 @@ type Props = {
     max: number
     defaultValue: [number, number]
     setSearchParams: (searchParams: FilterQueryParams) => void
+    setIsOpen?: (isOpen: boolean) => void
+    isModal: boolean
 };
 
-export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
+export const Filters =  ({min, max, defaultValue, setSearchParams, isModal, setIsOpen }: Props) => {
 
     const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm()
 
@@ -55,7 +57,7 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
 
     return (
         <ChakraProvider>
-            <div className="fixed mt-40 w-[19rem] h-[28rem] max-2xl:w-[16rem] max-2xl:h-[25rem] bg-filters dark:bg-secondaryDarkColor rounded-xl shadow-primary flex justify-center items-center">
+            <div className="fixed mt-40 w-[19rem] h-[28rem] max-2xl:w-[16rem] max-2xl:h-[25rem] max-lg:mt-0 max-lg:static bg-filters dark:bg-secondaryDarkColor rounded-xl shadow-primary flex justify-center items-center">
                 <div className="w-10/12 h-[26rem] max-2xl:h-[22rem]">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="flex justify-between align-top">
@@ -146,8 +148,17 @@ export const Filters =  ({min, max, defaultValue, setSearchParams }: Props) => {
                                 {name: "Mais antigos", value: "asc"},
                             ]}
                         />
-                        <div className="w-full flex justify-center mt-6 max-2xl:mt-4">
+                        <div className={`w-full flex ${isModal ? "justify-between" : "justify-center"} mt-6 max-2xl:mt-4`}>
                             <button type="submit" className="bg-primaryColor text-white rounded-lg py-1.5 px-6 shadow-primary font-semibold hover:bg-primaryHoverColor max-2xl:py-1 max-2xl:px-4">Aplicar</button>
+                            {
+                                isModal && setIsOpen &&
+                                <button
+                                    className="bg-red-500 text-white rounded-lg py-1.5 px-6 shadow-primary font-semibold hover:bg-red-300 max-2xl:py-1 max-2xl:px-4"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    Fechar
+                                </button>
+                            }
                         </div>
                     </form>
                 </div>
