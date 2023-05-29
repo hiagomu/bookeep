@@ -83,8 +83,6 @@ export default function Home() {
           <MobileFilter
             isOpen={isMobileFilterOpen}
             setIsOpen={setIsMobileFilterOpen}
-            min={0}
-            max={100}
             defaultValue={[0, 100]}
             setSearchParams={setSearchParams}
           />
@@ -93,8 +91,6 @@ export default function Home() {
           <div className="w-[19rem] h-[28rem] max-2xl:w-[16rem] max-lg:hidden">
             <Filters
               isModal={false}
-              min={0}
-              max={100}
               defaultValue={[0, 100]}
               setSearchParams={setSearchParams}
             />

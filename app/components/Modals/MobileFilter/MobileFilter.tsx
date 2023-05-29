@@ -3,15 +3,13 @@ import { Filters } from "../../Filters"
 import { Modal } from "../Modal"
 
 interface MobileFilterType {
-    min: number
-    max: number
     defaultValue: [number, number]
     isOpen: boolean
     setIsOpen: (isOpen: boolean) => void
     setSearchParams: (searchParams: FilterQueryParams) => void
 }
 
-export const MobileFilter = ({isOpen, setIsOpen, setSearchParams, min, max, defaultValue}: MobileFilterType) => {
+export const MobileFilter = ({isOpen, setIsOpen, setSearchParams, defaultValue}: MobileFilterType) => {
     return (
         <div className="hidden max-lg:block">
             <Modal
@@ -20,8 +18,6 @@ export const MobileFilter = ({isOpen, setIsOpen, setSearchParams, min, max, defa
             >
                 <Filters
                     setSearchParams={setSearchParams}
-                    min={min}
-                    max={max}
                     defaultValue={defaultValue}
                     isModal={true}
                     setIsOpen={setIsOpen}

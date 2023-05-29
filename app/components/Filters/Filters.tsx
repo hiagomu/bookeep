@@ -14,20 +14,17 @@ import { FilterQueryParams } from '@/app/@types'
 import { MdRestore as ResetFiltersIcon } from "react-icons/md"
 
 type Props = {
-    min: number
-    max: number
     defaultValue: [number, number]
     setSearchParams: (searchParams: FilterQueryParams) => void
     setIsOpen?: (isOpen: boolean) => void
     isModal: boolean
 };
 
-export const Filters =  ({min, max, defaultValue, setSearchParams, isModal, setIsOpen }: Props) => {
+export const Filters =  ({ defaultValue, setSearchParams, isModal, setIsOpen }: Props) => {
 
-    const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm()
+    const { register, handleSubmit } = useForm()
 
     const onSubmit = (data: FieldValues) => {
-
         let currentQuery = {
             orderBy: data.orderBy,
             category: data.category,
@@ -37,6 +34,9 @@ export const Filters =  ({min, max, defaultValue, setSearchParams, isModal, setI
         }
 
         setSearchParams(currentQuery)
+        if (setIsOpen) {
+            setIsOpen(false)
+        }
     }
 
     const resetFilters = () => {
@@ -47,6 +47,9 @@ export const Filters =  ({min, max, defaultValue, setSearchParams, isModal, setI
             orderBy: "desc",
             search: ""
         })
+        if (setIsOpen) {
+            setIsOpen(false)
+        }
     }
 
     const [values, setValues] = useState<number[]>([defaultValue[0], defaultValue[1]])
