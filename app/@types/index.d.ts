@@ -194,7 +194,8 @@ export interface FilterQueryParams {
 
 export interface BookstoresType {
     business_status: string
-    formatted_address: string
+    vicinity?: string
+    formatted_address?: string
     geometry: {
         location: {
             lat: number

@@ -6,7 +6,6 @@ import {
   FaGhost as BooIcon
 } from 'react-icons/fa'
 import { FieldValues } from 'react-hook-form'
-import PostImageInput from "./components/PostImageInput"
 import { mixed, object, string } from "yup";
 import { useEffect, useState } from "react"
 import { EditPostType } from "@/app/@types"

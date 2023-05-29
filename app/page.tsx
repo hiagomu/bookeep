@@ -84,7 +84,7 @@ export default function Home() {
             <Filters
               min={0}
               max={100}
-              defaultValue={[25, 75]}
+              defaultValue={[0, 100]}
               setSearchParams={setSearchParams}
             />
           </div>
