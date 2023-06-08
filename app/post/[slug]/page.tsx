@@ -10,6 +10,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { FaExternalLinkAlt as VisitIcon } from 'react-icons/fa'
 import { PostType } from '@/app/@types'
+import { useSession } from 'next-auth/react'
 
 const fecthDetails = async (slug: string) => {
     const response = await axios.get(`/api/posts/${slug}`)
@@ -23,7 +24,8 @@ interface IURL {
 }
 
 export default function PostDetail(url: IURL) {
-
+    
+    const { data: session } = useSession()
     const { data, isLoading } = useQuery<PostType>({
         queryKey: ['detail-post'],
         queryFn: () => fecthDetails(url.params.slug)
@@ -52,6 +54,7 @@ export default function PostDetail(url: IURL) {
                             category={data.category}
                             saleLink={data.saleLink}
                             coupon={data.coupon}
+                            isOwner={session?.user?.email === data.user.email}
                         />
                     }
                 </div>

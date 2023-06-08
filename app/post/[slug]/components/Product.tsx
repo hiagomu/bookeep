@@ -23,11 +23,13 @@ const Product = ({
     saleLink,
     category,
     status,
+    isOwner,
     description,
     bookImageURL
 }: PostDetailedType) => {
 
     const today = Date.now()
+    
     const [isActionsOpen, setIsActionsOpen] = useState(false)
 
     return (
@@ -54,7 +56,7 @@ const Product = ({
                                 <OptionsIcon className="text-primaryColor"/>
                             </button>
                             <Actions
-                                user={user}
+                                isOwner={isOwner}
                                 postId={id}
                                 isActionsOpen={isActionsOpen}
                                 setIsActionsOpen={setIsActionsOpen}

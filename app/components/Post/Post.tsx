@@ -20,6 +20,7 @@ export const Post = ({
     price,
     seller,
     coupon,
+    isOwner,
     category,
     saleLink,
     comments,
@@ -63,11 +64,11 @@ export const Post = ({
                         <OptionsIcon className="text-primaryColor"/>
                     </button>
                     <Actions
-                        user={user}
                         postId={id}
                         isActionsOpen={isActionsOpen}
                         setIsActionsOpen={setIsActionsOpen}
                         status={status}
+                        isOwner={isOwner}
                         postData={{
                             id: id,
                             title: title,

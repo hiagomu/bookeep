@@ -54,6 +54,7 @@ export interface PostBoxType {
     bookImageURL: string
     interactions?: boolean 
     userProfileURL: string
+    isOwner: boolean
     isUserVerified: boolean
     isMarketplaceVerified: boolean
 }
@@ -72,6 +73,7 @@ export interface PostDetailedType {
     marketplace: string
     createdAt: Date
     status: "rejected" | "pending" | "published"
+    isOwner: boolean
     description?: string
     bookImageURL: string
 }

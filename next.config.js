@@ -5,8 +5,7 @@ const isDev = process.env.NODE_ENV !== "production";
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
   register: true,
-  disable: isDev,
-  register: true
+  disable: isDev
 })
 
 const nextConfig = withPWA({

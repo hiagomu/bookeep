@@ -18,6 +18,7 @@ import qs from "query-string"
 import notFoundImage from "../public/assets/not_found.svg"
 import { MobileFilter } from "./components/Modals/MobileFilter"
 import { FaSlidersH as FilterIcon } from "react-icons/fa"
+import { useSession } from "next-auth/react"
 
 const getPosts = async (searchParams: QueryFunctionContext<QueryKey, any>) => {
   if (searchParams.queryKey[1]) {
@@ -42,6 +43,7 @@ export default function Home() {
   const queryClient = useQueryClient()
   const [isOpen, setIsOpen] = useState(false)
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false)
+  const { data: session } = useSession()
 
   const { data, isLoading, status } = useQuery<PostType[]>({
     queryFn: (searchParams) => getPosts(searchParams),
@@ -103,6 +105,7 @@ export default function Home() {
                 data?.length ?
                   data?.map((post: PostType) => 
                     <Post
+                      isOwner={session?.user?.email === post.user.email}
                       status={post.status}
                       category={post.category}
                       saleLink={post.saleLink}

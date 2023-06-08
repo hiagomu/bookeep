@@ -3,35 +3,33 @@ import {
     FaEdit as EditIcon,
     FaTrashAlt as RemoveIcon
 } from 'react-icons/fa'
-import { useSession } from 'next-auth/react'
 import { useQueryClient, useMutation } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
 import { Remove } from '../Modals/Remove'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
-import { EditPostType, User } from '@/app/@types'
+import { EditPostType } from '@/app/@types'
 import { Share } from "../Modals/Share"
 import { EditPost } from '../Modals/EditPost'
 import { FieldValues } from 'react-hook-form'
 
 interface IActions {
     postData: EditPostType
-    user: User
     postId: string
     status: "pending" | "published" | "rejected"
     isActionsOpen: boolean
     setIsActionsOpen: (isActionsOpen: boolean) => void
+    isOwner: boolean
 }
 
 interface IDeletePost {
     id: string
 }
 
-export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status, postData }: IActions) => {
+export const Actions = ({ postId, isActionsOpen, setIsActionsOpen, status, postData, isOwner }: IActions) => {
     
     let deleteToastID: string
     let editPostToastID: string
-    const { data: session } = useSession()
     const queryClient = useQueryClient()
     const [isRemoveOpen, setIsRemoveOpen] = useState(false)
     const [isShareOpen, setIsShareOpen] = useState(false)
@@ -102,7 +100,7 @@ export const Actions = ({ user, postId, isActionsOpen, setIsActionsOpen, status,
                             </button>
                         }
                         {
-                            session?.user?.email === user.email &&
+                            isOwner &&
                             <>
                                 {
                                     status !== "rejected" &&
