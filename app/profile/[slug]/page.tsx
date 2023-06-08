@@ -7,9 +7,11 @@ import { Profile } from "@/app/components/Profile"
 import { PostSkeleton } from "@/app/components/Skeletons/PostSkeleton"
 import { Post } from "@/app/components/Post"
 import { usePathname } from 'next/navigation'
+import { useSession } from "next-auth/react"
 
 export default function Home() {
   const userId = usePathname()?.split("/")[2]
+  const { data: session } = useSession()
 
   const getPostsByUser = async () => {
     const response = await axios.get('/api/posts/getPostsByUser', {
@@ -53,6 +55,7 @@ export default function Home() {
               :
               posts.data?.map((post: PostType) => 
                 <Post
+                  isOwner={session?.user?.email === post.user.email}
                   status={post.status}
                   category={post.category}
                   saleLink={post.saleLink}

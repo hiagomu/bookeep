@@ -7,6 +7,7 @@ import { PostSkeleton } from "../components/Skeletons/PostSkeleton"
 import { PostType } from "../@types"
 import Image from "next/image"
 import notFoundImage from "../../public/assets/not_found.svg"
+import { useSession } from "next-auth/react"
 
 const getPosts = async () => {
   const response = await axios.get('/api/posts/getPendingPosts')
@@ -14,6 +15,7 @@ const getPosts = async () => {
 }
 
 export default function Home() {
+  const { data: session } = useSession()
   const { data, isLoading } = useQuery<PostType[]>({
     queryFn: getPosts,
     queryKey: ["posts"],
@@ -29,6 +31,7 @@ export default function Home() {
               : 
               data?.map((post: PostType) =>
                 <Post
+                  isOwner={session?.user?.email === post.user.email}
                   status={post.status}
                   category={post.category}
                   saleLink={post.saleLink}
