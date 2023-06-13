@@ -10,7 +10,7 @@
         "access_level": ["admin"]
     },
     {
-        "href": "/",
+        "href": "/market",
         "name": "Market",
         "access_level": ["admin", "client"]
     }
