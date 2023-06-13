@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { FaExternalLinkAlt as VisitIcon } from 'react-icons/fa'
 import { PostType } from '@/app/@types'
 import { useSession } from 'next-auth/react'
+import { PricingBoxSkeleton } from '@/app/components/Skeletons/PricingBoxSkeleton'
 
 const fecthDetails = async (slug: string) => {
     const response = await axios.get(`/api/posts/${slug}`)
@@ -87,10 +88,10 @@ export default function PostDetail(url: IURL) {
                     </div>
                 }
                 <div className='w-[51rem] max-xl:w-[40rem] max-md:w-[32rem] max-sm:w-[18rem]'>
+                    <CommentInput id={data?.id || ""} />
                     {
                         data &&
                         <>
-                            <CommentInput id={data.id} user={data.user}/>
                             {
                                 data.comments?.length !== undefined && data.comments?.length > 0 &&
                                 <CommentSection comments={data.comments}/>
@@ -101,15 +102,17 @@ export default function PostDetail(url: IURL) {
             </div>
             <div className='max-lg:hidden'>
                 {
-                    data &&
-                    <PricingBox
-                        saleLink={data.saleLink}
-                        postId={data.id}
-                        seller={data.seller}
-                        coupon={data.coupon}
-                        price={data.price}
-                        key={data.id}
-                    />
+                    !isLoading ?
+                        data &&
+                        <PricingBox
+                            saleLink={data.saleLink}
+                            postId={data.id}
+                            seller={data.seller}
+                            coupon={data.coupon}
+                            price={data.price}
+                            key={data.id}
+                        />
+                    : <PricingBoxSkeleton />
                 }
                 <div className='mt-16'>
                     <h2 className='text-black font-bold font-poppins text-2xl mb-4 dark:text-white max-xl:text-xl'>Outros</h2>

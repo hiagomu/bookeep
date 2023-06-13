@@ -1,12 +1,11 @@
 import { IoMdSend as SendIcon } from 'react-icons/io'
 import Image from "next/image"
-import { FieldValues, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string } from 'yup';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
-import toast from 'react-hot-toast';
-import { User } from '@/app/@types';
+import { FieldValues, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { object, string } from 'yup'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import axios, { AxiosError } from 'axios'
+import toast from 'react-hot-toast'
 import { useSession } from 'next-auth/react'
 import defaultProfileImage from '../../../../public/assets/default_user.png'
 
@@ -19,7 +18,6 @@ const newCommentSchema = object({
   });
 interface ICommentInput {
     id: string
-    user: User
 }
 
 interface IComment {
@@ -27,7 +25,7 @@ interface IComment {
     comment: string
 }
 
-const CommentInput = ({ id, user }: ICommentInput) => {
+const CommentInput = ({ id }: ICommentInput) => {
     const { register, handleSubmit, reset } = useForm({
         resolver: yupResolver(newCommentSchema)
     });
@@ -43,7 +41,7 @@ const CommentInput = ({ id, user }: ICommentInput) => {
                   toast.error(error?.response?.data.message, {id: commentToastID})
                 }
             },
-            onSuccess: (data) => {
+            onSuccess: () => {
                 queryClient.invalidateQueries(["detail-post"])
                 toast.success("Comentário adicionado", {id: commentToastID})
             }

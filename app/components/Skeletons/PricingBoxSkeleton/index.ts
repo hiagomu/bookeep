@@ -1,0 +1,1 @@
+export { PricingBoxSkeleton } from "./PrincingBoxSkeleton"
