@@ -1,20 +1,20 @@
 import { SkeletonType } from "@/app/@types"
 import Skeleton from "react-loading-skeleton"
 
-const PostTimeDistanceSkeleton = ({
+const InteractionsSkeleton = ({
     skeletonColorsLight,
     skeletonColorsDark
 }: SkeletonType) => {
     return (
         <>
-            <div className="w-24 h-5 max-lg:w-20 max-lg:h-4 dark:hidden">
+            <div className="absolute w-32 h-7 rounded-lg bottom-0 right-0 max-lg:h-6 max-lg:w-28 max-sm:w-20 max-sm:h-5 dark:hidden">
                 <Skeleton width="100%" height="100%" baseColor={skeletonColorsLight.baseColor} highlightColor={skeletonColorsLight.highlightColor} />
             </div>
-            <div className="w-24 h-5 max-lg:w-20 max-lg:h-4 hidden dark:block">
+            <div className="absolute w-32 h-7 rounded-lg bottom-0 right-0 max-lg:h-6 max-lg:w-28 max-sm:w-20 max-sm:h-5 hidden dark:block">
                 <Skeleton width="100%" height="100%" baseColor={skeletonColorsDark.baseColor} highlightColor={skeletonColorsDark.highlightColor} />
             </div>
         </>
     )
 }
 
-export default PostTimeDistanceSkeleton
+export default InteractionsSkeleton

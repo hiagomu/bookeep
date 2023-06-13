@@ -5,7 +5,7 @@ import PostProductInfoSkeleton from "./components/PostProductInfoSkeleton"
 import PostTimeDistanceSkeleton from "./components/PostTimeDistanceSkeleton"
 import PostTitleSkeleton from "./components/PostTitleSkeleton"
 import PostSellerInfoSkeleton from "./components/PostSellerInfoSkeleton"
-import PostInterectionsSkeleton from "./components/PostInterectionsSkeleton"
+import InteractionsSkeleton from "../components/InteractionsSkeleton"
 import PostDetailsSkeleton from "./components/PostDetailsSkeleton"
 
 interface IPostSkeleton {
@@ -43,7 +43,7 @@ export const PostSkeleton = ({count}: IPostSkeleton) => {
                                         <PostSellerInfoSkeleton skeletonColorsDark={skeletonColorsDark} skeletonColorsLight={skeletonColorsLight} />
                                     </div>
                                 </div>
-                                <PostInterectionsSkeleton skeletonColorsDark={skeletonColorsDark} skeletonColorsLight={skeletonColorsLight} />
+                                <InteractionsSkeleton skeletonColorsDark={skeletonColorsDark} skeletonColorsLight={skeletonColorsLight} />
                             </div>
                         </div>
                         <PostDetailsSkeleton skeletonColorsDark={skeletonColorsDark} skeletonColorsLight={skeletonColorsLight} />

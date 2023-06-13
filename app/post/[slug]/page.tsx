@@ -1,6 +1,7 @@
 "use client"
 import Product from './components/Product'
 import ProductDetailBox from './components/ProductDetailBox'
+import { ProductSkeleton } from '@/app/components/Skeletons/ProductSkeleton'
 import CommentInput from './components/CommentInput'
 import CommentSection from './components/CommentSection'
 import PricingBox from './components/PricingBox'
@@ -34,30 +35,35 @@ export default function PostDetail(url: IURL) {
     return (
         <div className="mt-24 flex justify-between w-[78.75rem] max-2xl:w-[73rem] max-xl:w-[58rem] max-lg:justify-center max-md:w-[36rem] max-sm:w-[24rem] max-lg:mt-20 max-sm:mt-16">
             <div>
-                <div>
-                    {
-                        data &&
-                        <Product
-                            bookImageURL={data.bookImageURL}
-                            description={data.description}
-                            marketplace={data.seller}
-                            createdAt={data.createdAt}
-                            status={data.status}
-                            comments={data.comments}
-                            seller={"Amazon"}
-                            title={data.title}
-                            price={data.price}
-                            likes={data.likes}
-                            user={data.user}
-                            key={data.id}
-                            id={data.id}
-                            category={data.category}
-                            saleLink={data.saleLink}
-                            coupon={data.coupon}
-                            isOwner={session?.user?.email === data.user.email}
-                        />
-                    }
-                </div>
+                {
+                    !isLoading ?
+                    <div>
+                        {
+                            data &&
+                            <Product
+                                bookImageURL={data.bookImageURL}
+                                description={data.description}
+                                marketplace={data.seller}
+                                createdAt={data.createdAt}
+                                status={data.status}
+                                comments={data.comments}
+                                seller={"Amazon"}
+                                title={data.title}
+                                price={data.price}
+                                likes={data.likes}
+                                user={data.user}
+                                key={data.id}
+                                id={data.id}
+                                category={data.category}
+                                saleLink={data.saleLink}
+                                coupon={data.coupon}
+                                isOwner={session?.user?.email === data.user.email}
+                            />
+                        }
+                    </div>
+                    :
+                    <ProductSkeleton />
+                }
                 {
                     // <div className='max-lg:hidden flex justify-between mt-2 max-xl:w-[40rem]'>
                     //     <ProductDetailBox />
