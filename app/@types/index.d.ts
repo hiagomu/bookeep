@@ -238,7 +238,7 @@ export interface BookstoresType {
     user_ratings_total: number
 }
 
-export interface PostSkeletonType {
+export interface SkeletonType {
     skeletonColorsLight: {
         baseColor: string
         highlightColor: string
