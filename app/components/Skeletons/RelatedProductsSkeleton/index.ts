@@ -1,0 +1,1 @@
+export { RelatedProductsSkeleton } from "./RelatedProductsSkeleton"

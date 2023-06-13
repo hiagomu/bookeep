@@ -249,6 +249,18 @@ export interface SkeletonType {
     }
 }
 
+export interface InteractionsSkeletonType {
+    skeletonColorsLight: {
+        baseColor: string
+        highlightColor: string
+    }
+    skeletonColorsDark: {
+        baseColor: string
+        highlightColor: string
+    }
+    isSmall?: boolean
+}
+
 export interface PricingBoxType {
     postId: string
     price: string
