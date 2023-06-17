@@ -9,7 +9,6 @@ O **BooKeep** é uma plataforma criada para divulgar promoções de livros e fac
 ## 🖼️ Tela Inicial e Preview
 
 <div align="center">
-        <img align="center" width="480" height="270" alt="bookeep preview gif" src="https://i.imgur.com/17fLIPi.png">
         <img align="center" alt="bookeep preview gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2ZhZTFkNWE0ZTYyNjBhYzcwMDc5MjRmZmJmNzZlMzBmNTUwNWQ3ZCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/YocimJs7lhJAkgZSOg/giphy.gif">
 </div>
 
