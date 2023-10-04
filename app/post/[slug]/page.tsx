@@ -29,7 +29,7 @@ export default function PostDetail(url: IURL) {
     
     const { data: session } = useSession()
     const { data, isLoading } = useQuery<PostType>({
-        queryKey: ['detail-post'],
+        queryKey: ['detail-post', url.params.slug],
         queryFn: () => fecthDetails(url.params.slug)
     })
 
